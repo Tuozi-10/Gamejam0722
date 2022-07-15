@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LevelCreator : MonoBehaviour
+public class LevelCreationManager : MonoBehaviour
 {
     
     public void LoadLevel() {

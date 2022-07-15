@@ -13,6 +13,7 @@ public class LevelCreationEditor : Editor {
             GUILayout.Label("Generate new Level".ToUpper());
             EditorGUILayout.PropertyField(serializedObject.FindProperty("levelSize"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("dicePrefab"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("diceSize"));
             
             if (GUILayout.Button("Generate New level")) script.GenerateNewLevel();
         }

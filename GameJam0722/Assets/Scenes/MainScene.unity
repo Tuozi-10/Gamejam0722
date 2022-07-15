@@ -624,6 +624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8065899f7f40bc14ba421648c076ab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadLevelSO: {fileID: 0}
+  levelSize: {x: 1, y: 1}
+  dicePrefab: {fileID: 3668501400095789435, guid: a8e05c1e4018d4643be69eaceb221eac, type: 3}
 --- !u!1 &844274773
 GameObject:
   m_ObjectHideFlags: 0

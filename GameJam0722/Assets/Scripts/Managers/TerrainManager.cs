@@ -43,14 +43,13 @@ public class TerrainManager : MonoBehaviour {
         
         foreach (DiceTerrain dice in GetDiceWithSameValue(upperDiceValue)) 
         {
-            if (dice.DiceState != DiceState.Walkable || dice.DiceEffectState != DiceEffectState.None) continue;
+            if (dice.diceData.diceState != DiceState.Walkable || dice.diceData.diceEffectState != DiceEffectState.None) continue;
             dice.transform.DOKill();
             dice.transform.DOLocalMove(new Vector3(dice.transform.localPosition.x, heigthValue, dice.transform.localPosition.z), 1);
-            dice.DiceState = DiceState.Wall;
+            dice.diceData.diceState = DiceState.Wall;
         }
     }
     #endregion SetTerrainAtStart
-
     
     
     #region GetTerrain
@@ -62,7 +61,6 @@ public class TerrainManager : MonoBehaviour {
     #endregion GetTerrain
     
     
-    
     #region DiceTerrainHelper
     /// <summary>
     /// Return a list of dice which get the same value as the parameter
@@ -72,7 +70,7 @@ public class TerrainManager : MonoBehaviour {
     public List<DiceTerrain> GetDiceWithSameValue(int value) {
         List<DiceTerrain> diceValueList = new List<DiceTerrain>();
         foreach (DiceTerrain dice in diceTerrainlsit) {
-            if(dice.DiceValue == value) diceValueList.Add(dice);
+            if(dice.diceData.diceValue == value) diceValueList.Add(dice);
         }
         return diceValueList;
     }

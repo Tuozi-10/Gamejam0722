@@ -11,11 +11,12 @@ public class LevelCreationEditor : Editor {
         
         using (new GUILayout.VerticalScope(EditorStyles.helpBox)) {
             GUILayout.Label("Generate new Level".ToUpper());
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("levelSize"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("levelSizeGeneration"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("dicePrefab"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("diceParent"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("diceSize"));
             
-            if (GUILayout.Button("Generate New level")) script.GenerateNewLevel();
+            if (GUILayout.Button("Generate New level")) script.GenerateNewLevel(script.LevelSizeGeneration);
         }
         
         GUILayout.Space(16);
@@ -28,23 +29,20 @@ public class LevelCreationEditor : Editor {
             if(script.LoadLevelSO == null) EditorGUILayout.HelpBox("Need a scriptable Object to be able to load a new level", MessageType.Error);
             
             GUI.enabled = script.LoadLevelSO != null;
-            if (GUILayout.Button("Load level")) ((LevelCreationManager)target).LoadLevel();
+            if (GUILayout.Button("Load level")) ((LevelCreationManager)target).LoadLevel(script.LoadLevelSO, Application.isPlaying);
             GUI.enabled = true;
         }
         GUI.backgroundColor = Color.white;
-        
-        
-        
 
-        
         GUILayout.Space(8);
         
         GUI.backgroundColor = Color.cyan;
         using (new GUILayout.VerticalScope(EditorStyles.helpBox)) {
             GUILayout.Label("Save actual level".ToUpper());
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("levelSize"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("folderPath"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("levelName"));
             
-            if (GUILayout.Button("Generate New level")) script.SaveActualLevel();
+            if (GUILayout.Button("Save Level as SO")) script.SaveActualLevel();
         }
         GUI.backgroundColor = Color.white;
         

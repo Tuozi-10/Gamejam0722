@@ -4,6 +4,8 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class TerrainManager : MonoBehaviour {
+    public static TerrainManager instance;
+    
     //Tempo list for dice in scene (destroy this when level creator is ready)
     [SerializeField] private List<DiceTerrain> tempoCubeList = new List<DiceTerrain>();
     
@@ -18,6 +20,8 @@ public class TerrainManager : MonoBehaviour {
 
 
     private void Awake() {
+        if (instance == null) instance = this;
+        
         TempoFuncLoad();
         SetDiceHeight();
     }

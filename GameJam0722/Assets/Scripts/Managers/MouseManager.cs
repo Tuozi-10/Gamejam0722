@@ -68,7 +68,7 @@ public class MouseManager : Singleton<MouseManager> {
             var array = TerrainManager.instance.GetAvailableArray();
             m_cursorRenderer.sprite = array[dice.pos.x, dice.pos.y] ? m_cursorSprites[0]:m_cursorSprites [1];
 
-            if (Vector2Int.Distance(dice.pos, character.pos) != 1)
+            if (Vector2Int.Distance(dice.pos, character.pos) > 1)
             {
                 m_cursorRenderer.sprite = m_cursorSprites [1];
             }

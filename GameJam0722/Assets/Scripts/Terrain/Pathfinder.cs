@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Terrain
 {
-    public class Pathfinder
+    public static class Pathfinder
     {
 
         public class Node
@@ -32,7 +32,7 @@ namespace Terrain
             }
         }
         
-        public List<Node>  GetPath(int fromX, int fromY, int toX, int toY, bool [,] array)
+        public static List<Node>  GetPath(int fromX, int fromY, int toX, int toY, bool [,] array)
         {
             bool[,] ground = new bool[array.GetLength(0), array.GetLength(1)];
             for (int i = 0; i < array.GetLength(0); i++)
@@ -62,7 +62,7 @@ namespace Terrain
             return GetBestPath(paths);
         }
 
-        private List<Node> FollowPath(List<Node> from, int toX, int toY, ref bool [,] array)
+        private static List<Node> FollowPath(List<Node> from, int toX, int toY, ref bool [,] array)
         {
             int i = 0;
             while (!from[0].isCompleted())
@@ -170,7 +170,7 @@ namespace Terrain
             return from;
         }
 
-        private List<Node>  GetBestPath(List<List<Node>> paths)
+        private static List<Node>  GetBestPath(List<List<Node>> paths)
         {
             List<Node>  bestNode = null;
             

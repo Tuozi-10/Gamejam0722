@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Entities;
+using Terrain;
 using UnityEngine;
 
 namespace Managers
@@ -8,7 +9,7 @@ namespace Managers
     public class LevelManager : MonoBehaviour
     {
         public static LevelManager instance;
-    
+
         private void Awake()
         {
             if (instance is not null)
@@ -23,7 +24,7 @@ namespace Managers
         
         public void StartLevel()
         {
-            LevelCreationManager.instance.LoadLevel();
+            //LevelCreationManager.instance.LoadLevel();
             // GENERATE ENTITIES
             SetTimeline(null); // TODO ADD ENTITIES
         }

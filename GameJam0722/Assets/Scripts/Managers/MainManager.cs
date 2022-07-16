@@ -35,9 +35,8 @@ namespace Managers
             SceneManager.LoadScene(MainSceneName);
         }
 
-        /*public void CACA()
+        public void CACA()
         {
-            var a = new Pathfinder();
             bool[,] caca = new bool[10,10];
             caca[5, 5] = true;
             caca[2, 3] = true;
@@ -46,8 +45,8 @@ namespace Managers
             caca[4, 3] = true;
             caca[3, 5] = true;
             
-            a.GetPath(2, 2, 8, 8, caca);
-        }*/
+            Pathfinder.GetPath(2, 2, 8, 8, caca);
+        }
         
     }
 }

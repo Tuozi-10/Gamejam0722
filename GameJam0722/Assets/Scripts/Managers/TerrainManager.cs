@@ -56,24 +56,47 @@ public class TerrainManager : Singleton<TerrainManager> {
     {
         if (!firstLaunch) 
         {
-            foreach (DiceTerrain dice in diceTerrainlsit) 
-            {
-                if (dice.diceData.diceState != DiceState.ForceHole) {
-                    SetDiceHeight(dice, dice.heightRandomness, moveHeightDuration);
-                    dice.diceData.diceState = DiceState.Walkable;
-                }
-            }
-
+            ForceHolePosition();
             yield return new WaitForSeconds(moveHeightDuration + moveHeightDuration / 8);
         }
         
+        CreateWallAndHole();
+        
+        if (firstLaunch) {
+            SpawnPlayer();
+
+            foreach (DiceTerrain dice in diceTerrainlsit) {
+                if (dice.diceData.diceEffectState == DiceEffectState.Spawner) SpawnEnemy(dice);
+            }
+        }
+
+        yield return new WaitForSeconds(moveHeightDuration + 0.25f);
+        if(firstLaunch) LevelManager.instance.GenerateEntities();
+        else LevelManager.instance.GetNextEntity().StartTurn();
+    }
+
+    /// <summary>
+    /// Each dice which is in force hole should be a hole
+    /// </summary>
+    private void ForceHolePosition() {
+        foreach (DiceTerrain dice in diceTerrainlsit) 
+        {
+            if (dice.diceData.diceState != DiceState.ForceHole) {
+                SetDiceHeight(dice, dice.heightRandomness, moveHeightDuration);
+                dice.diceData.diceState = DiceState.Walkable;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Create walls and holes in the terrain
+    /// </summary>
+    private void CreateWallAndHole() {
         randomWallDice = setRandomDiceValue ? Random.Range(1, 6) : wallDiceValue;
         randomHoleDice = setRandomDiceValue ? Random.Range(1, 6) : holeDiceValue;
         do {
             randomHoleDice = Random.Range(1, 6);
         } while (randomHoleDice == randomWallDice);
-        
-        yield return new WaitForSeconds(moveHeightDuration + moveHeightDuration / 8);
         
         foreach (DiceTerrain dice in diceTerrainlsit) 
         {
@@ -92,20 +115,15 @@ public class TerrainManager : Singleton<TerrainManager> {
                 dice.diceData.diceState = DiceState.Hole;
             }
         }
-        
-        if (firstLaunch) {
-            enemyEntity.Clear();
-            Character.instance.pos = GetStartDice() != null ? GetStartDice().pos : new Vector2Int(0, 0);
-            Character.instance.transform.DOLocalMove(BaseAI.GetPosFromCoord(Character.instance.pos.x, Character.instance.pos.y), playerMoveDuration);
+    }
 
-            foreach (DiceTerrain dice in diceTerrainlsit) {
-                if (dice.diceData.diceEffectState == DiceEffectState.Spawner) SpawnEnemy(dice);
-            }
-        }
-
-        yield return new WaitForSeconds(moveHeightDuration + 0.25f);
-        if(firstLaunch) LevelManager.instance.GenerateEntities();
-        else LevelManager.instance.GetNextEntity().StartTurn();
+    /// <summary>
+    /// Spawn the player
+    /// </summary>
+    private void SpawnPlayer() {
+        enemyEntity.Clear();
+        Character.instance.pos = GetStartDice() != null ? GetStartDice().pos : new Vector2Int(0, 0);
+        Character.instance.transform.DOLocalMove(BaseAI.GetPosFromCoord(Character.instance.pos.x, Character.instance.pos.y), playerMoveDuration);
     }
     
     /// <summary>
@@ -116,6 +134,17 @@ public class TerrainManager : Singleton<TerrainManager> {
         enemy.GetComponent<BaseAI>().pos = dice.pos;
         enemyEntity.Add(enemy.GetComponent<AbstractEntity>());
     }
+
+    /// <summary>
+    /// Check all entities floor
+    /// </summary>
+    private void CheckEntityDice() {
+        foreach (AbstractEntity ent in LevelManager.instance.Entities) {
+            
+        }
+    }
+    
+    
     
 
     private float heightAddValue = 0;

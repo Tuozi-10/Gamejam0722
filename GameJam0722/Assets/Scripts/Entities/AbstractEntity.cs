@@ -42,6 +42,10 @@ namespace Entities
             {
                  StartCoroutine(GoThroughPath(path));
             }
+
+            public virtual void EndTurn() {
+                  LevelManager.instance.EndTurn();
+            }
             
             private IEnumerator GoThroughPath(List<Node> path)
             {
@@ -57,7 +61,8 @@ namespace Entities
                         path.RemoveAt(0);
                         yield return new WaitForSeconds(durationMove+0.05f);
                   }
-                  LevelManager.instance.EndTurn();
+
+                  EndTurn();
             }
 
             public static Vector3 GetPosFromCoord(int x, int y)

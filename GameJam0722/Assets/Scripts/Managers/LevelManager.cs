@@ -95,7 +95,6 @@ namespace Managers
         
         #endregion
 
-        
         #region End Game
         
         /// <summary>

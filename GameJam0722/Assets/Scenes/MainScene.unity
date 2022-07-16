@@ -56414,6 +56414,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5485276713814388172, guid: 9dcd14202404e7843aea1c8078ed9f5d, type: 3}
+      propertyPath: holeDiceValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485276713814388172, guid: 9dcd14202404e7843aea1c8078ed9f5d, type: 3}
+      propertyPath: wallDiceValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485276713814388172, guid: 9dcd14202404e7843aea1c8078ed9f5d, type: 3}
+      propertyPath: setRandomDiceValue
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5485276713814388173, guid: 9dcd14202404e7843aea1c8078ed9f5d, type: 3}
       propertyPath: m_RootOrder
       value: 1

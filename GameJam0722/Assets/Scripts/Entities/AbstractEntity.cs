@@ -49,7 +49,7 @@ namespace Entities
                   path.RemoveAt(0);
                   int pmUsed = 0;
                   
-                  while (path.Count > 0 || pmUsed >= pm)
+                  while (path.Count > 0 && pmUsed >= pm)
                   {
                         pmUsed++;
                         transform.DOMove(GetPosFromCoord(path[0].posX, path[0].posY), durationMove);

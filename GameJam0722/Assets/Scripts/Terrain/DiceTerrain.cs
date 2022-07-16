@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DiceTerrain : MonoBehaviour {
@@ -8,6 +6,17 @@ public class DiceTerrain : MonoBehaviour {
     //CENTER // UP RIGHT // UP LEFT // BOTTOM RIGHT // BOTTOM LEFT
     [SerializeField] private GameObject[] diceCubeGam = new GameObject[5];
 
+    /// <summary>
+    /// Initialize dice data value
+    /// </summary>
+    /// <param name="dicePos"></param>
+    /// <param name="diceState"></param>
+    public void InitDice(Vector2 dicePos, DiceState diceState = DiceState.Walkable) {
+        diceData.dicePos = dicePos;
+        diceData.diceState = diceState;
+    }
+    
+    
     public void UpdateDiceValue() {
         return;
         diceCubeGam[0].SetActive(diceData.diceValue % 2 == 1);
@@ -26,6 +35,7 @@ public class DiceTerrain : MonoBehaviour {
 [System.Serializable]
 public class DiceClass {
     [Range(0, 5)] public int diceValue;
+    public Vector2 dicePos;
     public DiceState diceState = DiceState.Walkable;
     public DiceEffectState diceEffectState = DiceEffectState.None;
 }

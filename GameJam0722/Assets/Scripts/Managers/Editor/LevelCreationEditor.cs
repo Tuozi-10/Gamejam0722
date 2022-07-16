@@ -9,6 +9,9 @@ public class LevelCreationEditor : Editor {
         serializedObject.Update();
         if (script == null) script = (LevelCreationManager) target;
         
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("diceList"));
+        GUILayout.Space(8);
+        
         using (new GUILayout.VerticalScope(EditorStyles.helpBox)) {
             GUILayout.Label("Generate new Level".ToUpper());
             EditorGUILayout.PropertyField(serializedObject.FindProperty("levelSizeGeneration"));

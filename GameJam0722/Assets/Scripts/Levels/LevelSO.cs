@@ -19,3 +19,15 @@ public class LevelSO : ScriptableObject {
         this.diceClass = dicesClass;
     }
 }
+
+public class Level {
+    public Vector2 terrainSize;
+    public List<DiceClass> DiceClass;
+
+    public static Level CreateLevel(LevelSO level) {
+        var newCreatedLevel = new Level();
+        newCreatedLevel.terrainSize = level.TerrainSize;
+        newCreatedLevel.DiceClass = new (level.DiceClass);
+        return newCreatedLevel;
+    }
+}

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LevelCreationManager : Singleton<LevelCreationManager> {
 
-    private List<DiceTerrain> diceList = new();
+    [SerializeField] private List<DiceTerrain> diceList = new();
     public List<DiceTerrain> DiceList => diceList;
+    
     [SerializeField] private Vector2 actualLevelSize = new Vector2(0,0);
     
     //LEVEL GENERATION
@@ -30,21 +31,24 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
     /// </summary>
     /// <param name="level"></param>
     public void LoadLevel(LevelSO level, bool isInGame = false) {
+        Level levelClass = Level.CreateLevel(level);
+        
         if (isInGame) 
         {
             foreach (DiceTerrain dice in diceList) 
             {
-                Destroy(dice.gameObject);
+                if(dice != null) Destroy(dice.gameObject);
             }
         }
-        GenerateNewLevel(loadLevelSO.TerrainSize);
+        
+        GenerateNewLevel(levelClass.terrainSize);
 
         foreach (DiceTerrain dice in diceList) 
         {
-            dice.diceData = loadLevelSO.DiceClass[diceList.IndexOf(dice)];
+            dice.diceData = levelClass.DiceClass[diceList.IndexOf(dice)];
             dice.UpdateDiceValue();
         }
-        if (isInGame) TerrainManager.instance.StartTerrainCreation(level.TerrainSize, diceList);
+        if (isInGame) TerrainManager.instance.StartTerrainCreation(levelClass.terrainSize, diceList);
     }
 
     /// <summary>
@@ -73,10 +77,7 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
         
         foreach (DiceTerrain dice in diceList) 
         {
-            if (dice != null && dice.gameObject != null) 
-            {
-                DestroyImmediate(dice.gameObject);
-            }
+            if (dice != null && dice.gameObject != null) DestroyImmediate(dice.gameObject);
         }
         diceList.Clear();
         
@@ -88,6 +89,7 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
             for (int y = 0; y < custLevelSize.y; y++) 
             {
                 GameObject dice = Instantiate(dicePrefab, new Vector3(x * diceSize, 0, y * diceSize), Quaternion.identity, diceParent);
+                dice.GetComponent<DiceTerrain>().InitDice(new Vector2(x, y));
                 diceList.Add(dice.GetComponent<DiceTerrain>());
                 
                 if (xPosMax <= x * diceSize) xPosMax = x * diceSize;

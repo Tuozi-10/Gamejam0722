@@ -80,10 +80,11 @@ MonoBehaviour:
   enemyParent: {fileID: 2099470774}
   enemyEntity: []
   heightRandomness: {x: -0.125, y: 0.125}
-  wallHeightValue: 0.65
-  holeHeightValue: -3
+  wallHeightValue: 0.5
+  holeHeightValue: -5
   moveHeightDuration: 0.75
   playerMoveDuration: 1.5
+  fallDuration: 4
   setRandomDiceValue: 1
   wallDiceValue: 0
   holeDiceValue: 0

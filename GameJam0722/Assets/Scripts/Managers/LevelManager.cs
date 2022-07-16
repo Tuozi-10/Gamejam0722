@@ -25,19 +25,37 @@ namespace Managers
 
         private void Update() {
             if (Input.GetKeyDown(KeyCode.LeftAlt)) {
-                StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex]));
-                isLoadingNewLevel = true;
-                Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
-                levelIndex++;
+                LoadNextLevel();
             }
         }
 
+        #region Level Loader
+        /// <summary>
+        /// Reload the same level
+        /// </summary>
+        public void ReloadLevel() {
+            StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex-1]));
+            isLoadingNewLevel = true;
+            Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
+        }
 
+        /// <summary>
+        /// Load the next level on the list
+        /// </summary>
+        public void LoadNextLevel() {
+            StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex]));
+            isLoadingNewLevel = true;
+            Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
+            levelIndex++;
+        }
+        #endregion Level Loader
+        
         /// <summary>
         /// Generate a new level
         /// </summary>
         public void GenerateNewLevel() {
             LevelCreationManager.instance.LoadLevel(levelList[levelIndex]);
+            isLoadingNewLevel = true;
             levelIndex++;
         }
         
@@ -58,6 +76,8 @@ namespace Managers
             
             isLoadingNewLevel = false;
         }
+
+        public void RemoveEntity(int index) => m_entities.RemoveAt(index);
         
         #region Timeline
         /// <summary>
@@ -108,6 +128,5 @@ namespace Managers
         public void Defeat() => UIManager.instance.Defeat();
 
         #endregion
-        
     }
 }

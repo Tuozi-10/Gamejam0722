@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db6d869d2e26c942b110ccbf887c543, type: 3}
+  m_Name: Level 01
+  m_EditorClassIdentifier: 
+  terrainSize: {x: 5, y: 5}
+  diceClass:
+  - diceValue: 1
+    dicePosX: 0
+    dicePosY: 0
+    diceState: 0
+    diceEffectState: 1
+  - diceValue: 3
+    dicePosX: 0
+    dicePosY: 1
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 5
+    dicePosX: 0
+    dicePosY: 2
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 3
+    dicePosX: 0
+    dicePosY: 3
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 1
+    dicePosX: 0
+    dicePosY: 4
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 5
+    dicePosX: 1
+    dicePosY: 0
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 1
+    dicePosX: 1
+    dicePosY: 1
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 5
+    dicePosX: 1
+    dicePosY: 2
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 5
+    dicePosX: 1
+    dicePosY: 3
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 4
+    dicePosX: 1
+    dicePosY: 4
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 5
+    dicePosX: 2
+    dicePosY: 0
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 2
+    dicePosX: 2
+    dicePosY: 1
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 2
+    dicePosX: 2
+    dicePosY: 2
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 2
+    dicePosX: 2
+    dicePosY: 3
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 2
+    dicePosX: 2
+    dicePosY: 4
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 4
+    dicePosX: 3
+    dicePosY: 0
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 3
+    dicePosX: 3
+    dicePosY: 1
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 5
+    dicePosX: 3
+    dicePosY: 2
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 3
+    dicePosX: 3
+    dicePosY: 3
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 5
+    dicePosX: 3
+    dicePosY: 4
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 4
+    dicePosX: 4
+    dicePosY: 0
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 3
+    dicePosX: 4
+    dicePosY: 1
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 4
+    dicePosX: 4
+    dicePosY: 2
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 4
+    dicePosY: 3
+    diceState: 0
+    diceEffectState: 4
+  - diceValue: 4
+    dicePosX: 4
+    dicePosY: 4
+    diceState: 0
+    diceEffectState: 0

@@ -22,6 +22,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     [Header("--- MOVE DURATION")]
     [SerializeField] private float moveHeightDuration = 1;
     [SerializeField] private float playerMoveDuration = 1.5f;
+    [SerializeField] private float fallDuration = 4f;
     
     [Header("--- RANDOM DICE THROW")]
     public bool setRandomDiceValue = true;
@@ -59,8 +60,11 @@ public class TerrainManager : Singleton<TerrainManager> {
             ForceHolePosition();
             yield return new WaitForSeconds(moveHeightDuration + moveHeightDuration / 8);
         }
+
+        yield return new WaitForSeconds(moveHeightDuration);
+        CreateWallAndHole(firstLaunch);
         
-        CreateWallAndHole();
+        yield return new WaitForSeconds(moveHeightDuration + 0.25f);
         
         if (firstLaunch) {
             SpawnPlayer();
@@ -69,8 +73,7 @@ public class TerrainManager : Singleton<TerrainManager> {
                 if (dice.diceData.diceEffectState == DiceEffectState.Spawner) SpawnEnemy(dice);
             }
         }
-
-        yield return new WaitForSeconds(moveHeightDuration + 0.25f);
+        
         if(firstLaunch) LevelManager.instance.GenerateEntities();
         else LevelManager.instance.GetNextEntity().StartTurn();
     }
@@ -91,7 +94,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// <summary>
     /// Create walls and holes in the terrain
     /// </summary>
-    private void CreateWallAndHole() {
+    private void CreateWallAndHole(bool firstLaunch) {
         randomWallDice = setRandomDiceValue ? Random.Range(1, 6) : wallDiceValue;
         randomHoleDice = setRandomDiceValue ? Random.Range(1, 6) : holeDiceValue;
         do {
@@ -112,6 +115,7 @@ public class TerrainManager : Singleton<TerrainManager> {
             else if (GetDiceWithSameValue(randomHoleDice).Contains(dice) && (dice.diceData.diceEffectState == DiceEffectState.None)) 
             {
                 SetDiceHeight(dice, holeHeightValue, moveHeightDuration);
+                if(!firstLaunch) CheckEntityDice(dice);
                 dice.diceData.diceState = DiceState.Hole;
             }
         }
@@ -136,17 +140,32 @@ public class TerrainManager : Singleton<TerrainManager> {
     }
 
     /// <summary>
-    /// Check all entities floor
+    /// Check if an entity is on the dice
     /// </summary>
-    private void CheckEntityDice() {
-        foreach (AbstractEntity ent in LevelManager.instance.Entities) {
+    private void CheckEntityDice(DiceTerrain dice) {
+        for (var i = LevelManager.instance.Entities.Count - 1; i >= 0; i--) {
+            AbstractEntity ent = LevelManager.instance.Entities[i];
+            if (new Vector2Int(ent.pos.x, ent.pos.y) != dice.pos) continue;
             
+            ent.transform.DOKill();
+            ent.transform.DOLocalMove(new Vector3(ent.transform.position.x, -10, ent.transform.position.z), fallDuration);
+
+            if (ent.pos == Character.instance.pos) StartCoroutine(StartPlayerDeath());
+            else {
+                LevelManager.instance.RemoveEntity(LevelManager.instance.Entities.IndexOf(ent));
+            }
         }
     }
     
+    /// <summary>
+    /// Start the death of the player
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator StartPlayerDeath() {
+        yield return new WaitForSeconds(fallDuration/2);
+        LevelManager.instance.ReloadLevel();
+    }
     
-    
-
     private float heightAddValue = 0;
     /// <summary>
     /// Add a little random on the height of each dice

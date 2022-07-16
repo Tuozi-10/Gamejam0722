@@ -15,6 +15,8 @@ namespace Entities
             public Vector2Int pos;
 
             [SerializeField] float durationMove = 0.75f;
+
+            public int pm = 1;
             
             public void Hit(int hitValue)
             {
@@ -45,9 +47,11 @@ namespace Entities
             {
                   // Remove departure cell
                   path.RemoveAt(0);
+                  int pmUsed = 0;
                   
-                  while (path.Count > 0)
+                  while (path.Count > 0 || pmUsed >= pm)
                   {
+                        pmUsed++;
                         transform.DOMove(GetPosFromCoord(path[0].posX, path[0].posY), durationMove);
                         pos = new Vector2Int(path[0].posX, path[0].posY);
                         path.RemoveAt(0);

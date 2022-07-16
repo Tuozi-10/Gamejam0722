@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Entities;
@@ -64,6 +65,12 @@ public class MouseManager : Singleton<MouseManager> {
             DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
             var array = TerrainManager.instance.GetAvailableArray();
             m_cursorRenderer.sprite = array[dice.pos.x, dice.pos.y] ? m_cursorSprites[0]:m_cursorSprites [1];
+
+            if (Vector2Int.Distance(dice.pos, character.pos) != 1)
+            {
+                m_cursorRenderer.sprite = m_cursorSprites [1];
+            }
+            
             cubePosition.transform.DOMove(new Vector3(cubeUnderMouse.position.x, cubeUnderMouse.position.y + cursorHeight, cubeUnderMouse.position.z), 0.25f);
         }
     }

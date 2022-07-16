@@ -96,7 +96,7 @@ namespace Managers
         public void EndTurn() {
             if (isLoadingNewLevel) return;
             if(m_currentEntityIndex == m_entities.Count - 1) StartCoroutine(TerrainManager.instance.ChangeHeightEvent());
-            else GetNextEntity().StartTurn();
+            else GetNextEntity()?.StartTurn();
         }
         
         /// <summary>
@@ -106,10 +106,16 @@ namespace Managers
         public AbstractEntity GetNextEntity()
         {
             m_currentEntityIndex++;
-            if (m_currentEntityIndex == m_entities.Count) {
+            if (m_currentEntityIndex >= m_entities.Count) {
                 m_currentEntityIndex = 0;
             }
 
+            if (m_entities.Count == 1 && m_entities[0] is Character)
+            {
+                LevelManager.instance.LoadNextLevel();
+                return null;
+            }
+            
             return m_entities[m_currentEntityIndex];
         }
         

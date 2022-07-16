@@ -17,6 +17,10 @@ namespace Entities
             [SerializeField] float durationMove = 0.75f;
             [SerializeField] private Transform Pivot;
             [SerializeField] private float heightWalk = 0.5f;
+            [SerializeField] private float intensityImpactWalk = 0.175f;
+            [SerializeField] private int radiusImpactWalk = 2;
+            
+            
             public int pm = 1;
             
             public void Hit(int hitValue)
@@ -65,9 +69,11 @@ namespace Entities
               
                         transform.DORotate(new Vector3(0,toLook,0), 0.25f);
                         pos = new Vector2Int(path[0].posX, path[0].posY);
-                        TerrainManager.instance.SetImpactAt(pos.x, pos.y, 3, 0.2f);
                         path.RemoveAt(0);
-                        yield return new WaitForSeconds(durationMove+0.05f);
+                        
+                        yield return new WaitForSeconds(durationMove/2f);
+                        TerrainManager.instance.SetImpactAt(pos.x, pos.y, radiusImpactWalk, intensityImpactWalk);
+                        yield return new WaitForSeconds(durationMove/2f);
                   }
 
                   EndTurn();

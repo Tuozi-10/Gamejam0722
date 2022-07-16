@@ -57,7 +57,7 @@ namespace Terrain
         private static List<Node> FollowPath(List<Node> from, int toX, int toY, ref bool [,] array)
         {
             int i = 0;
-            while (!from[0].isCompleted())
+            while (!from[0].isCompleted() && i < 2500)
             {
                 try
                 {

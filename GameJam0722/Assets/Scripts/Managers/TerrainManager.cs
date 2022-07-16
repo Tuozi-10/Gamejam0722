@@ -75,7 +75,7 @@ public class TerrainManager : Singleton<TerrainManager> {
         }
         
         if(firstLaunch) LevelManager.instance.GenerateEntities();
-        else LevelManager.instance.GetNextEntity().StartTurn();
+        else LevelManager.instance.GetNextEntity()?.StartTurn();
     }
 
     /// <summary>

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class DiceTerrain : MonoBehaviour {
@@ -9,6 +10,7 @@ public class DiceTerrain : MonoBehaviour {
     [SerializeField] private DiceTerrainMaterialSO materialData = null;
     [SerializeField] private MeshRenderer diceRend = null;
 
+    [SerializeField] private Transform pivot;
 
     /// <summary>
     /// Initialize dice data value
@@ -29,6 +31,12 @@ public class DiceTerrain : MonoBehaviour {
         if (diceData.diceValue == 0) diceData.diceEffectState = DiceEffectState.Spawner;
     }
 
+    public void DoShakePivot(float intensity, float duration, float delay)
+    {
+        //pivot.DOKill();
+        pivot.transform.DOLocalMoveY(-intensity, duration).SetDelay(delay).OnComplete(()=>pivot.transform.DOLocalMoveY(0, duration * 0.5f));
+    }
+    
     /// <summary>
     /// When changes are made to the variable
     /// </summary>

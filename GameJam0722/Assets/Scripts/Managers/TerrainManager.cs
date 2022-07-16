@@ -236,4 +236,18 @@ public class TerrainManager : Singleton<TerrainManager> {
     }
     
     #endregion DiceTerrainHelper
+
+
+    public void SetImpactAt(int x, int y, int radius, float intensity)
+    {
+        foreach (var dice in diceTerrainlsit)
+        {
+            var dist = Vector2Int.Distance(dice.pos, new Vector2Int(x, y));
+            if(dist < radius)
+            {
+                float ratio = dist / radius;
+                dice.DoShakePivot(intensity * (1 - ratio), 0.1f + dist * 0.2f,dist * 0.05f);
+            }
+        }
+    }
 }

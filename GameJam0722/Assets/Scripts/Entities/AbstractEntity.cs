@@ -15,7 +15,8 @@ namespace Entities
             public Vector2Int pos;
 
             [SerializeField] float durationMove = 0.75f;
-
+            [SerializeField] private Transform Pivot;
+            [SerializeField] private float heightWalk = 0.5f;
             public int pm = 1;
             
             public void Hit(int hitValue)
@@ -56,8 +57,15 @@ namespace Entities
                   while (path.Count > 0 && pmUsed < pm)
                   {
                         pmUsed++;
-                        transform.DOMove(GetPosFromCoord(path[0].posX, path[0].posY), durationMove);
+                        transform.DOMove(GetPosFromCoord(path[0].posX, path[0].posY), durationMove).SetEase(Ease.InOutQuad);
+                        
+                        Pivot.DOLocalMoveY(heightWalk, durationMove / 2f)
+                              .OnComplete(()=>Pivot.DOLocalMoveY(0, durationMove / 2f));
+                        var toLook = GetAngle(pos.x, pos.y, path[0].posX, path[0].posY);
+              
+                        transform.DORotate(new Vector3(0,toLook,0), 0.25f);
                         pos = new Vector2Int(path[0].posX, path[0].posY);
+                        TerrainManager.instance.SetImpactAt(pos.x, pos.y, 3, 0.2f);
                         path.RemoveAt(0);
                         yield return new WaitForSeconds(durationMove+0.05f);
                   }
@@ -65,6 +73,14 @@ namespace Entities
                   EndTurn();
             }
 
+            private float GetAngle(int posX, int posY, int toX, int toY)
+            {
+                  if (posX > toX) return 90; // left
+                  if (posX < toX) return -90; // right
+                  if (posY > toY) return 0; // up
+                  return 180;
+            }
+            
             public static Vector3 GetPosFromCoord(int x, int y)
             {
                   var diceTransform = TerrainManager.instance.diceTerrainlsit[x, y].transform;

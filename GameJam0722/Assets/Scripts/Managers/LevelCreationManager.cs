@@ -14,6 +14,7 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
     public Vector2 LevelSizeGeneration => levelSizeGeneration;
     [SerializeField] private GameObject dicePrefab = null;
     [SerializeField] private Transform diceParent = null;
+    [SerializeField] private Transform diceParentEditor = null;
     [SerializeField] private float diceSize = 1.5f;
 
     //LOAD CUSTOM LEVEL
@@ -31,8 +32,12 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
     /// </summary>
     /// <param name="level"></param>
     public void LoadLevel(LevelSO level, bool isInGame = false) {
-        Level levelClass = Level.CreateLevel(level);
+        foreach (DiceTerrain dice in diceList) {
+            if(dice != null && dice.gameObject != null) Destroy(dice.gameObject);
+        }
         
+        Level levelClass = Level.CreateLevel(level);
+
         GenerateNewLevel(new Vector2Int(levelClass.terrainSize.x, levelClass.terrainSize.y));
 
         foreach (DiceTerrain dice in diceList) 
@@ -40,7 +45,7 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
             dice.diceData = levelClass.DiceClass[diceList.IndexOf(dice)];
             dice.UpdateDiceValue();
         }
-        if (isInGame) TerrainManager.instance.StartTerrainCreation(new Vector2Int(levelClass.terrainSize.x, levelClass.terrainSize.y), diceList);
+        if (isInGame) TerrainManager.instance.InitTerrainCreation(new Vector2Int(levelClass.terrainSize.x, levelClass.terrainSize.y), diceList);
     }
 
     /// <summary>
@@ -50,7 +55,7 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
         LevelSO newLevelSO = ScriptableObject.CreateInstance<LevelSO>();
 
         List<DiceClass> diceDataList = new List<DiceClass>();
-        foreach (DiceTerrain dice in diceList) 
+        foreach (DiceTerrain dice in diceParentEditor.GetComponentsInChildren<DiceTerrain>()) 
         {
             diceDataList.Add(dice.diceData);
         }
@@ -80,7 +85,7 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
         {
             for (int y = 0; y < custLevelSize.y; y++) 
             {
-                GameObject dice = Instantiate(dicePrefab, new Vector3(x * diceSize, 0, y * diceSize), Quaternion.identity, diceParent);
+                GameObject dice = Instantiate(dicePrefab, new Vector3(x * diceSize, 0, y * diceSize), Quaternion.identity, Application.isPlaying? diceParent : diceParentEditor);
                 dice.GetComponent<DiceTerrain>().InitDice(new Vector2Int(x, y));
                 diceList.Add(dice.GetComponent<DiceTerrain>());
                 

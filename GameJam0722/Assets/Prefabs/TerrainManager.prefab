@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightRandomness: {x: -0.125, y: 0.125}
-  wallHeightValue: 0.75
+  wallHeightValue: 0.65
   holeHeightValue: -2
-  SetRandomDiceValue: 1
+  moveHeightRandomnessDuration: 0.25
+  moveHeightDuration: 1.5
+  setRandomDiceValue: 1
   upperDiceValue: 1

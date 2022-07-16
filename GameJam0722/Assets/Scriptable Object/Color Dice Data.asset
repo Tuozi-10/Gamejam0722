@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Color Dice Data
   m_EditorClassIdentifier: 
   diceMaterialData:
+  - {fileID: 2100000, guid: da69dc3c11902e443bc8a6d127531419, type: 2}
   - {fileID: 2100000, guid: 8d325425089bbc543a75922d040abc09, type: 2}
   - {fileID: 2100000, guid: b3a53a6350766cd4db7522034919f46a, type: 2}
   - {fileID: 2100000, guid: cb268903c6e858242aaea50d8b351f22, type: 2}

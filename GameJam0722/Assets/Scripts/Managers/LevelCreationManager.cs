@@ -31,7 +31,13 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
     public string FolderPath => folderPath;
     [SerializeField] private string levelName = "New Level";
     public string LevelName => levelName;
+<<<<<<< Updated upstream
 
+=======
+    
+    
+    
+>>>>>>> Stashed changes
     #region Generate Level
     
     /// <summary>

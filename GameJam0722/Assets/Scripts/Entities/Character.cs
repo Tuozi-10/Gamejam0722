@@ -14,7 +14,7 @@ namespace Entities
         {
             if (instance is not null)
             {
-                Destroy(this);
+                Destroy(gameObject);
                 return;
             }
 

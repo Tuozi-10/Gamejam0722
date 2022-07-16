@@ -21,12 +21,21 @@ namespace Managers
             DontDestroyOnLoad(gameObject);
             instance = this;
         }
-        
+
+        private void Start()
+        {
+            StartLevel();
+        }
+
         public void StartLevel()
         {
             //LevelCreationManager.instance.LoadLevel();
             // GENERATE ENTITIES
-            SetTimeline(null); // TODO ADD ENTITIES
+            m_currentEntityIndex = 0;
+            var timeline = new List<AbstractEntity>();
+            timeline.Add(Character.instance);
+            SetTimeline(timeline); // TODO ADD ENTITIES
+            m_entities[m_currentEntityIndex].StartTurn();
         }
 
         #region Timeline

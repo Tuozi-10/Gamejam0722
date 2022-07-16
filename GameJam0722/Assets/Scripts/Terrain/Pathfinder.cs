@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 namespace Terrain
 {
@@ -49,15 +50,6 @@ namespace Terrain
             {
                 paths.Add(FollowPath(firstNode, toX, toY, ref ground));
             }
-
-            foreach (var path in paths)
-            {
-                foreach (var node in path)
-                {
-                    if(node.isCompleted())
-                    Debug.Log(node.GetDepth());
-                }
-            }
             
             return GetBestPath(paths);
         }
@@ -67,103 +59,111 @@ namespace Terrain
             int i = 0;
             while (!from[0].isCompleted())
             {
-                i++;
-                if (Random.Range(0, 10) > 5)
+                try
                 {
-                    if (toX > from[^1].posX && !array[from[^1].posX + 1, from[^1].posY])
+                    i++;
+                    if (Random.Range(0, 10) > 5)
                     {
-                        Node nextNode = new Node(from[^1].posX + 1, from[^1].posY, from[^1].weight + 1);
-                        from.Add(nextNode);
+                        if (toX > from[^1].posX && array[from[^1].posX + 1, from[^1].posY])
+                        {
+                            Node nextNode = new Node(from[^1].posX + 1, from[^1].posY, from[^1].weight + 1);
+                            from.Add(nextNode);
+                        }
+                        else if (toY > from[^1].posY && array[from[^1].posX, from[^1].posY + 1])
+                        {
+                            Node nextNode = new Node(from[^1].posX, from[^1].posY + 1, from[^1].weight + 1);
+                            from.Add(nextNode);
+
+                        }
+                        else if (toX < from[^1].posX && array[from[^1].posX - 1, from[^1].posY])
+                        {
+                            Node nextNode = new Node(from[^1].posX - 1, from[^1].posY, from[^1].weight + 1);
+                            from.Add(nextNode);
+
+                        }
+                        else if (toY < from[^1].posY && array[from[^1].posX, from[^1].posY - 1])
+                        {
+                            Node nextNode = new Node(from[^1].posX, from[^1].posY - 1, from[^1].weight + 1);
+                            from.Add(nextNode);
+                        }
                     }
-                    else if (toY > from[^1].posY && !array[from[^1].posX, from[^1].posY + 1])
+
+                    else
                     {
-                        Node nextNode = new Node(from[^1].posX, from[^1].posY + 1, from[^1].weight + 1);
-                        from.Add(nextNode);
+                        if (toY < from[^1].posY && array[from[^1].posX, from[^1].posY - 1])
+                        {
+                            Node nextNode = new Node(from[^1].posX, from[^1].posY - 1, from[^1].weight + 1);
+                            from.Add(nextNode);
+                        }
+                        else if (toX < from[^1].posX && array[from[^1].posX - 1, from[^1].posY])
+                        {
+                            Node nextNode = new Node(from[^1].posX - 1, from[^1].posY, from[^1].weight + 1);
+                            from.Add(nextNode);
+                        }
+
+                        else if (toY > from[^1].posY && array[from[^1].posX, from[^1].posY + 1])
+                        {
+                            Node nextNode = new Node(from[^1].posX, from[^1].posY + 1, from[^1].weight + 1);
+                            from.Add(nextNode);
+                        }
+                        else if (toX > from[^1].posX && array[from[^1].posX + 1, from[^1].posY])
+                        {
+                            Node nextNode = new Node(from[^1].posX + 1, from[^1].posY, from[^1].weight + 1);
+                            from.Add(nextNode);
+                        }
 
                     }
-                    else if (toX < from[^1].posX && !array[from[^1].posX - 1, from[^1].posY])
-                    {
-                        Node nextNode = new Node(from[^1].posX - 1, from[^1].posY, from[^1].weight + 1);
-                        from.Add(nextNode);
 
-                    }
-                    else if (toY < from[^1].posY && !array[from[^1].posX, from[^1].posY - 1])
+                    if (toX == from[^1].posX && toY == from[^1].posY)
                     {
-                        Node nextNode = new Node(from[^1].posX, from[^1].posY - 1, from[^1].weight + 1);
-                        from.Add(nextNode);
+                        from[^1].completed = true;
+                        return from;
+                    }
+
+                    if (from.Count > 200)
+                    {
+                        return from;
+                    }
+
+                    if (i > 10)
+                    {
+                        int rand = Random.Range(0, 40);
+                        if (rand < 10 && array[from[^1].posX + 1, from[^1].posY])
+                        {
+                            i = 0;
+                            Node nextNode = new Node(from[^1].posX + 1, from[^1].posY, from[^1].weight + 1);
+                            from.Add(nextNode);
+                        }
+                        else if (rand < 20 && array[from[^1].posX, from[^1].posY + 1])
+                        {
+                            i = 0;
+                            Node nextNode = new Node(from[^1].posX, from[^1].posY + 1, from[^1].weight + 1);
+                            from.Add(nextNode);
+
+                        }
+                        else if (rand < 30 && array[from[^1].posX - 1, from[^1].posY])
+                        {
+                            i = 0;
+                            Node nextNode = new Node(from[^1].posX - 1, from[^1].posY, from[^1].weight + 1);
+                            from.Add(nextNode);
+
+                        }
+                        else if (array[from[^1].posX, from[^1].posY - 1])
+                        {
+                            i = 0;
+                            Node nextNode = new Node(from[^1].posX, from[^1].posY - 1, from[^1].weight + 1);
+                            from.Add(nextNode);
+                        }
+                        else if (i > 20)
+                        {
+                            array[from[^1].posX, from[^1].posY] = false;
+                            break;
+                        }
                     }
                 }
-            
-            else{
-                    if (toY < from[^1].posY && !array[from[^1].posX, from[^1].posY - 1])
-                    {
-                        Node nextNode = new Node(from[^1].posX, from[^1].posY - 1, from[^1].weight + 1);
-                        from.Add(nextNode);
-                    }
-                   else  if (toX < from[^1].posX && !array[from[^1].posX - 1, from[^1].posY])
-                    {
-                        Node nextNode = new Node(from[^1].posX - 1, from[^1].posY, from[^1].weight + 1);
-                        from.Add(nextNode);
-                    }
-                   
-                    else if (toY > from[^1].posY && !array[from[^1].posX, from[^1].posY + 1])
-                    {
-                        Node nextNode = new Node(from[^1].posX, from[^1].posY + 1, from[^1].weight + 1);
-                        from.Add(nextNode);
-                    }
-                    else if (toX > from[^1].posX && !array[from[^1].posX + 1, from[^1].posY])
-                    {
-                        Node nextNode = new Node(from[^1].posX + 1, from[^1].posY, from[^1].weight + 1);
-                        from.Add(nextNode);
-                    }
-        
-            }
-
-            if (toX == from[^1].posX && toY == from[^1].posY)
+                catch
                 {
-                    from[^1].completed = true;
-                    return from;
-                }
-
-                if (from.Count > 200)
-                {
-                    return from;
-                }
-
-                if (i > 10)
-                {
-                    int rand = Random.Range(0, 40);
-                    if ( rand < 10 &&  !array[from[^1].posX +1, from[^1].posY] )
-                    {
-                        i = 0;
-                        Node nextNode = new Node(from[^1].posX + 1, from[^1].posY, from[^1].weight+1);
-                        from.Add(nextNode);
-                    }
-                    else if (rand < 20 && !array[from[^1].posX, from[^1].posY+1])
-                    {
-                        i = 0;
-                        Node nextNode = new Node(from[^1].posX , from[^1].posY+1, from[^1].weight+1);
-                        from.Add(nextNode);
-                
-                    }
-                    else if ( rand < 30 && !array[from[^1].posX -1, from[^1].posY])
-                    {
-                        i = 0;
-                        Node nextNode = new Node(from[^1].posX -1, from[^1].posY, from[^1].weight+1);
-                        from.Add(nextNode);
-                
-                    }
-                    else if ( !array[from[^1].posX , from[^1].posY-1])
-                    {
-                        i = 0;
-                        Node nextNode = new Node(from[^1].posX, from[^1].posY-1, from[^1].weight+1);
-                        from.Add(nextNode);
-                    }
-                    else if( i > 20)
-                    {
-                        array[from[^1].posX, from[^1].posY] = true;
-                        break;
-                    }
+                    Exception e;
                 }
             }
             

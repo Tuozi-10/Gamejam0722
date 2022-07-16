@@ -57,10 +57,12 @@ public class MouseManager : Singleton<MouseManager> {
         if (Time.frameCount % 5 == 0)
         {
             cubeUnderMouse = Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) ? hit.collider.transform : null;
-            if (cubeUnderMouse is null)
-            {
+            if (cubeUnderMouse is null) {
+                cubePosition.SetActive(false);
                 return;
             }
+
+            cubePosition.SetActive(true);
             
             DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
             var array = TerrainManager.instance.GetAvailableArray();

@@ -21,7 +21,10 @@ namespace Managers
         private int m_currentEntityIndex;
         private bool isLoadingNewLevel = false;
 
-        private void Start() => GenerateNewLevel();
+        private void Start() {
+            GenerateNewLevel();
+            UIManager.instance.StartNewIsland();
+        }
 
         private void Update() {
             if (Input.GetKeyDown(KeyCode.LeftAlt)) {

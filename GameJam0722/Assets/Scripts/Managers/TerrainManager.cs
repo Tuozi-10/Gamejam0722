@@ -43,6 +43,20 @@ public class TerrainManager : Singleton<TerrainManager> {
         AddHeightRandomness();
         yield return new WaitForSeconds(LevelCreationManager.instance.DestroyLevelDuration);
 
+        for (int i = 0; i < Random.Range(8,15); i++) {
+            UIManager.instance.SetRandomColor();
+            yield return new WaitForSeconds(.25f);
+        }
+        
+        randomWallDice = setRandomDiceValue ? Random.Range(1, 6) : wallDiceValue;
+        randomHoleDice = setRandomDiceValue ? Random.Range(1, 6) : holeDiceValue;
+        do {
+            randomHoleDice = Random.Range(1, 6);
+        } while (randomHoleDice == randomWallDice);
+        
+        UIManager.instance.SetColor(randomWallDice - 1, randomHoleDice - 1);
+        
+        
         StartCoroutine(ChangeHeightEvent(true));
     }
 
@@ -53,15 +67,10 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// <summary>
     /// Launch the event which change the height of some Dice
     /// </summary>
-    public IEnumerator ChangeHeightEvent(bool firstLaunch = false) 
-    {
-        if (!firstLaunch) 
-        {
-            ForceHolePosition();
-            yield return new WaitForSeconds(moveHeightDuration + moveHeightDuration / 8);
-        }
-
+    public IEnumerator ChangeHeightEvent(bool firstLaunch = false) {
         yield return new WaitForSeconds(moveHeightDuration);
+        
+        ForceHolePosition();
         CreateWallAndHole(firstLaunch);
         
         yield return new WaitForSeconds(moveHeightDuration + 0.25f);
@@ -73,6 +82,19 @@ public class TerrainManager : Singleton<TerrainManager> {
                 if (dice.diceData.diceEffectState == DiceEffectState.Spawner) SpawnEnemy(dice);
             }
         }
+        
+        for (int i = 0; i < Random.Range(8,15); i++) {
+            UIManager.instance.SetRandomColor();
+            yield return new WaitForSeconds(.25f);
+        }
+        
+        randomWallDice = setRandomDiceValue ? Random.Range(1, 6) : wallDiceValue;
+        randomHoleDice = setRandomDiceValue ? Random.Range(1, 6) : holeDiceValue;
+        do {
+            randomHoleDice = Random.Range(1, 6);
+        } while (randomHoleDice == randomWallDice);
+        
+        UIManager.instance.SetColor(randomWallDice - 1, randomHoleDice - 1);
         
         if(firstLaunch) LevelManager.instance.GenerateEntities();
         else LevelManager.instance.GetNextEntity()?.StartTurn();
@@ -95,12 +117,6 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// Create walls and holes in the terrain
     /// </summary>
     private void CreateWallAndHole(bool firstLaunch) {
-        randomWallDice = setRandomDiceValue ? Random.Range(1, 6) : wallDiceValue;
-        randomHoleDice = setRandomDiceValue ? Random.Range(1, 6) : holeDiceValue;
-        do {
-            randomHoleDice = Random.Range(1, 6);
-        } while (randomHoleDice == randomWallDice);
-        
         foreach (DiceTerrain dice in diceTerrainlsit) 
         {
             if (dice.diceData.diceState == DiceState.ForceHole) SetDiceHeight(dice, wallHeightValue, moveHeightDuration);

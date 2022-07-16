@@ -41,12 +41,14 @@ public class MouseManager : Singleton<MouseManager> {
             }
             DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
             var array = TerrainManager.instance.GetAvailableArray();
+
+            if (dice is null) return;
             
-            if (!array[dice.pos.x, dice.pos.y])
-            {
-                return;
-            }
-            
+             if (!array[dice.pos.x, dice.pos.y])
+             {
+                 return;
+             }
+
             Character.instance.SetPath(Pathfinder.GetPath(character.pos.x, character.pos.y, dice.pos.x, dice.pos.y, array));
         }
     }

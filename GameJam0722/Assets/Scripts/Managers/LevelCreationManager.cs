@@ -64,10 +64,8 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
         }
         
         newLevelSO.SaveLevelData(actualLevelSize, diceDataList);
-
- 
-        
-
+        EditorUtility.SetDirty(newLevelSO);
+        AssetDatabase.Refresh();
     }
     
     private float xPosMax = 0;

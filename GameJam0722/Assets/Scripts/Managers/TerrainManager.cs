@@ -92,8 +92,7 @@ public class TerrainManager : Singleton<TerrainManager> {
                 dice.diceData.diceState = DiceState.Hole;
             }
         }
-
-<<<<<<< Updated upstream
+        
         if (firstLaunch) {
             enemyEntity.Clear();
             Character.instance.pos = GetStartDice() != null ? GetStartDice().pos : new Vector2Int(0, 0);
@@ -101,25 +100,7 @@ public class TerrainManager : Singleton<TerrainManager> {
 
             foreach (DiceTerrain dice in diceTerrainlsit) {
                 if (dice.diceData.diceEffectState == DiceEffectState.Spawner) SpawnEnemy(dice);
-=======
-        yield return new WaitForSeconds(moveHeightDuration + 0.25f);
-
-        if (firstLaunch) 
-        {
-            enemyEntity.Clear();
-            Character.instance.pos = GetStartDice() != null ? GetStartDice().pos : new Vector2Int(0, 0);
-            Character.instance.transform.position = BaseAI.GetPosFromCoord(Character.instance.pos.x, Character.instance.pos.y);
-        
-            foreach (DiceTerrain dice in diceTerrainlsit) {
-                if(dice.diceData.diceEffectState == DiceEffectState.Spawner) SpawnEnemy(dice);
->>>>>>> Stashed changes
             }
-            
-            LevelManager.instance.GenerateEntities();
-        }
-        else 
-        {
-            LevelManager.instance.GetNextEntity().StartTurn();
         }
 
         yield return new WaitForSeconds(moveHeightDuration + 0.25f);

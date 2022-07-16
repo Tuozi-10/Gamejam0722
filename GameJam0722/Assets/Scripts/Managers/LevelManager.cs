@@ -27,10 +27,7 @@ namespace Managers
             if (Input.GetKeyDown(KeyCode.LeftAlt)) {
                 StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex]));
                 isLoadingNewLevel = true;
-<<<<<<< Updated upstream
                 Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
-=======
->>>>>>> Stashed changes
                 levelIndex++;
             }
         }

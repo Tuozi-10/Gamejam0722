@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using Entities;
+using Managers;
 using Terrain;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ public class MouseManager : Singleton<MouseManager> {
     {
         if (Input.GetMouseButtonDown(0) && character.canPlay)
         {
-            cubeUnderMouse = Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) ? hit.collider.transform : null;
+            cubeUnderMouse = Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) ? hit.collider.transform : null;
          
             if (cubeUnderMouse is null)
             {
@@ -54,7 +55,7 @@ public class MouseManager : Singleton<MouseManager> {
     {
         if (Time.frameCount % 5 == 0)
         {
-            cubeUnderMouse = Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) ? hit.collider.transform : null;
+            cubeUnderMouse = Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) ? hit.collider.transform : null;
             if (cubeUnderMouse is null)
             {
                 return;

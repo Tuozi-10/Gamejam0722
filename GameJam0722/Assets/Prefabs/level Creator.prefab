@@ -121,13 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8065899f7f40bc14ba421648c076ab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diceList: []
   actualLevelSize: {x: 3, y: 3}
   levelSizeGeneration: {x: 3, y: 3}
   dicePrefab: {fileID: 2535107566833901645, guid: a32020cffa3fe0842abef5c4dbf1950f, type: 3}
   diceParent: {fileID: 685128969}
   diceParentEditor: {fileID: 1528157370}
   diceSize: 1.15
-  loadLevelSO: {fileID: 11400000, guid: 853892fedf5b1d34fb2ee5279286bd65, type: 2}
-  folderPath: Assets/Levels/
-  levelName: FirstLevel
+  loadLevelSO: {fileID: 0}
+  folderPath: Assets/Scriptable Object/Levels/
+  levelName: 

@@ -9,9 +9,6 @@ public class LevelCreationEditor : Editor {
         serializedObject.Update();
         if (script == null) script = (LevelCreationManager) target;
         
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("diceList"));
-        GUILayout.Space(8);
-        
         using (new GUILayout.VerticalScope(EditorStyles.helpBox)) {
             GUILayout.Label("Generate new Level".ToUpper());
             EditorGUILayout.PropertyField(serializedObject.FindProperty("levelSizeGeneration"));
@@ -20,7 +17,7 @@ public class LevelCreationEditor : Editor {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("diceParentEditor"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("diceSize"));
             
-            if (GUILayout.Button("Generate New level")) script.GenerateNewLevel(script.LevelSizeGeneration);
+            if (GUILayout.Button("Generate New level")) script.GenerateNewLevel(script.LevelSizeGeneration, Application.isPlaying);
         }
         
         GUILayout.Space(16);
@@ -33,7 +30,7 @@ public class LevelCreationEditor : Editor {
             if(script.LoadLevelSO == null) EditorGUILayout.HelpBox("Need a scriptable Object to be able to load a new level", MessageType.Error);
             
             GUI.enabled = script.LoadLevelSO != null;
-            if (GUILayout.Button("Load level")) ((LevelCreationManager)target).LoadLevel(script.LoadLevelSO, Application.isPlaying);
+            if (GUILayout.Button("Load level")) ((LevelCreationManager)target).LoadLevel(script.LoadLevelSO);
             GUI.enabled = true;
         }
         GUI.backgroundColor = Color.white;
@@ -46,7 +43,7 @@ public class LevelCreationEditor : Editor {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("folderPath"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("levelName"));
             
-            if (GUILayout.Button("Save Level as SO")) script.SaveActualLevel();
+            if (GUILayout.Button( AssetDatabase.LoadAssetAtPath<LevelSO>($"{script.FolderPath + script.LevelName}.asset") == null? "Save Level as SO" : "Update Level SO")) script.SaveActualLevel();
         }
         GUI.backgroundColor = Color.white;
         

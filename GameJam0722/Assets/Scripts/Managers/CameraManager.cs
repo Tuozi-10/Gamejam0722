@@ -9,6 +9,7 @@ namespace Managers
         public static CameraManager instance;
 
         private Camera m_camera;
+        public Camera Camera => m_camera;
 
         [SerializeField] private float m_speedZoom = 1.5f;
         [SerializeField] private float m_durationZoom = 0.35f;
@@ -20,7 +21,7 @@ namespace Managers
         {
             if (instance is not null)
             {
-                Destroy(this);
+                Destroy(this.gameObject);
                 return;
             }
 

@@ -31,7 +31,7 @@ namespace Entities
         public override void StartTurn()
         {
             base.StartTurn();
-            UIManager.instance.AskTurn("Player Turn");
+            if(UIManager.instance != null) UIManager.instance.AskTurn("Player Turn");
             canPlay = true;
         }
 

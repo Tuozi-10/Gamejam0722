@@ -18,7 +18,7 @@ MonoBehaviour:
     dicePosX: 0
     dicePosY: 0
     diceState: 0
-    diceEffectState: 0
+    diceEffectState: 1
   - diceValue: 4
     dicePosX: 0
     dicePosY: 1
@@ -34,28 +34,28 @@ MonoBehaviour:
     dicePosY: 0
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 3
     dicePosX: 1
     dicePosY: 1
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 4
     dicePosX: 1
     dicePosY: 2
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 1
     dicePosX: 2
     dicePosY: 0
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 2
     dicePosX: 2
     dicePosY: 1
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 2
     dicePosX: 2
     dicePosY: 2
     diceState: 0
-    diceEffectState: 0
+    diceEffectState: 2

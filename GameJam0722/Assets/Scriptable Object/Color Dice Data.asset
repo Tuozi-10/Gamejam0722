@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e6e25b5722ef94ea9f721ba3a2b6f8, type: 3}
+  m_Name: Color Dice Data
+  m_EditorClassIdentifier: 
+  diceMaterialData:
+  - {fileID: 2100000, guid: 8d325425089bbc543a75922d040abc09, type: 2}
+  - {fileID: 2100000, guid: b3a53a6350766cd4db7522034919f46a, type: 2}
+  - {fileID: 2100000, guid: cb268903c6e858242aaea50d8b351f22, type: 2}
+  - {fileID: 2100000, guid: 72f8870db91a162439995d091e8efa44, type: 2}
+  - {fileID: 2100000, guid: 8b75da1ee0d581041ba4fb541187b5a9, type: 2}

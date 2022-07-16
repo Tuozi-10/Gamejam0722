@@ -164,7 +164,15 @@ public class TerrainManager : Singleton<TerrainManager> {
                 case DiceState.Hole:{
                     ent.transform.DOLocalMove(new Vector3(ent.transform.position.x, -10, ent.transform.position.z), fallDuration);
                     if (ent.pos == Character.instance.pos) StartCoroutine(StartPlayerDeath());
-                    else LevelManager.instance.RemoveEntity(LevelManager.instance.Entities.IndexOf(ent));
+                    else
+                    {
+                        ent.transform.DOScale(1.25f, 0.25f).OnComplete(() => ent.transform.DOScale(0, 0.25f).OnComplete(
+                            () =>
+                            {
+                                LevelManager.instance.RemoveEntity(LevelManager.instance.Entities.IndexOf(ent));
+
+                            }));
+                    }
                     break;
                 }
                 case DiceState.Wall:

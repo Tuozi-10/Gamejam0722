@@ -37,6 +37,7 @@ namespace Managers
         /// Reload the same level
         /// </summary>
         public void ReloadLevel() {
+            CleanLevel();
             StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex-1]));
             isLoadingNewLevel = true;
             Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
@@ -45,13 +46,29 @@ namespace Managers
         /// <summary>
         /// Load the next level on the list
         /// </summary>
-        public void LoadNextLevel() {
+        public void LoadNextLevel()
+        {
+            CleanLevel();
             StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex]));
             isLoadingNewLevel = true;
             Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
             levelIndex++;
         }
         #endregion Level Loader
+
+        public void CleanLevel()
+        {
+            foreach (var entity in m_entities)
+            {
+                if(entity is Character) continue;
+                entity.Pivot.DOLocalMoveY(1, 0.225f).OnComplete(()=>entity.Pivot.DOLocalMoveY(-1.5f, 0.35f));
+                entity.transform.DOScale(1.25f, 0.225f).OnComplete(() => entity.transform.DOScale(0, 0.25f).OnComplete(
+                    () =>
+                    {
+                        LevelManager.instance.RemoveEntity(LevelManager.instance.Entities.IndexOf(entity));
+                    }));
+            }
+        }
         
         /// <summary>
         /// Generate a new level

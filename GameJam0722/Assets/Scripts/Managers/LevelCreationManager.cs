@@ -45,7 +45,8 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
 
         foreach (DiceTerrain dice in diceTerrainList) {
             dice.diceData = levelClass.DiceClass[diceTerrainList.IndexOf(dice)];
-            dice.UpdateDiceData();
+            if(!isInGame) dice.UpdateDiceInEditor();
+            else dice.UpdateDiceData();
         }
 
         if (isInGame) StartCoroutine(TerrainManager.instance.InitTerrainCreation(new Vector2Int(levelClass.terrainSize.x, levelClass.terrainSize.y), diceTerrainList));

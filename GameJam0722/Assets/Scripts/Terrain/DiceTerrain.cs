@@ -37,6 +37,7 @@ public class DiceTerrain : MonoBehaviour {
         transform.localPosition = diceData.diceState switch {
             DiceState.Wall => new Vector3(transform.localPosition.x, .25f, transform.localPosition.z),
             DiceState.Hole => new Vector3(transform.localPosition.x, -.25f, transform.localPosition.z),
+            DiceState.ForceHole => new Vector3(transform.localPosition.x, -1f, transform.localPosition.z),
             _ => new Vector3(transform.localPosition.x, 0, transform.localPosition.z)
         };
     }

@@ -132,6 +132,7 @@ namespace Managers
 
             if (m_entities.Count == 1 && m_entities[0] is Character)
             {
+                UIManager.instance.Victory();
                 LevelManager.instance.LoadNextLevel();
                 return null;
             }

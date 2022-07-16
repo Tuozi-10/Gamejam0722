@@ -24,15 +24,25 @@ namespace Managers
         [SerializeField] private RectTransform downTerrainParent = null;
         [SerializeField] private List<Material> matList = new List<Material>(5);
         [SerializeField] private List<Material> matListLighter = new List<Material>(5);
-
+        [Space]
+        [SerializeField] private CanvasGroup cvgTitle;
+        [SerializeField] private TMP_Text txtTitle;
+        
         public void Victory()
         {
-            
+            cvgTitle.DOKill();
+            cvgTitle.DOFade(1, 0.35f);
+            cvgTitle.DOFade(0, 0.35f).SetDelay(2f);
+            txtTitle.text = "Victoire!";
         }
 
         public void Defeat()
         {
-            
+            cvgTitle.DOKill();
+            cvgTitle.DOFade(1, 0.35f);
+            cvgTitle.DOFade(0, 0.35f).SetDelay(2f);
+            txtTitle.text = "Défaite...";
+
         }
 
         /// <summary>

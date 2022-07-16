@@ -194,6 +194,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// <returns></returns>
     private IEnumerator StartPlayerDeath() {
         yield return new WaitForSeconds(fallDuration/2);
+        UIManager.instance.Defeat();
         LevelManager.instance.ReloadLevel();
     }
     

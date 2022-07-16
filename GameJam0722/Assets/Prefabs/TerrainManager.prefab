@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21645cc2c96fe494ca0108789a1a1d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heightRandomness: {x: -0.125, y: 0.125}
   wallHeightValue: 0.75
-  holeHeightValue: -0.75
-  SetRandomDiceValue: 0
+  holeHeightValue: -2
+  SetRandomDiceValue: 1
   upperDiceValue: 1

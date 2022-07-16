@@ -17,6 +17,7 @@ public class LevelCreationEditor : Editor {
             EditorGUILayout.PropertyField(serializedObject.FindProperty("levelSizeGeneration"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("dicePrefab"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("diceParent"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("diceParentEditor"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("diceSize"));
             
             if (GUILayout.Button("Generate New level")) script.GenerateNewLevel(script.LevelSizeGeneration);

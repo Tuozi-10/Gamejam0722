@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -6,74 +7,99 @@ using Random = UnityEngine.Random;
 public class TerrainManager : Singleton<TerrainManager> {
     
     private DiceTerrain[,] diceTerrainlsit;
-
+    [Header("--- HEIGHT VALUE")]
     [SerializeField] private Vector2 heightRandomness = new Vector2(-.25f,.25f);
     [SerializeField] private float wallHeightValue = 0;
     [SerializeField] private float holeHeightValue = 0;
-    [Space] 
-    public bool SetRandomDiceValue = true;
+    
+    [Header("--- MOVE DURATION")]
+    [SerializeField] private float moveHeightRandomnessDuration = 1;
+    [SerializeField] private float moveHeightDuration = 1;
+    
+    [Header("--- RANDOM DICE THROW")]
+    public bool setRandomDiceValue = true;
     [SerializeField] private int upperDiceValue = 0;
-    
-    #region SetTerrainAtStart
-    
-    /// <summary>
-    /// Change the height of the dice based on his specifics
-    /// </summary>
-    private void CheckDiceForChangingHeight() {
-        
-        if (SetRandomDiceValue) upperDiceValue = Random.Range(1, 6);
-        foreach (DiceTerrain dice in diceTerrainlsit) {
-            SetDiceHeight(dice, dice.transform.position.y + Random.Range(heightRandomness.x, heightRandomness.y));
 
-            if (GetDiceWithSameValue(upperDiceValue).Contains(dice) && (dice.diceData.diceState == DiceState.Walkable && dice.diceData.diceEffectState == DiceEffectState.None)) {
-                SetDiceHeight(dice, wallHeightValue);
-                dice.diceData.diceState = DiceState.Wall;
-            }
-        }
-        
-        /*
-        foreach (DiceTerrain dice in diceTerrainlsit) {
-            switch (dice.diceData.diceState) {
-                case DiceState.Wall:
-                    SetDiceHeight(dice, wallHeightValue);
-                    break;
-                
-                case DiceState.Hole:
-                    SetDiceHeight(dice, holeHeightValue);
-                    break;
-            }
-        }*/
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.LeftAlt)) StartCoroutine(ChangeHeightEvent());
     }
-
-    /// <summary>
-    /// Set height of a dice
-    /// </summary>
-    private void SetDiceHeight(DiceTerrain dice, float height) {
-        dice.transform.DOKill();
-        dice.transform.DOLocalMove(new Vector3(dice.transform.localPosition.x, height, dice.transform.localPosition.z), 1);
-    }
-
-    #endregion SetTerrainAtStart
-    
-    
-    #region GetTerrain
     
     /// <summary>
     /// Load all dice data
     /// </summary>
     /// <param name="levelSize"></param>
     /// <param name="diceList"></param>
-    public void StartTerrainCreation(Vector2 levelSize, List<DiceTerrain> diceList) {
+    public void InitTerrainCreation(Vector2 levelSize, List<DiceTerrain> diceList) {
         diceTerrainlsit = new DiceTerrain[(int) levelSize.x, (int) levelSize.y];
         foreach (DiceTerrain dice in diceList) {
             diceTerrainlsit[(int) (diceList.IndexOf(dice) / levelSize.x), (int) (diceList.IndexOf(dice) % levelSize.x)] = dice;
         }
         
-        CheckDiceForChangingHeight();
+        AddHeightRandomness();
+        StartCoroutine(ChangeHeightEvent(true));
     }
     
-    #endregion GetTerrain
     
+    #region Set Terrain Height
+
+    private int randomDice = 0;
+    /// <summary>
+    /// Launch the event which change the height of some Dice
+    /// </summary>
+    private IEnumerator ChangeHeightEvent(bool firstLaunch = false) 
+    {
+        if (!firstLaunch) 
+        {
+            foreach (DiceTerrain dice in diceTerrainlsit) 
+            {
+                if (dice.diceData.diceState != DiceState.ForceHole) {
+                    SetDiceHeight(dice, dice.heightRandomness, moveHeightDuration);
+                    dice.diceData.diceState = DiceState.Walkable;
+                }
+            }
+
+            yield return new WaitForSeconds(moveHeightDuration + moveHeightDuration / 8);
+        }
+        
+        randomDice = setRandomDiceValue ? Random.Range(1, 6) : upperDiceValue;
+        
+        yield return new WaitForSeconds(moveHeightDuration + moveHeightDuration / 8);
+        
+        foreach (DiceTerrain dice in diceTerrainlsit) 
+        {
+            if (dice.diceData.diceState == DiceState.ForceHole)
+            {
+                SetDiceHeight(dice, wallHeightValue, moveHeightDuration);
+            }
+            else if (GetDiceWithSameValue(randomDice).Contains(dice) && (dice.diceData.diceEffectState == DiceEffectState.None)) 
+            {
+                SetDiceHeight(dice, wallHeightValue, moveHeightDuration + dice.heightRandomness);
+                dice.diceData.diceState = DiceState.Wall;
+            }
+        }
+    }
+
+    private float heightAddValue = 0;
+    /// <summary>
+    /// Add a little random on the height of each dice
+    /// </summary>
+    private void AddHeightRandomness() {
+        foreach (DiceTerrain dice in diceTerrainlsit) {
+            heightAddValue = Random.Range(heightRandomness.x, heightRandomness.y);
+            SetDiceHeight(dice, heightAddValue, moveHeightRandomnessDuration);
+            dice.heightRandomness = heightAddValue;
+        }
+    }
+
+    /// <summary>
+    /// Set the height of a dice
+    /// </summary>
+    private void SetDiceHeight(DiceTerrain dice, float height, float duration) {
+        dice.transform.DOKill();
+        dice.transform.DOLocalMove(new Vector3(dice.transform.localPosition.x, height, dice.transform.localPosition.z), Random.Range(moveHeightDuration - moveHeightDuration / 8, moveHeightDuration + moveHeightDuration / 8));
+    }
+
+    #endregion Set Terrain Height
     
     #region DiceTerrainHelper
     

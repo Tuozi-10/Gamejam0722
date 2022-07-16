@@ -24,13 +24,57 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685128968}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.15, y: 0, z: -1.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1788077979399309230}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1528157369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1528157370}
+  - component: {fileID: 5750297439468323586}
+  m_Layer: 0
+  m_Name: Dice Parent Editor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1528157370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528157369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1788077979399309230}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5750297439468323586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528157369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe1aeddf5d49cd479656d7eeb6995af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1788077979399309229
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +105,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 685128969}
+  - {fileID: 1528157370}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,11 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8065899f7f40bc14ba421648c076ab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actualLevelSize: {x: 2, y: 2}
-  levelSizeGeneration: {x: 2, y: 2}
+  diceList: []
+  actualLevelSize: {x: 3, y: 3}
+  levelSizeGeneration: {x: 3, y: 3}
   dicePrefab: {fileID: 2535107566833901645, guid: a32020cffa3fe0842abef5c4dbf1950f, type: 3}
   diceParent: {fileID: 685128969}
-  diceSize: 1.125
-  loadLevelSO: {fileID: 11400000, guid: 4ac92166f2291e14da39cfe0971a377d, type: 2}
+  diceParentEditor: {fileID: 1528157370}
+  diceSize: 1.15
+  loadLevelSO: {fileID: 11400000, guid: 853892fedf5b1d34fb2ee5279286bd65, type: 2}
   folderPath: Assets/Levels/
-  levelName: Test 01
+  levelName: FirstLevel

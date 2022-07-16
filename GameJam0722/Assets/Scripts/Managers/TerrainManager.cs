@@ -25,7 +25,10 @@ public class TerrainManager : Singleton<TerrainManager> {
         foreach (DiceTerrain dice in diceTerrainlsit) {
             SetDiceHeight(dice, dice.transform.position.y + Random.Range(heightRandomness.x, heightRandomness.y));
 
-            if(GetDiceWithSameValue(upperDiceValue).Contains(dice) && (dice.diceData.diceState == DiceState.Walkable && dice.diceData.diceEffectState == DiceEffectState.None)) SetDiceHeight(dice, wallHeightValue);
+            if (GetDiceWithSameValue(upperDiceValue).Contains(dice) && (dice.diceData.diceState == DiceState.Walkable && dice.diceData.diceEffectState == DiceEffectState.None)) {
+                SetDiceHeight(dice, wallHeightValue);
+                dice.diceData.diceState = DiceState.Wall;
+            }
         }
         
         /*
@@ -48,7 +51,6 @@ public class TerrainManager : Singleton<TerrainManager> {
     private void SetDiceHeight(DiceTerrain dice, float height) {
         dice.transform.DOKill();
         dice.transform.DOLocalMove(new Vector3(dice.transform.localPosition.x, height, dice.transform.localPosition.z), 1);
-        dice.diceData.diceState = DiceState.Wall;
     }
 
     #endregion SetTerrainAtStart

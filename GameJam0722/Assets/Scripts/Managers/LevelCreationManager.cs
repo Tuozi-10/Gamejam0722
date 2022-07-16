@@ -33,22 +33,14 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
     public void LoadLevel(LevelSO level, bool isInGame = false) {
         Level levelClass = Level.CreateLevel(level);
         
-        if (isInGame) 
-        {
-            foreach (DiceTerrain dice in diceList) 
-            {
-                if(dice != null) Destroy(dice.gameObject);
-            }
-        }
-        
-        GenerateNewLevel(levelClass.terrainSize);
+        GenerateNewLevel(new Vector2Int(levelClass.terrainSize.x, levelClass.terrainSize.y));
 
         foreach (DiceTerrain dice in diceList) 
         {
             dice.diceData = levelClass.DiceClass[diceList.IndexOf(dice)];
             dice.UpdateDiceValue();
         }
-        if (isInGame) TerrainManager.instance.StartTerrainCreation(levelClass.terrainSize, diceList);
+        if (isInGame) TerrainManager.instance.StartTerrainCreation(new Vector2Int(levelClass.terrainSize.x, levelClass.terrainSize.y), diceList);
     }
 
     /// <summary>
@@ -89,7 +81,7 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
             for (int y = 0; y < custLevelSize.y; y++) 
             {
                 GameObject dice = Instantiate(dicePrefab, new Vector3(x * diceSize, 0, y * diceSize), Quaternion.identity, diceParent);
-                dice.GetComponent<DiceTerrain>().InitDice(new Vector2(x, y));
+                dice.GetComponent<DiceTerrain>().InitDice(new Vector2Int(x, y));
                 diceList.Add(dice.GetComponent<DiceTerrain>());
                 
                 if (xPosMax <= x * diceSize) xPosMax = x * diceSize;

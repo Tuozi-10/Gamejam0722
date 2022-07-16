@@ -49,7 +49,7 @@ namespace Entities
                   path.RemoveAt(0);
                   int pmUsed = 0;
                   
-                  while (path.Count > 0 && pmUsed >= pm)
+                  while (path.Count > 0 && pmUsed < pm)
                   {
                         pmUsed++;
                         transform.DOMove(GetPosFromCoord(path[0].posX, path[0].posY), durationMove);
@@ -63,7 +63,7 @@ namespace Entities
             public static Vector3 GetPosFromCoord(int x, int y)
             {
                   var diceTransform = TerrainManager.instance.diceTerrainlsit[x, y].transform;
-                   return new Vector3(diceTransform.position.x, diceTransform.position.y + MouseManager.instance.cursorHeight, diceTransform.position.z);
+                   return new Vector3(diceTransform.position.x, diceTransform.position.y + 1, diceTransform.position.z);
             }
             
       }

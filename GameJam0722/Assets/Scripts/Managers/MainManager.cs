@@ -5,24 +5,11 @@ using UnityEngine.SceneManagement;
 
 namespace Managers
 {
-    public class MainManager : MonoBehaviour
+    public class MainManager : Singleton<MainManager>
     {
-        public static MainManager instance;
         [SerializeField] private float durationLoading = 1f;
         
         private const string MainSceneName = "MainScene";
-        
-        private void Awake()
-        {
-            if (instance is not null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            DontDestroyOnLoad(gameObject);
-            instance = this;
-        }
 
         private void Start()
         {

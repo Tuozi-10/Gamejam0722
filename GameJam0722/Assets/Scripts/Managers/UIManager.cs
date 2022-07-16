@@ -6,25 +6,13 @@ using UnityEngine;
 namespace Managers
 {
     [RequireComponent(typeof(Canvas))]
-    public class UIManager : MonoBehaviour
+    public class UIManager : Singleton<UIManager>
     {
-        public static UIManager instance;
-
         [SerializeField] private CanvasGroup m_canvasTransition;
         [SerializeField] private CanvasGroup m_cvgTurn;
         [SerializeField] private TMP_Text m_textTurn;
         [SerializeField] private float m_durationTextTurn = 1.25f;
         
-        private void Awake()
-        {
-            if (instance is not null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            DontDestroyOnLoad(gameObject);
-            instance = this;
-        }
 
         public void Victory()
         {

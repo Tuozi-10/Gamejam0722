@@ -17,7 +17,6 @@ namespace Entities
         {
             var ground = TerrainManager.instance.GetAvailableArray();
             SetPath(Pathfinder.GetPath(pos.x, pos.y, Character.instance.pos.x, Character.instance.pos.y, ground));
-            
         }
     }
 }

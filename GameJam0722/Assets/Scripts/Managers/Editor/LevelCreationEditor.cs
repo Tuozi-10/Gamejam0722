@@ -8,19 +8,33 @@ public class LevelCreationEditor : Editor {
     public override void OnInspectorGUI() {
         serializedObject.Update();
         if (script == null) script = (LevelCreationManager) target;
+
+        using (new GUILayout.VerticalScope(EditorStyles.helpBox)) {
+            GUILayout.Label("Level Generation Data".ToUpper());
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("dicePrefab"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("diceParent"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("diceParentEditor"));
+            GUILayout.Space(4);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("destroyLevelDuration"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("spawnHeight"));
+        }
+        
+        GUILayout.Space(8);
         
         using (new GUILayout.VerticalScope(EditorStyles.helpBox)) {
             GUILayout.Label("Generate new Level".ToUpper());
             EditorGUILayout.PropertyField(serializedObject.FindProperty("levelSizeGeneration"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("dicePrefab"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("diceParent"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("diceParentEditor"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("diceSize"));
-            
-            if (GUILayout.Button("Generate New level")) script.GenerateNewLevel(script.LevelSizeGeneration, Application.isPlaying);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("diceSpaceSize"));
+
+            using (new GUILayout.HorizontalScope()) {
+                if (GUILayout.Button("Generate New level")) script.GenerateNewLevel(script.LevelSizeGeneration, Application.isPlaying);
+                GUI.backgroundColor = Color.red;
+                if (GUILayout.Button("Delete Level")) script.DestroyImmediateLevel();
+                GUI.backgroundColor = Color.white;
+            }
         }
         
-        GUILayout.Space(16);
+        GUILayout.Space(8);
         
         GUI.backgroundColor = Color.green;
         using (new GUILayout.VerticalScope(EditorStyles.helpBox)) {

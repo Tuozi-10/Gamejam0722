@@ -1,64 +1,90 @@
 using System;
 using System.Collections.Generic;
 using Entities;
-using Terrain;
 using UnityEngine;
 
 namespace Managers
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : Singleton<LevelManager>
     {
-        public static LevelManager instance;
+        private List<AbstractEntity> m_entities;
+        public List<AbstractEntity> Entities => m_entities;
 
-        private void Awake()
-        {
-            if (instance is not null)
-            {
-                Destroy(gameObject);
-                return;
+        
+        [SerializeField] private List<LevelSO> levelList = new List<LevelSO>();
+        public List<LevelSO> LevelList => levelList;
+        private int levelIndex = 0;
+        public int LevelIndex => levelIndex;
+        
+        
+        private int m_currentEntityIndex;
+        private bool isLoadingNewLevel = false;
+
+        private void Start() => GenerateNewLevel();
+
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.LeftAlt)) {
+                StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex]));
+                isLoadingNewLevel = true;
+                levelIndex++;
             }
-
-            DontDestroyOnLoad(gameObject);
-            instance = this;
         }
 
-        private void Start()
-        {
-            StartLevel();
-        }
 
-        public void StartLevel()
-        {
-            //LevelCreationManager.instance.LoadLevel();
-            // GENERATE ENTITIES
+        /// <summary>
+        /// Generate a new level
+        /// </summary>
+        public void GenerateNewLevel() {
+            LevelCreationManager.instance.LoadLevel(levelList[levelIndex]);
+            levelIndex++;
+        }
+        
+        /// <summary>
+        /// Get entities for the level and initialize them
+        /// </summary>
+        public void GenerateEntities() {
             m_currentEntityIndex = 0;
             var timeline = new List<AbstractEntity>();
             timeline.Add(Character.instance);
+
+            foreach (AbstractEntity ent in TerrainManager.instance.enemyEntity) {
+                timeline.Add(ent);
+            }
+            
             SetTimeline(timeline); // TODO ADD ENTITIES
             m_entities[m_currentEntityIndex].StartTurn();
+            
+            isLoadingNewLevel = false;
         }
-
-        #region Timeline
         
-        public List<AbstractEntity> m_entities ;
-        private int m_currentEntityIndex;
-
-        public void SetTimeline(List<AbstractEntity> entities)
+        #region Timeline
+        /// <summary>
+        /// Set the timeline in order for the entity to move
+        /// </summary>
+        /// <param name="entities"></param>
+        private void SetTimeline(List<AbstractEntity> entities)
         {
-            m_entities = new(entities);
+            m_entities = new List<AbstractEntity>(entities);
             m_currentEntityIndex = 0;
         }
 
-        public void EndTurn()
-        {
-            GetNextEntity().StartTurn();
+        /// <summary>
+        /// End the turn of an entity
+        /// </summary>
+        public void EndTurn() {
+            if (isLoadingNewLevel) return;
+            if(m_currentEntityIndex == m_entities.Count - 1) StartCoroutine(TerrainManager.instance.ChangeHeightEvent());
+            else GetNextEntity().StartTurn();
         }
         
-        private AbstractEntity GetNextEntity()
+        /// <summary>
+        /// Get the next entity in the list
+        /// </summary>
+        /// <returns></returns>
+        public AbstractEntity GetNextEntity()
         {
             m_currentEntityIndex++;
-            if (m_currentEntityIndex == m_entities.Count)
-            {
+            if (m_currentEntityIndex == m_entities.Count) {
                 m_currentEntityIndex = 0;
             }
 
@@ -67,18 +93,19 @@ namespace Managers
         
         #endregion
 
+        
         #region End Game
         
-        public void Victory()
-        {
-            UIManager.instance.Victory();
-        }
+        /// <summary>
+        /// If the player win
+        /// </summary>
+        public void Victory() => UIManager.instance.Victory();
 
-        public void Defeat()
-        {
-            UIManager.instance.Defeat();
-        }
-        
+        /// <summary>
+        /// If the player die
+        /// </summary>
+        public void Defeat() => UIManager.instance.Defeat();
+
         #endregion
         
     }

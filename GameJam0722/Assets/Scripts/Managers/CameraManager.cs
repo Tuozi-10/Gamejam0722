@@ -4,10 +4,8 @@ using UnityEngine;
 namespace Managers
 {
     [RequireComponent(typeof(Camera))]
-    public class CameraManager : MonoBehaviour
+    public class CameraManager : Singleton<CameraManager>
     {
-        public static CameraManager instance;
-
         private Camera m_camera;
         public Camera Camera => m_camera;
 
@@ -16,24 +14,12 @@ namespace Managers
         
         [SerializeField] private float m_minZoom = 6.1f;
         [SerializeField] private float m_maxZoom = 4.1f;
-        
-        private void Awake()
-        {
-            if (instance is not null)
-            {
-                Destroy(this.gameObject);
-                return;
-            }
 
-            m_camera = GetComponent<Camera>();
-            DontDestroyOnLoad(gameObject);
-            instance = this;
-        }
+        protected override void Init() => m_camera = GetComponent<Camera>();
 
-        private void FixedUpdate()
-        {
-         ManageZoom();
-         ManageMove();
+        private void FixedUpdate() {
+            ManageZoom();
+            ManageMove();
         }
 
         private Vector2 MousePos;

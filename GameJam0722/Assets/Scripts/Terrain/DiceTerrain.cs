@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class DiceTerrain : MonoBehaviour {
     public DiceClass diceData;
+    
     public Vector2Int pos => new Vector2Int(diceData.dicePos.x, diceData.dicePos.y);
     public float heightRandomness = 0;
     
     [SerializeField] private DiceTerrainMaterialSO materialData = null;
     [SerializeField] private MeshRenderer diceRend = null;
+
 
     /// <summary>
     /// Initialize dice data value
@@ -22,16 +24,15 @@ public class DiceTerrain : MonoBehaviour {
     /// <summary>
     /// Update the dice when variables are changed
     /// </summary>
-    public void UpdateDiceValue() => diceRend.sharedMaterial = materialData.DiceMaterialData[diceData.diceValue];
+    public void UpdateDiceData() {
+        diceRend.sharedMaterial = materialData.DiceMaterialData[diceData.diceValue];
+        if (diceData.diceValue == 0) diceData.diceEffectState = DiceEffectState.Spawner;
+    }
 
     /// <summary>
     /// When changes are made to the variable
     /// </summary>
-    private void OnValidate() {
-        UpdateDiceValue();
-        if (diceData.diceValue == 0) diceData.diceEffectState = DiceEffectState.Spawner;
-        if (diceData.diceState == DiceState.ForceHole && diceData.diceEffectState == DiceEffectState.Spawner) diceData.diceState = DiceState.Walkable;
-    }
+    private void OnValidate() => UpdateDiceData();
 }
 
 [System.Serializable]
@@ -44,6 +45,9 @@ public class DiceClass {
     public DiceEffectState diceEffectState = DiceEffectState.None;
 }
 
+/// <summary>
+/// Main Dice State
+/// </summary>
 public enum DiceState {
     Walkable,
     Wall,
@@ -51,6 +55,9 @@ public enum DiceState {
     ForceHole
 }
 
+/// <summary>
+/// Secondary State for dice
+/// </summary>
 public enum DiceEffectState {
     None,
     Start,

@@ -12,7 +12,8 @@ public class DiceTerrain : MonoBehaviour {
     /// <param name="dicePos"></param>
     /// <param name="diceState"></param>
     public void InitDice(Vector2Int dicePos, DiceState diceState = DiceState.Walkable) {
-        diceData.dicePos = (dicePos.x, dicePos.y);
+        diceData.dicePosX = dicePos.x;
+        diceData.dicePosY = dicePos.y;
         diceData.diceState = diceState;
     }
     
@@ -35,7 +36,9 @@ public class DiceTerrain : MonoBehaviour {
 [System.Serializable]
 public class DiceClass {
     [Range(0, 5)] public int diceValue;
-    public (int x, int y) dicePos;
+    public (int x, int y) dicePos => (dicePosX, dicePosY);
+    public int dicePosX;
+    public int dicePosY;
     public DiceState diceState = DiceState.Walkable;
     public DiceEffectState diceEffectState = DiceEffectState.None;
 }

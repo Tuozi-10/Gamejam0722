@@ -14,39 +14,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainSize: {x: 3, y: 3}
   diceClass:
-  - diceValue: 5
-    dicePos: {x: 0, y: 0}
+  - diceValue: 2
+    dicePosX: 0
+    dicePosY: 0
     diceState: 0
-    diceEffectState: 1
-  - diceValue: 5
-    dicePos: {x: 0, y: 1}
+    diceEffectState: 0
+  - diceValue: 4
+    dicePosX: 0
+    dicePosY: 1
     diceState: 0
     diceEffectState: 0
   - diceValue: 5
-    dicePos: {x: 0, y: 2}
+    dicePosX: 0
+    dicePosY: 2
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 1
+    dicePosX: 1
+    dicePosY: 0
     diceState: 0
     diceEffectState: 0
   - diceValue: 5
-    dicePos: {x: 1, y: 0}
+    dicePosX: 1
+    dicePosY: 1
     diceState: 0
     diceEffectState: 0
   - diceValue: 5
-    dicePos: {x: 1, y: 1}
+    dicePosX: 1
+    dicePosY: 2
     diceState: 0
     diceEffectState: 0
   - diceValue: 5
-    dicePos: {x: 1, y: 2}
+    dicePosX: 2
+    dicePosY: 0
     diceState: 0
     diceEffectState: 0
   - diceValue: 5
-    dicePos: {x: 2, y: 0}
+    dicePosX: 2
+    dicePosY: 1
     diceState: 0
     diceEffectState: 0
   - diceValue: 5
-    dicePos: {x: 2, y: 1}
+    dicePosX: 2
+    dicePosY: 2
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
-    dicePos: {x: 2, y: 2}
-    diceState: 0
-    diceEffectState: 2

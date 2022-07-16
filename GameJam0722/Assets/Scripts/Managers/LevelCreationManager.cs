@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using Entities;
 using UnityEditor;
 using UnityEngine;
 

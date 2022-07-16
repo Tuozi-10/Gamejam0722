@@ -43,11 +43,6 @@ public class TerrainManager : Singleton<TerrainManager> {
         AddHeightRandomness();
         yield return new WaitForSeconds(LevelCreationManager.instance.DestroyLevelDuration);
 
-        for (int i = 0; i < Random.Range(8,15); i++) {
-            UIManager.instance.SetRandomColor();
-            yield return new WaitForSeconds(.25f);
-        }
-        
         randomWallDice = setRandomDiceValue ? Random.Range(1, 6) : wallDiceValue;
         randomHoleDice = setRandomDiceValue ? Random.Range(1, 6) : holeDiceValue;
         do {
@@ -56,7 +51,7 @@ public class TerrainManager : Singleton<TerrainManager> {
         
         UIManager.instance.SetColor(randomWallDice - 1, randomHoleDice - 1);
         
-        
+        yield return new WaitForSeconds(.5f);
         StartCoroutine(ChangeHeightEvent(true));
     }
 
@@ -131,9 +126,10 @@ public class TerrainManager : Singleton<TerrainManager> {
             else if (GetDiceWithSameValue(randomHoleDice).Contains(dice) && (dice.diceData.diceEffectState == DiceEffectState.None)) 
             {
                 SetDiceHeight(dice, holeHeightValue, moveHeightDuration);
-                if(!firstLaunch) CheckEntityDice(dice);
                 dice.diceData.diceState = DiceState.Hole;
             }
+            
+            if(!firstLaunch) CheckEntityDice(dice);
         }
     }
 
@@ -164,11 +160,16 @@ public class TerrainManager : Singleton<TerrainManager> {
             if (new Vector2Int(ent.pos.x, ent.pos.y) != dice.pos) continue;
             
             ent.transform.DOKill();
-            ent.transform.DOLocalMove(new Vector3(ent.transform.position.x, -10, ent.transform.position.z), fallDuration);
-
-            if (ent.pos == Character.instance.pos) StartCoroutine(StartPlayerDeath());
-            else {
-                LevelManager.instance.RemoveEntity(LevelManager.instance.Entities.IndexOf(ent));
+            switch (dice.diceData.diceState) {
+                case DiceState.Hole:{
+                    ent.transform.DOLocalMove(new Vector3(ent.transform.position.x, -10, ent.transform.position.z), fallDuration);
+                    if (ent.pos == Character.instance.pos) StartCoroutine(StartPlayerDeath());
+                    else LevelManager.instance.RemoveEntity(LevelManager.instance.Entities.IndexOf(ent));
+                    break;
+                }
+                case DiceState.Wall:
+                    ent.transform.DOLocalMove(new Vector3(ent.transform.position.x,  BaseAI.GetPosFromCoord(dice.diceData.dicePosX, dice.diceData.dicePosY).y + wallHeightValue + dice.heightRandomness, ent.transform.position.z), moveHeightDuration);
+                    break;
             }
         }
     }

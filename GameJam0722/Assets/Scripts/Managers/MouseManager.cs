@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Entities;
@@ -56,7 +55,7 @@ public class MouseManager : Singleton<MouseManager> {
     {
         if (Time.frameCount % 5 == 0)
         {
-            cubeUnderMouse = Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) ? hit.collider.transform : null;
+            cubeUnderMouse = Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) && !hit.collider.gameObject.CompareTag("Water")? hit.collider.transform : null;
             if (cubeUnderMouse is null) {
                 cubePosition.SetActive(false);
                 return;

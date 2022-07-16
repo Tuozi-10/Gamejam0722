@@ -48,7 +48,7 @@ MonoBehaviour:
   cubePosition: {fileID: 0}
   layerCheck:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 24
   player: {fileID: 0}
   playerSpeed: 1
   cursorHeight: 0.5

@@ -34,6 +34,11 @@ namespace Managers
             
         }
 
+        /// <summary>
+        /// Make a transition
+        /// </summary>
+        /// <param name="initialDelay"></param>
+        /// <param name="callback"></param>
         public void AskTransition(float initialDelay= 0f,Action callback = null)
         {
             m_canvasTransition.DOKill();
@@ -49,15 +54,18 @@ namespace Managers
             m_canvasTransition.DOFade(0, 0.5f).SetDelay(initialDelay + 0.25f);
         }
         
-        public void AskTurn(string text)
-        {
+        /// <summary>
+        /// Show which entity turn it is
+        /// </summary>
+        /// <param name="text"></param>
+        public void AskTurn(string text) {
+            if (LevelManager.instance.IsLoadingLevel) return;
             m_cvgTurn.DOKill();
 
             m_textTurn.text = text;
             m_cvgTurn.DOFade(1, 0.25f);
             m_cvgTurn.DOFade(0, 0.3f).SetDelay( m_durationTextTurn);
         }
-
         
         public void StartNewIsland() {
             randomTerrain.DOFade(1, 0.5f).SetDelay(1);

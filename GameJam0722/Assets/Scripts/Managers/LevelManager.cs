@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Entities;
@@ -20,6 +19,7 @@ namespace Managers
         
         private int m_currentEntityIndex;
         private bool isLoadingNewLevel = false;
+        public bool IsLoadingLevel => isLoadingNewLevel;
 
         private void Start() {
             GenerateNewLevel();

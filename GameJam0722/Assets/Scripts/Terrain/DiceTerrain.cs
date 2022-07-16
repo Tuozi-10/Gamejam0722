@@ -24,8 +24,11 @@ public class DiceTerrain : MonoBehaviour {
     /// <summary>
     /// Update the dice when variables are changed
     /// </summary>
-    public void UpdateDiceValue() => diceRend.sharedMaterial = materialData.DiceMaterialData[diceData.diceValue - 1];
-    
+    public void UpdateDiceValue() {
+        Debug.Log(diceData.dicePos);
+        diceRend.sharedMaterial = materialData.DiceMaterialData[diceData.diceValue - 1];
+    }
+
     /// <summary>
     /// When changes are made to the variable
     /// </summary>

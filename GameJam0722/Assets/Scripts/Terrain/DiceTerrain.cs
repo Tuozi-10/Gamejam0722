@@ -3,6 +3,9 @@ using UnityEngine;
 public class DiceTerrain : MonoBehaviour {
     public DiceClass diceData;
 
+    [SerializeField] private DiceTerrainMaterialSO materialData = null;
+    [SerializeField] private MeshRenderer diceRend = null;
+    
     //CENTER // UP RIGHT // UP LEFT // BOTTOM RIGHT // BOTTOM LEFT
     [SerializeField] private GameObject[] diceCubeGam = new GameObject[5];
 
@@ -16,16 +19,11 @@ public class DiceTerrain : MonoBehaviour {
         diceData.dicePosY = dicePos.y;
         diceData.diceState = diceState;
     }
-    
-    
-    public void UpdateDiceValue() {
-        return;
-        diceCubeGam[0].SetActive(diceData.diceValue % 2 == 1);
-        diceCubeGam[1].SetActive(diceData.diceValue >= 4);
-        diceCubeGam[2].SetActive(diceData.diceValue >= 2);
-        diceCubeGam[3].SetActive(diceData.diceValue >= 2);
-        diceCubeGam[4].SetActive(diceData.diceValue >= 4);
-    }
+
+    /// <summary>
+    /// Update the dice when variables are changed
+    /// </summary>
+    public void UpdateDiceValue() => diceRend.sharedMaterial = materialData.DiceMaterialData[diceData.diceValue - 1];
     
     /// <summary>
     /// When changes are made to the variable

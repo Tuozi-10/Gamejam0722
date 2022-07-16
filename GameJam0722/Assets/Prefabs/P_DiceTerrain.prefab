@@ -50,8 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceData:
     diceValue: 5
+    dicePosX: 0
+    dicePosY: 0
     diceState: 0
     diceEffectState: 0
+  materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
+  diceRend: {fileID: 9138512670895297122}
   diceCubeGam:
   - {fileID: 2431019666869680617}
   - {fileID: 2389289155777108416}
@@ -132,7 +136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d325425089bbc543a75922d040abc09, type: 2}
+  - {fileID: 2100000, guid: 8b75da1ee0d581041ba4fb541187b5a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

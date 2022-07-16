@@ -15,7 +15,7 @@ namespace Entities
             public Vector2Int pos;
 
             [SerializeField] float durationMove = 0.75f;
-            [SerializeField] private Transform Pivot;
+            [SerializeField] public Transform Pivot;
             [SerializeField] private float heightWalk = 0.5f;
             [SerializeField] private float intensityImpactWalk = 0.175f;
             [SerializeField] private int radiusImpactWalk = 2;

@@ -80,9 +80,9 @@ public class TerrainManager : Singleton<TerrainManager> {
             }
         }
         
-        for (int i = 0; i < Random.Range(8,15); i++) {
+        for (int i = 0; i < 6; i++) {
             UIManager.instance.SetRandomColor();
-            yield return new WaitForSeconds(.25f);
+            yield return new WaitForSeconds(.10f);
         }
         
         randomWallDice = setRandomDiceValue ? Random.Range(1, 6) : wallDiceValue;
@@ -106,6 +106,10 @@ public class TerrainManager : Singleton<TerrainManager> {
             if (dice.diceData.diceState != DiceState.ForceHole) {
                 SetDiceHeight(dice, dice.heightRandomness, moveHeightDuration);
                 dice.diceData.diceState = DiceState.Walkable;
+            }
+            else
+            {
+                SetDiceHeight(dice, holeHeightValue, moveHeightDuration);
             }
         }
     }

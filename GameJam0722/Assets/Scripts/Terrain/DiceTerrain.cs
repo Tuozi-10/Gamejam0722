@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,7 +7,10 @@ public class DiceTerrain : MonoBehaviour {
     
     public Vector2Int pos => new Vector2Int(diceData.dicePos.x, diceData.dicePos.y);
     public float heightRandomness = 0;
-    
+
+
+    [SerializeField] private MeshRenderer objectMesh = null;
+    public MeshRenderer ObjectMesh => objectMesh;
     [SerializeField] private DiceTerrainMaterialSO materialData = null;
     [SerializeField] private MeshRenderer diceRend = null;
 
@@ -40,8 +44,7 @@ public class DiceTerrain : MonoBehaviour {
             _ => new Vector3(transform.localPosition.x, 0, transform.localPosition.z)
         };
     }
-    
-    
+
     public void DoShakePivot(float intensity, float duration, float delay)
     {
         //pivot.DOKill();

@@ -269,9 +269,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644828925}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1 &688047694
 GameObject:
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -834,6 +834,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: cb268903c6e858242aaea50d8b351f22, type: 2}
   - {fileID: 2100000, guid: 72f8870db91a162439995d091e8efa44, type: 2}
   - {fileID: 2100000, guid: 8b75da1ee0d581041ba4fb541187b5a9, type: 2}
+  matListLighter:
+  - {fileID: 2100000, guid: e6b0c477531ab2747bbee03ec7a8aa06, type: 2}
+  - {fileID: 2100000, guid: fa8b1fe22c794b6498c6332afa7edce9, type: 2}
+  - {fileID: 2100000, guid: be1a1d743a1e12c4a9b1d13d82948582, type: 2}
+  - {fileID: 2100000, guid: 5c01a37954a0695479ea2ddf5f255d48, type: 2}
+  - {fileID: 2100000, guid: a57010eec961b8c43b0a6dd0fc10950a, type: 2}
 --- !u!114 &1141179022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -931,6 +937,7 @@ GameObject:
   - component: {fileID: 1167604956}
   - component: {fileID: 1167604958}
   - component: {fileID: 1167604957}
+  - component: {fileID: 1167604959}
   m_Layer: 5
   m_Name: Up_Contour
   m_TagString: Untagged
@@ -997,6 +1004,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167604955}
   m_CullTransparentMesh: 1
+--- !u!114 &1167604959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167604955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1141179021}
+          m_TargetAssemblyTypeName: Managers.UIManager, Assembly-CSharp
+          m_MethodName: FadeDice
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1141179021}
+          m_TargetAssemblyTypeName: Managers.UIManager, Assembly-CSharp
+          m_MethodName: UnFadeDice
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1313554007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1195,7 @@ GameObject:
   - component: {fileID: 1444801657}
   - component: {fileID: 1444801659}
   - component: {fileID: 1444801658}
+  - component: {fileID: 1444801660}
   m_Layer: 5
   m_Name: Down_Contour
   m_TagString: Untagged
@@ -1209,6 +1262,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444801656}
   m_CullTransparentMesh: 1
+--- !u!114 &1444801660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444801656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1141179021}
+          m_TargetAssemblyTypeName: Managers.UIManager, Assembly-CSharp
+          m_MethodName: FadeDice
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1141179021}
+          m_TargetAssemblyTypeName: Managers.UIManager, Assembly-CSharp
+          m_MethodName: UnFadeDice
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1562120789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,7 +1907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

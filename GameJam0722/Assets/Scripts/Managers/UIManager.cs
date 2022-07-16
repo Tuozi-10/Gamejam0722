@@ -23,6 +23,7 @@ namespace Managers
         [SerializeField] private Image downTerrainImage = null;
         [SerializeField] private RectTransform downTerrainParent = null;
         [SerializeField] private List<Material> matList = new List<Material>(5);
+        [SerializeField] private List<Material> matListLighter = new List<Material>(5);
 
         public void Victory()
         {
@@ -83,5 +84,24 @@ namespace Managers
             upTerrainParent.DOScale(1.25f, 0.25f).OnComplete(() => upTerrainParent.DOScale(1f, 0.35f));
             downTerrainParent.DOScale(1.25f, 0.25f).OnComplete(() => downTerrainParent.DOScale(1f, 0.35f));
         }
+
+        /// <summary>
+        /// switch between two colors for tiles
+        /// </summary>
+        /// <param name="id"></param>
+        private void FadeColorAnimation(int id, bool fade) {
+            /*
+            List<DiceTerrain> diceTerrainList = new List<DiceTerrain>(TerrainManager.instance.GetDiceWithSameValue(id == 0? TerrainManager.instance.RandomWallDice : TerrainManager.instance.RandomHoleDice));
+            foreach (DiceTerrain dice in diceTerrainList) {
+                if (!fade) {
+                    dice.ObjectMesh.sharedMaterial.DOKill();
+                    dice.ObjectMesh.sharedMaterial.color = matList[dice.diceData.diceValue - 1].color;
+                }
+                else dice.ObjectMesh.sharedMaterial.DOColor(matListLighter[dice.diceData.diceValue - 1].color, 1.25f).SetLoops(-1, LoopType.Yoyo);
+            }*/
+        }
+
+        public void FadeDice(int id) => FadeColorAnimation(id, true);
+        public void UnFadeDice(int id) => FadeColorAnimation(id, false);
     }
 }

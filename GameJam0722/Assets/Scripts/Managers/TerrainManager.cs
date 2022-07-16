@@ -58,7 +58,9 @@ public class TerrainManager : Singleton<TerrainManager> {
     #region Set Terrain Height
 
     private int randomWallDice = 0;
+    public int RandomWallDice => randomWallDice;
     private int randomHoleDice = 0;
+    public int RandomHoleDice => randomHoleDice;
     /// <summary>
     /// Launch the event which change the height of some Dice
     /// </summary>
@@ -212,7 +214,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    private List<DiceTerrain> GetDiceWithSameValue(int value) {
+    public List<DiceTerrain> GetDiceWithSameValue(int value) {
         List<DiceTerrain> diceValueList = new List<DiceTerrain>();
         foreach (DiceTerrain dice in diceTerrainlsit) {
             if(dice.diceData.diceValue == value) diceValueList.Add(dice);

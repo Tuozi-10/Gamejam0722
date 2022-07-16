@@ -35,7 +35,7 @@ public class MouseManager : Singleton<MouseManager> {
         {
             cubeUnderMouse = Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) ? hit.collider.transform : null;
          
-            if (cubeUnderMouse is null)
+            if (cubeUnderMouse is null || cubeUnderMouse.CompareTag("Water"))
             {
                 return;
             }

@@ -23,13 +23,7 @@ public class TerrainDrawerEditor : Editor {
     }
 
 
-    private static DiceTerrain groundUnderMouse = null;  
-        
-    /// <summary>
-    /// Draw in scene
-    /// </summary>
-    /// <param name="obj"></param>
-    /// <exception cref="NotImplementedException"></exception>
+    private static DiceTerrain groundUnderMouse = null;
     private void DrawInScene(SceneView sceneView) {
         if(Event.current.type == EventType.MouseMove) sceneView.Repaint();
         
@@ -39,8 +33,7 @@ public class TerrainDrawerEditor : Editor {
             groundUnderMouse = hit.collider.gameObject.GetComponent<DiceTerrain>();
         }
     }
-    
-    
+
     [MenuItem("Tools/LD/Create Object At World Pos _a")]
     private static void CreateObject() {
         if (groundUnderMouse == null) return;

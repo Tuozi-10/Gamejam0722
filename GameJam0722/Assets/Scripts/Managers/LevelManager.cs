@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Entities;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ namespace Managers
             if (Input.GetKeyDown(KeyCode.LeftAlt)) {
                 StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex]));
                 isLoadingNewLevel = true;
+                Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
                 levelIndex++;
             }
         }

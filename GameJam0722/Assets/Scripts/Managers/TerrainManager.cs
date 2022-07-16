@@ -21,6 +21,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     
     [Header("--- MOVE DURATION")]
     [SerializeField] private float moveHeightDuration = 1;
+    [SerializeField] private float playerMoveDuration = 1.5f;
     
     [Header("--- RANDOM DICE THROW")]
     public bool setRandomDiceValue = true;
@@ -92,24 +93,19 @@ public class TerrainManager : Singleton<TerrainManager> {
             }
         }
 
-        yield return new WaitForSeconds(moveHeightDuration + 0.25f);
-
-        if (firstLaunch) 
-        {
+        if (firstLaunch) {
             enemyEntity.Clear();
             Character.instance.pos = GetStartDice() != null ? GetStartDice().pos : new Vector2Int(0, 0);
-            Character.instance.transform.position = BaseAI.GetPosFromCoord(Character.instance.pos.x, Character.instance.pos.y);
-        
+            Character.instance.transform.DOLocalMove(BaseAI.GetPosFromCoord(Character.instance.pos.x, Character.instance.pos.y), playerMoveDuration);
+
             foreach (DiceTerrain dice in diceTerrainlsit) {
-                if(dice.diceData.diceEffectState == DiceEffectState.Spawner) SpawnEnemy(dice);
+                if (dice.diceData.diceEffectState == DiceEffectState.Spawner) SpawnEnemy(dice);
             }
-            
-            LevelManager.instance.GenerateEntities();
         }
-        else 
-        {
-            LevelManager.instance.GetNextEntity().StartTurn();
-        }
+
+        yield return new WaitForSeconds(moveHeightDuration + 0.25f);
+        if(firstLaunch) LevelManager.instance.GenerateEntities();
+        else LevelManager.instance.GetNextEntity().StartTurn();
     }
     
     /// <summary>

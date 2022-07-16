@@ -83,6 +83,7 @@ MonoBehaviour:
   wallHeightValue: 0.65
   holeHeightValue: -3
   moveHeightDuration: 0.75
+  playerMoveDuration: 1.5
   setRandomDiceValue: 1
   wallDiceValue: 0
   holeDiceValue: 0

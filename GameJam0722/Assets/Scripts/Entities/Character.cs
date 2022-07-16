@@ -34,6 +34,5 @@ namespace Entities
             if(UIManager.instance != null) UIManager.instance.AskTurn("Player Turn");
             canPlay = true;
         }
-
     }
 }

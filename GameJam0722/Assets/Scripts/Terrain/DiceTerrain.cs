@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DiceTerrain : MonoBehaviour {
     public DiceClass diceData;
+    public Vector2Int pos =>new Vector2Int(diceData.dicePos.x, diceData.dicePos.y);
 
     //CENTER // UP RIGHT // UP LEFT // BOTTOM RIGHT // BOTTOM LEFT
     [SerializeField] private GameObject[] diceCubeGam = new GameObject[5];

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Entities
 {
-      public abstract class AbstractEntity
+      public abstract class AbstractEntity : MonoBehaviour
       {
             private int m_hp;
             public int hp => m_hp;

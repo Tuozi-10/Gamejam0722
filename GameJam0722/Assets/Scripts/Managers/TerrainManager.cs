@@ -89,6 +89,22 @@ public class TerrainManager : Singleton<TerrainManager> {
         }
         return diceValueList;
     }
+
+    public bool[,] GetAvailableArray()
+    {
+        bool[,] ground = new bool[diceTerrainlsit.GetLength(0), diceTerrainlsit.GetLength(1)];
+
+        for (int i = 0; i < diceTerrainlsit.GetLength(0); i++)
+        {
+            for (int j = 0; j < diceTerrainlsit.GetLength(1); j++)
+            {
+                ground[i, j] = diceTerrainlsit[i, j].diceData.diceState == DiceState.Walkable;
+                // TODO CHECK ENEMY PRESENCE
+            }    
+        }
+
+        return ground;
+    }
     
     #endregion DiceTerrainHelper
 }

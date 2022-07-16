@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528157369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.3, y: 0, z: -2.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1788077979399309230}
   - component: {fileID: 1788077979399309231}
+  - component: {fileID: 1788077979858250191}
   m_Layer: 0
   m_Name: level Creator
   m_TagString: Untagged
@@ -121,14 +122,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8065899f7f40bc14ba421648c076ab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actualLevelSize: {x: 9, y: 9}
+  actualLevelSize: {x: 5, y: 5}
   dicePrefab: {fileID: 2535107566833901645, guid: a32020cffa3fe0842abef5c4dbf1950f, type: 3}
   diceParent: {fileID: 685128969}
   diceParentEditor: {fileID: 1528157370}
   destroyLevelDuration: 2
   spawnHeight: -10
-  levelSizeGeneration: {x: 9, y: 9}
+  levelSizeGeneration: {x: 5, y: 5}
   diceSpaceSize: 1.15
   loadLevelSO: {fileID: 11400000, guid: afd3a358d2d10a54b86d5a78531e20b4, type: 2}
   folderPath: Assets/Scriptable Object/Levels/
-  levelName: Test
+  levelName: Level 01
+--- !u!114 &1788077979858250191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788077979399309229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b10941f5900d04fb2cc66794219e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDrawing: 1
+  diceData:
+    diceValue: 5
+    dicePosX: 0
+    dicePosY: 0
+    diceState: 0
+    diceEffectState: 0

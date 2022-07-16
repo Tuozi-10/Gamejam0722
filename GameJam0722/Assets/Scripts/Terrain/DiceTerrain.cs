@@ -31,6 +31,17 @@ public class DiceTerrain : MonoBehaviour {
         if (diceData.diceValue == 0) diceData.diceEffectState = DiceEffectState.Spawner;
     }
 
+    public void UpdateDiceInEditor() {
+        UpdateDiceData();
+        
+        transform.localPosition = diceData.diceState switch {
+            DiceState.Wall => new Vector3(transform.localPosition.x, .25f, transform.localPosition.z),
+            DiceState.Hole => new Vector3(transform.localPosition.x, -.25f, transform.localPosition.z),
+            _ => new Vector3(transform.localPosition.x, 0, transform.localPosition.z)
+        };
+    }
+    
+    
     public void DoShakePivot(float intensity, float duration, float delay)
     {
         //pivot.DOKill();

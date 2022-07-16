@@ -7,6 +7,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     
     private DiceTerrain[,] diceTerrainlsit;
 
+    [SerializeField] private Vector2 heightRandomness = new Vector2(-.25f,.25f);
     [SerializeField] private float wallHeightValue = 0;
     [SerializeField] private float holeHeightValue = 0;
     [Space] 
@@ -14,20 +15,31 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private int upperDiceValue = 0;
     
     #region SetTerrainAtStart
-    private void CheckDiceForChangingHeight() 
-    {
-        foreach (DiceTerrain dice in diceTerrainlsit) 
-        {
-            if(dice.diceData.diceState == DiceState.Wall) SetDiceHeight(dice, wallHeightValue);
-            else if(dice.diceData.diceState == DiceState.Wall) SetDiceHeight(dice, holeHeightValue);
+    
+    /// <summary>
+    /// Change the height of the dice based on his specifics
+    /// </summary>
+    private void CheckDiceForChangingHeight() {
+        
+        if (SetRandomDiceValue) upperDiceValue = Random.Range(1, 6);
+        foreach (DiceTerrain dice in diceTerrainlsit) {
+            SetDiceHeight(dice, dice.transform.position.y + Random.Range(heightRandomness.x, heightRandomness.y));
+
+            if(GetDiceWithSameValue(upperDiceValue).Contains(dice) && (dice.diceData.diceState == DiceState.Walkable && dice.diceData.diceEffectState == DiceEffectState.None)) SetDiceHeight(dice, wallHeightValue);
         }
         
-        if(SetRandomDiceValue) upperDiceValue = Random.Range(1, 6);
-        foreach (DiceTerrain dice in GetDiceWithSameValue(upperDiceValue)) 
-        {
-            if (dice.diceData.diceState != DiceState.Walkable || dice.diceData.diceEffectState != DiceEffectState.None) continue;
-            SetDiceHeight(dice, wallHeightValue);
-        }
+        /*
+        foreach (DiceTerrain dice in diceTerrainlsit) {
+            switch (dice.diceData.diceState) {
+                case DiceState.Wall:
+                    SetDiceHeight(dice, wallHeightValue);
+                    break;
+                
+                case DiceState.Hole:
+                    SetDiceHeight(dice, holeHeightValue);
+                    break;
+            }
+        }*/
     }
 
     /// <summary>
@@ -43,6 +55,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     
     
     #region GetTerrain
+    
     /// <summary>
     /// Load all dice data
     /// </summary>
@@ -56,10 +69,12 @@ public class TerrainManager : Singleton<TerrainManager> {
         
         CheckDiceForChangingHeight();
     }
+    
     #endregion GetTerrain
     
     
     #region DiceTerrainHelper
+    
     /// <summary>
     /// Return a list of dice which get the same value as the parameter
     /// </summary>
@@ -72,5 +87,6 @@ public class TerrainManager : Singleton<TerrainManager> {
         }
         return diceValueList;
     }
+    
     #endregion DiceTerrainHelper
 }

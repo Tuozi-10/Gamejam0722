@@ -78,9 +78,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualLevelSize: {x: 2, y: 2}
   levelSizeGeneration: {x: 2, y: 2}
-  dicePrefab: {fileID: 3668501400095789435, guid: a8e05c1e4018d4643be69eaceb221eac, type: 3}
+  dicePrefab: {fileID: 2535107566833901645, guid: a32020cffa3fe0842abef5c4dbf1950f, type: 3}
   diceParent: {fileID: 685128969}
-  diceSize: 1.5
+  diceSize: 1.125
   loadLevelSO: {fileID: 11400000, guid: 4ac92166f2291e14da39cfe0971a377d, type: 2}
   folderPath: Assets/Levels/
   levelName: Test 01

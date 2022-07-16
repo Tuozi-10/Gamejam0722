@@ -23,16 +23,27 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
     [SerializeField] private string folderPath = "Assets/Levels";
     [SerializeField] private string levelName = "New Level";
 
-    protected override void Init() => LoadLevel(loadLevelSO, true);
+    private void Start() => LoadLevel(loadLevelSO, true);
 
     /// <summary>
     /// Load level data based on the scriptable object inside parameter
     /// </summary>
     /// <param name="level"></param>
     public void LoadLevel(LevelSO level, bool isInGame = false) {
-        GenerateNewLevel(loadLevelSO.TerrainSize, !isInGame);
-        
-        foreach (DiceTerrain dice in diceList) dice.diceData = loadLevelSO.DiceClass[diceList.IndexOf(dice)];
+        if (isInGame) 
+        {
+            foreach (DiceTerrain dice in diceList) 
+            {
+                Destroy(dice.gameObject);
+            }
+        }
+        GenerateNewLevel(loadLevelSO.TerrainSize);
+
+        foreach (DiceTerrain dice in diceList) 
+        {
+            dice.diceData = loadLevelSO.DiceClass[diceList.IndexOf(dice)];
+            dice.UpdateDiceValue();
+        }
         if (isInGame) TerrainManager.instance.StartTerrainCreation(level.TerrainSize, diceList);
     }
 
@@ -57,15 +68,14 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
     /// <summary>
     /// Generate a new level based on the size of the terrain
     /// </summary>
-    public void GenerateNewLevel(Vector2 custLevelSize, bool isInEditor = false) {
+    public void GenerateNewLevel(Vector2 custLevelSize) {
         actualLevelSize = custLevelSize;
         
         foreach (DiceTerrain dice in diceList) 
         {
             if (dice != null && dice.gameObject != null) 
             {
-                if(isInEditor) DestroyImmediate(dice.gameObject);
-                else Destroy(dice.gameObject);
+                DestroyImmediate(dice.gameObject);
             }
         }
         diceList.Clear();

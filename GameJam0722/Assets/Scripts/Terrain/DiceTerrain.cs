@@ -1,7 +1,26 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DiceTerrain : MonoBehaviour {
     public DiceClass diceData;
+
+    //CENTER // UP RIGHT // UP LEFT // BOTTOM RIGHT // BOTTOM LEFT
+    [SerializeField] private GameObject[] diceCubeGam = new GameObject[5];
+
+    public void UpdateDiceValue() {
+        return;
+        diceCubeGam[0].SetActive(diceData.diceValue % 2 == 1);
+        diceCubeGam[1].SetActive(diceData.diceValue >= 4);
+        diceCubeGam[2].SetActive(diceData.diceValue >= 2);
+        diceCubeGam[3].SetActive(diceData.diceValue >= 2);
+        diceCubeGam[4].SetActive(diceData.diceValue >= 4);
+    }
+    
+    /// <summary>
+    /// When changes are made to the variable
+    /// </summary>
+    private void OnValidate() => UpdateDiceValue();
 }
 
 [System.Serializable]

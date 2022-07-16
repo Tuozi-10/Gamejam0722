@@ -95,25 +95,25 @@ namespace Terrain
                 }
             
             else{
-                    
-                    if (toX < from[^1].posX && !array[from[^1].posX - 1, from[^1].posY])
+                    if (toY < from[^1].posY && !array[from[^1].posX, from[^1].posY - 1])
+                    {
+                        Node nextNode = new Node(from[^1].posX, from[^1].posY - 1, from[^1].weight + 1);
+                        from.Add(nextNode);
+                    }
+                   else  if (toX < from[^1].posX && !array[from[^1].posX - 1, from[^1].posY])
                     {
                         Node nextNode = new Node(from[^1].posX - 1, from[^1].posY, from[^1].weight + 1);
                         from.Add(nextNode);
                     }
-                    else if (toY < from[^1].posY && !array[from[^1].posX, from[^1].posY - 1])
+                   
+                    else if (toY > from[^1].posY && !array[from[^1].posX, from[^1].posY + 1])
                     {
-                        Node nextNode = new Node(from[^1].posX, from[^1].posY - 1, from[^1].weight + 1);
+                        Node nextNode = new Node(from[^1].posX, from[^1].posY + 1, from[^1].weight + 1);
                         from.Add(nextNode);
                     }
                     else if (toX > from[^1].posX && !array[from[^1].posX + 1, from[^1].posY])
                     {
                         Node nextNode = new Node(from[^1].posX + 1, from[^1].posY, from[^1].weight + 1);
-                        from.Add(nextNode);
-                    }
-                    else if (toY > from[^1].posY && !array[from[^1].posX, from[^1].posY + 1])
-                    {
-                        Node nextNode = new Node(from[^1].posX, from[^1].posY + 1, from[^1].weight + 1);
                         from.Add(nextNode);
                     }
         

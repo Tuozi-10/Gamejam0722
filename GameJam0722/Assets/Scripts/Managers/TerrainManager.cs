@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class TerrainManager : Singleton<TerrainManager> {
     
-    private DiceTerrain[,] diceTerrainlsit;
+    public DiceTerrain[,] diceTerrainlsit;
 
     [SerializeField] private Vector2 heightRandomness = new Vector2(-.25f,.25f);
     [SerializeField] private float wallHeightValue = 0;

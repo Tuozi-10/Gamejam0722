@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using Entities;
 using Terrain;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class MouseManager : Singleton<MouseManager> {
     [SerializeField] private LayerMask layerCheck;
     [SerializeField] private Transform player = null;
     [SerializeField] private float playerSpeed = 1;
-    [SerializeField] private float cursorHeight = .5f;
+    public float cursorHeight = .5f;
     [Space]
     [SerializeField] private Transform cubeUnderMouse = null;
     
@@ -19,6 +20,7 @@ public class MouseManager : Singleton<MouseManager> {
     [SerializeField] private SpriteRenderer m_cursorRenderer;
     [SerializeField] private Sprite[] m_cursorSprites;
     
+    private Character  character => Character.instance;
     
     private void Update()
     {
@@ -28,7 +30,7 @@ public class MouseManager : Singleton<MouseManager> {
 
     private void UpdateMouseDown()
     {
-        if (Input.GetMouseButtonDown(0) )
+        if (Input.GetMouseButtonDown(0) && character.canPlay)
         {
             cubeUnderMouse = Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) ? hit.collider.transform : null;
          
@@ -36,10 +38,15 @@ public class MouseManager : Singleton<MouseManager> {
             {
                 return;
             }
-
-            player.DOKill();
-            targetPosition.Add(new Vector3(cubeUnderMouse.position.x, cubeUnderMouse.position.y + cursorHeight * 2, cubeUnderMouse.position.z));
-            ChangeTarget();
+            DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
+            var array = TerrainManager.instance.GetAvailableArray();
+            
+            if (!array[dice.pos.x, dice.pos.y])
+            {
+                return;
+            }
+            
+            Character.instance.SetPath(Pathfinder.GetPath(character.pos.x, character.pos.y, dice.pos.x, dice.pos.y, array));
         }
     }
     
@@ -58,13 +65,6 @@ public class MouseManager : Singleton<MouseManager> {
             m_cursorRenderer.sprite = array[dice.pos.x, dice.pos.y] ? m_cursorSprites[0]:m_cursorSprites [1];
             cubePosition.transform.DOMove(new Vector3(cubeUnderMouse.position.x, cubeUnderMouse.position.y + cursorHeight, cubeUnderMouse.position.z), 0.25f);
         }
-    }
-
-    private void ChangeTarget()
-    {
-        if (targetPosition.Count == 0) return;
-        player.DOLocalMove(targetPosition[0], playerSpeed).OnComplete(ChangeTarget);
-        targetPosition.RemoveAt(0);
     }
 
 }

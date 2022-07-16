@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 namespace Managers
@@ -10,6 +11,9 @@ namespace Managers
         public static UIManager instance;
 
         [SerializeField] private CanvasGroup m_canvasTransition;
+        [SerializeField] private CanvasGroup m_cvgTurn;
+        [SerializeField] private TMP_Text m_textTurn;
+        [SerializeField] private float m_durationTextTurn = 1.25f;
         
         private void Awake()
         {
@@ -45,6 +49,15 @@ namespace Managers
             });
 
             m_canvasTransition.DOFade(0, 0.5f).SetDelay(initialDelay + 0.25f);
+        }
+        
+        public void AskTurn(string text)
+        {
+            m_cvgTurn.DOKill();
+
+            m_textTurn.text = text;
+            m_cvgTurn.DOFade(1, 0.25f);
+            m_cvgTurn.DOFade(0, 0.3f).SetDelay( m_durationTextTurn);
         }
         
     }

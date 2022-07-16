@@ -14,7 +14,7 @@ namespace Entities
 
             public Vector2Int pos;
 
-            public const float durationMove = 0.75f;
+            [SerializeField] float durationMove = 0.75f;
             
             public void Hit(int hitValue)
             {
@@ -40,17 +40,18 @@ namespace Entities
             {
                  StartCoroutine(GoThroughPath(path));
             }
-
-            private readonly WaitForSeconds waiter = new WaitForSeconds(durationMove+0.05f);
             
             private IEnumerator GoThroughPath(List<Node> path)
             {
+                  // Remove departure cell
+                  path.RemoveAt(0);
+                  
                   while (path.Count > 0)
                   {
                         transform.DOMove(GetPosFromCoord(path[0].posX, path[0].posY), durationMove);
                         pos = new Vector2Int(path[0].posX, path[0].posY);
                         path.RemoveAt(0);
-                        yield return waiter;
+                        yield return new WaitForSeconds(durationMove+0.05f);
                   }
                   LevelManager.instance.EndTurn();
             }

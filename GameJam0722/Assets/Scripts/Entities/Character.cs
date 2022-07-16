@@ -1,4 +1,6 @@
-﻿using Managers;
+﻿using System.Collections.Generic;
+using Managers;
+using Terrain;
 
 namespace Entities
 {
@@ -18,6 +20,12 @@ namespace Entities
 
             DontDestroyOnLoad(gameObject);
             instance = this;
+        }
+
+        public override void SetPath(List<Pathfinder.Node> path)
+        {
+            base.SetPath(path);
+            canPlay = false;
         }
 
         public override void StartTurn()

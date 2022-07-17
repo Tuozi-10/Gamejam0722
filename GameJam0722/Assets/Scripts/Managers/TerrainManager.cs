@@ -36,6 +36,8 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private int holeDiceValue = 0;
 
     public Transform Collectible;
+    public Transform End;
+    public Transform Spawn;
     
     private int actualLoopNumber;
     private bool isUpdatingLevel = false;
@@ -228,6 +230,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     private IEnumerator SpawnPlayer() {
         enemyEntity.Clear();
         Character.instance.pos = GetStartDice() != null ? GetStartDice().pos : new Vector2Int(0, 0);
+        Character.instance.transform.DOKill();
         Character.instance.transform.position = BaseAI.GetPosFromCoord(Character.instance.pos.x, Character.instance.pos.y);
         Character.instance.transform.localScale = new Vector3(0,0,0);
         Character.instance.transform.DOScale(1.25f, entityAppartionDuration - .15f).OnComplete(() => Character.instance.transform.DOScale(1f,.15f));

@@ -7422,7 +7422,7 @@ PrefabInstance:
     - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
       propertyPath: levelList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 8a47d408ed3cc344bbc5cc63e0eb1c04, type: 2}
+      objectReference: {fileID: 11400000, guid: 0bd5171ecd988dc489e4b301971716f9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
 --- !u!4 &3223514754759693205 stripped
@@ -7555,6 +7555,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5485276713814388172, guid: 9dcd14202404e7843aea1c8078ed9f5d, type: 3}
+      propertyPath: End
+      value: 
+      objectReference: {fileID: 2114149321997140621, guid: 99d7676fb937112449755b44222cfb70, type: 3}
+    - target: {fileID: 5485276713814388172, guid: 9dcd14202404e7843aea1c8078ed9f5d, type: 3}
+      propertyPath: Spawn
+      value: 
+      objectReference: {fileID: 2967069687983205270, guid: 05a7f4d08c1781a40a9da923dfed67fc, type: 3}
     - target: {fileID: 5485276713814388173, guid: 9dcd14202404e7843aea1c8078ed9f5d, type: 3}
       propertyPath: m_RootOrder
       value: 1

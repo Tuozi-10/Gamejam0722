@@ -37,6 +37,18 @@ public class DiceTerrain : MonoBehaviour {
             collectible = Instantiate(TerrainManager.instance.Collectible, pivot).gameObject;
             collectible.transform.localPosition = new Vector3(0, 0.78f, 0);
         }
+        
+        if (diceData.diceEffectState == DiceEffectState.End)
+        {
+            var end = Instantiate(TerrainManager.instance.End, pivot).gameObject;
+            end.transform.localPosition = new Vector3(0, 0.4f, 0);
+        }
+        
+        if (diceData.diceEffectState == DiceEffectState.Spawner)
+        {
+            var Spawner = Instantiate(TerrainManager.instance.Spawn, pivot).gameObject;
+            Spawner.transform.localPosition = new Vector3(0, 0.55f, 0);
+        }
 
     }
 

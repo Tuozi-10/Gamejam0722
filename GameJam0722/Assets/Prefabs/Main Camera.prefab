@@ -133,5 +133,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speedZoom: 1.5
   m_durationZoom: 0.35
-  m_minZoom: 6.1
+  m_minZoom: 9.1
   m_maxZoom: 3.1

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using Managers;
 using Terrain;
+using UnityEngine;
 
 namespace Entities
 {
@@ -51,7 +53,15 @@ namespace Entities
                 if (cell.pos == pos && cell.diceData.diceEffectState == DiceEffectState.Collectible)
                 {
                     cell.diceData.diceEffectState = DiceEffectState.None;
-                    Destroy(cell.collectible);
+
+                    cell.collectible.transform.DOKill();
+                    cell.collectible.transform.DOScale(1.25f, 0.35f);
+                    cell.collectible.transform.DOScale(0f, 0.35f).SetDelay(0.35f);
+                    cell.collectible.transform.DOLocalMoveY(3f, 0.55f);
+                    cell.collectible.transform.DORotate(new Vector3(0, 480, 0), 0.7f, RotateMode.FastBeyond360);
+                    
+                    Destroy(cell.collectible, 0.95f);
+                    
                     LevelManager.instance.collectibleCollected++;
                 }
             }

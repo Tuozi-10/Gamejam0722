@@ -54,7 +54,7 @@ MonoBehaviour:
     dicePosX: 1
     dicePosY: 2
     diceState: 0
-    diceEffectState: 0
+    diceEffectState: 6
   - diceValue: 0
     dicePosX: 1
     dicePosY: 3

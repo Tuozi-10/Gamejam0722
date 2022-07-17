@@ -55,6 +55,8 @@ public class TerrainManager : Singleton<TerrainManager> {
     public IEnumerator InitTerrainCreation(Vector2 levelSize, List<DiceTerrain> diceList) 
     {
         isUpdatingLevel = true;
+        actualLoopNumber = 0;
+        UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
         
         diceTerrainlsit = new DiceTerrain[(int) levelSize.x, (int) levelSize.y];
         foreach (DiceTerrain dice in diceList) {

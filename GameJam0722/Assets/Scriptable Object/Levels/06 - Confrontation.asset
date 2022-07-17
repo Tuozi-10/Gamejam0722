@@ -259,4 +259,4 @@ MonoBehaviour:
     dicePosX: 6
     dicePosY: 6
     diceState: 0
-    diceEffectState: 0
+    diceEffectState: 2

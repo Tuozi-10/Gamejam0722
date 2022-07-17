@@ -54,6 +54,11 @@ public class MouseManager : Singleton<MouseManager> {
 
                 if (dice is null) return;
 
+                if (DiceTerrain.playerClickLeft is not null)
+                {
+                    Destroy(DiceTerrain.playerClickLeft.gameObject);
+                }
+                
                 if (!array[dice.pos.x, dice.pos.y])
                 {
                     return;
@@ -74,6 +79,11 @@ public class MouseManager : Singleton<MouseManager> {
                 
                 DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
                 if (dice is null) return;
+
+                if (DiceTerrain.playerClickRight is not null)
+                {
+                    Destroy(DiceTerrain.playerClickRight.gameObject);
+                }
                 
                 character.canPlay = false;
                 

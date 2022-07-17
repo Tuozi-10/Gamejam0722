@@ -18,6 +18,9 @@ public class DiceTerrain : MonoBehaviour {
 
     public GameObject collectible;
 
+    public static GameObject playerClickLeft;
+    public static GameObject playerClickRight;
+    
     /// <summary>
     /// Initialize dice data value
     /// </summary>
@@ -54,12 +57,14 @@ public class DiceTerrain : MonoBehaviour {
         {
             var click = Instantiate(TerrainManager.instance.PlayerClick, pivot).gameObject;
             click.transform.localPosition = new Vector3(0, 0, 0);
+            playerClickLeft = click;
         }  
         
         if (diceData.diceEffectState == DiceEffectState.PlayerClickRight)
         {
             var click = Instantiate(TerrainManager.instance.PlayerClickRight, pivot).gameObject;
             click.transform.localPosition = new Vector3(0, 0, 0);
+            playerClickRight = click;
         }
     }
 

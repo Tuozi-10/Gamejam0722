@@ -159,6 +159,8 @@ public class TerrainManager : Singleton<TerrainManager> {
             if (GetDiceWithSameValue(randomWallDice).Contains(dice) ) 
             {
                 SetDiceHeight(dice, wallHeightValue + dice.heightRandomness, moveHeightDuration);
+                if(!firstLaunch) changeEntityHeight(dice, DiceState.Wall);
+                
                 dice.diceData.diceState = DiceState.Wall;
             }
                     
@@ -166,17 +168,68 @@ public class TerrainManager : Singleton<TerrainManager> {
             else if (GetDiceWithSameValue(randomHoleDice).Contains(dice) && (dice.diceData.diceEffectState == DiceEffectState.None)) 
             {
                 SetDiceHeight(dice, holeHeightValue, moveHeightDuration);
+                if(!firstLaunch) changeEntityHeight(dice, DiceState.Hole);
+                
                 dice.diceData.diceState = DiceState.Hole;
             }
             //CREATE FLOOR
             else {
                 SetDiceHeight(dice, dice.heightRandomness, moveHeightDuration);
+                if(!firstLaunch) changeEntityHeight(dice, DiceState.Walkable);
+                
                 dice.diceData.diceState = DiceState.Walkable;
             }
-            
-            if(!firstLaunch) CheckEntityDice(dice);
         }
     }
+    
+    /// <summary>
+    /// Change the height of an entity on the cube which move in Y
+    /// </summary>
+    private void changeEntityHeight(DiceTerrain dice, DiceState newState) {
+        for (int i = LevelManager.instance.Entities.Count - 1; i >= 0; i--) {
+            //Check if entity is on the dice
+            AbstractEntity ent = LevelManager.instance.Entities[i];
+            if (new Vector2Int(ent.pos.x, ent.pos.y) != dice.pos) continue;
+            
+            ent.transform.DOKill();
+            switch (newState) {
+                case DiceState.Wall:
+                    if(dice.diceData.diceState == DiceState.Wall) continue;
+                    ent.transform.DOLocalMove(GetNewEntityPos(ent.transform, dice, wallHeightValue + dice.heightRandomness), moveHeightDuration);
+                    break;
+            }
+        }
+        
+        
+        for (var i = LevelManager.instance.Entities.Count - 1; i >= 0; i--) {
+            AbstractEntity ent = LevelManager.instance.Entities[i];
+            if (new Vector2Int(ent.pos.x, ent.pos.y) != dice.pos) continue;
+            
+            ent.transform.DOKill();
+            switch (dice.diceData.diceState) {
+                case DiceState.Hole:{
+                    ent.transform.DOLocalMove(new Vector3(ent.transform.position.x, -10, ent.transform.position.z), fallDuration);
+                    if (ent.pos == Character.instance.pos) StartCoroutine(StartPlayerDeath());
+                    else
+                    {
+                        if(ent is BaseAI ia) StartCoroutine(ia.TryRespawn(AIFallBeforeDeath));
+                    }
+                    break;
+                }
+                case DiceState.Wall:
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Get a new position for the cube
+    /// </summary>
+    /// <param name="ent"></param>
+    /// <param name="dice"></param>
+    /// <param name="addHeightValue"></param>
+    /// <returns></returns>
+    private Vector3 GetNewEntityPos(Transform ent, DiceTerrain dice, float addHeightValue) => new (ent.transform.position.x, BaseAI.GetPosFromCoord(dice.diceData.dicePosX, dice.diceData.dicePosY).y + addHeightValue, ent.transform.position.z);
 
     /// <summary>
     /// Spawn the player
@@ -207,32 +260,6 @@ public class TerrainManager : Singleton<TerrainManager> {
         SetImpactAt(dice.pos.x, dice.pos.y, 4, .25f);
     }
 
-    /// <summary>
-    /// Check if an entity is on the dice
-    /// </summary>
-    private void CheckEntityDice(DiceTerrain dice) {
-        for (var i = LevelManager.instance.Entities.Count - 1; i >= 0; i--) {
-            AbstractEntity ent = LevelManager.instance.Entities[i];
-            if (new Vector2Int(ent.pos.x, ent.pos.y) != dice.pos) continue;
-            
-            ent.transform.DOKill();
-            switch (dice.diceData.diceState) {
-                case DiceState.Hole:{
-                    ent.transform.DOLocalMove(new Vector3(ent.transform.position.x, -10, ent.transform.position.z), fallDuration);
-                    if (ent.pos == Character.instance.pos) StartCoroutine(StartPlayerDeath());
-                    else
-                    {
-                       if(ent is BaseAI ia) StartCoroutine(ia.TryRespawn(AIFallBeforeDeath));
-                    }
-                    break;
-                }
-                case DiceState.Wall:
-                    ent.transform.DOLocalMove(new Vector3(ent.transform.position.x,  BaseAI.GetPosFromCoord(dice.diceData.dicePosX, dice.diceData.dicePosY).y + wallHeightValue + dice.heightRandomness, ent.transform.position.z), moveHeightDuration);
-                    break;
-            }
-        }
-    }
-    
     /// <summary>
     /// Start the death of the player
     /// </summary>

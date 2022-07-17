@@ -35,6 +35,8 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private int wallDiceValue = 0;
     [SerializeField] private int holeDiceValue = 0;
 
+    [SerializeField] private float m_durationPreviewDice = 2f;
+    
     public Transform Collectible;
     public Transform End;
     public Transform Spawn;
@@ -75,10 +77,12 @@ public class TerrainManager : Singleton<TerrainManager> {
             
         if(hasEnemy) yield return new WaitForSeconds(entityAppartionDuration + .5f);
 
+        UIManager.instance.ScaleUpBottom();
+        
         if (Level.CreateLevel(LevelManager.instance.GetActivScene()).useRandom) {
             for (int i = 0; i < 8; i++) {
                 UIManager.instance.SetRandomDiceUIColor();
-                yield return new WaitForSeconds(.05f);
+                yield return new WaitForSeconds(.075f);
             }
         
             randomWallDice = setRandomDiceValue ? Random.Range(1, 7) : wallDiceValue;
@@ -88,8 +92,11 @@ public class TerrainManager : Singleton<TerrainManager> {
             } while (randomHoleDice == randomWallDice);
         
             UIManager.instance.SetDiceUIColor(randomWallDice, randomHoleDice);
-
+            
+            StartCoroutine(PlayAnimPreviewDice());
+            
             yield return new WaitForSeconds(1f);
+            UIManager.instance.ScaleDownBottom();
         }
         
         actualLoopNumber = 0;
@@ -139,11 +146,13 @@ public class TerrainManager : Singleton<TerrainManager> {
     private IEnumerator ChangeHeightEvent() 
     {
         CreateWallAndHole();
-        yield return new WaitForSeconds(moveHeightDuration + 0.25f);
+        yield return new WaitForSeconds(moveHeightDuration + 0.125f);
+        
+        UIManager.instance.ScaleUpBottom();
         
         for (int i = 0; i < 8; i++) {
             UIManager.instance.SetRandomDiceUIColor();
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(.075f);
         }
         
         randomWallDice = setRandomDiceValue ? Random.Range(1, 7) : wallDiceValue;
@@ -154,9 +163,23 @@ public class TerrainManager : Singleton<TerrainManager> {
         
         UIManager.instance.SetDiceUIColor(randomWallDice, randomHoleDice);
 
+        StartCoroutine(PlayAnimPreviewDice());
+        
         yield return new WaitForSeconds(1f);
+        UIManager.instance.ScaleDownBottom();
 
         StartNewTurn(false);
+    }
+
+    IEnumerator PlayAnimPreviewDice()
+    {
+        UIManager.instance.FadeDice(0);
+        UIManager.instance.FadeDice(1);
+        
+        yield return new WaitForSeconds(m_durationPreviewDice);
+        
+        UIManager.instance.UnFadeDice(0);
+        UIManager.instance.UnFadeDice(1);
     }
 
     /// <summary>

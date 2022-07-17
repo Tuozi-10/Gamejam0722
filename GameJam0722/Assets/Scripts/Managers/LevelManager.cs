@@ -43,6 +43,7 @@ namespace Managers
             CleanLevel();
             StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex-1]));
             isLoadingNewLevel = true;
+            Character.instance.transform.parent = null;
             Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
 
             collectibleCollected = 0;

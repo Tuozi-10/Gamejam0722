@@ -31,6 +31,8 @@ namespace Managers
         [Space, SerializeField] private float m_fadeMaterialCubeSpeed = 0.5f;
 
         [SerializeField] private RectTransform menu;
+        [SerializeField] private RectTransform bottom;
+        
         
         public void Victory()
         {
@@ -114,7 +116,8 @@ namespace Managers
         /// switch between two colors for tiles
         /// </summary>
         /// <param name="id"></param>
-        private void FadeColorAnimation(int id, bool fade) {
+        private void FadeColorAnimation(int id, bool fade)
+        {
             List<DiceTerrain> diceTerrainList = new List<DiceTerrain>(TerrainManager.instance.GetDiceWithSameValue(id == 0? TerrainManager.instance.RandomWallDice : TerrainManager.instance.RandomHoleDice));
             
             if (diceTerrainList.Count == 0) return;
@@ -147,5 +150,19 @@ namespace Managers
             }
         }
 
+        public void ScaleUpBottom()
+        {
+            bottom.DOKill();
+            bottom.DOAnchorPosY(40, 0.35f);
+            bottom.DOScale(1.3f, 0.35f);
+        }
+
+        public void ScaleDownBottom()
+        {
+            bottom.DOKill();
+            bottom.DOAnchorPosY(0, 0.35f);
+            bottom.DOScale(1f, 0.35f);
+        }
+        
     }
 }

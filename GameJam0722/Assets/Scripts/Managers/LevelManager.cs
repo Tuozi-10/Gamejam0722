@@ -21,6 +21,8 @@ namespace Managers
         private bool isLoadingNewLevel = false;
         public bool IsLoadingLevel => isLoadingNewLevel;
 
+        public int collectibleCollected;
+        
         private void Start() {
             GenerateNewLevel();
             UIManager.instance.StartNewIsland();
@@ -36,11 +38,14 @@ namespace Managers
         /// <summary>
         /// Reload the same level
         /// </summary>
-        public void ReloadLevel() {
+        public void ReloadLevel() 
+        {
             CleanLevel();
             StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex-1]));
             isLoadingNewLevel = true;
             Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
+
+            collectibleCollected = 0;
         }
 
         /// <summary>
@@ -53,6 +58,7 @@ namespace Managers
             isLoadingNewLevel = true;
             Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
             levelIndex++;
+            collectibleCollected = 0;
         }
         #endregion Level Loader
 

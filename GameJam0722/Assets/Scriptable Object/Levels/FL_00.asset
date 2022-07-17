@@ -103,7 +103,7 @@ MonoBehaviour:
     dicePosX: 3
     dicePosY: 2
     diceState: 0
-    diceEffectState: 0
+    diceEffectState: 5
   - diceValue: 0
     dicePosX: 3
     dicePosY: 3

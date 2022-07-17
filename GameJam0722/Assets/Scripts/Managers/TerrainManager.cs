@@ -34,6 +34,8 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private int wallDiceValue = 0;
     [SerializeField] private int holeDiceValue = 0;
 
+    public Transform Collectible;
+    
     private int actualLoopNumber;
 
     /// <summary>

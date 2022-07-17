@@ -62,7 +62,7 @@ public class MouseManager : Singleton<MouseManager> {
                 Character.instance.SetPath(Pathfinder.GetPath(character.pos.x, character.pos.y, dice.pos.x, dice.pos.y, array));
             }
             
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && LevelManager.instance.Entities.Count > 1)
             {      
                 cubeUnderMouse = Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition),
                         out RaycastHit hit, 500, layerCheck) ? hit.collider.transform : null;

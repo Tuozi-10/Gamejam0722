@@ -123,8 +123,16 @@ namespace Managers
             if (diceTerrainList.Count == 0) return;
             
             if (fade) {
-                fadeMat = new Material(diceColorData.DiceMaterialData[diceTerrainList[0].diceData.diceValue]);
-                fadeMat.DOColor(diceColorData.DiceColorLightData[diceTerrainList[0].diceData.diceValue - 1], m_fadeMaterialCubeSpeed).SetLoops(-1, LoopType.Yoyo);
+                try
+                {
+
+                    fadeMat = new Material(diceColorData.DiceMaterialData[diceTerrainList[0].diceData.diceValue]);
+                    fadeMat.DOColor(diceColorData.DiceColorLightData[diceTerrainList[0].diceData.diceValue - 1],
+                        m_fadeMaterialCubeSpeed).SetLoops(-1, LoopType.Yoyo);
+                }
+                catch
+                {           }
+                
             }
             else fadeMat.DOKill();
 

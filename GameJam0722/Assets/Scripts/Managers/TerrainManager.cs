@@ -399,6 +399,7 @@ public class TerrainManager : Singleton<TerrainManager> {
 
     public void SetImpactAt(int x, int y, int radius, float intensity)
     {
+        MainManager.PlayFootStep();
         foreach (var dice in diceTerrainlsit)
         {
             var dist = Vector2Int.Distance(dice.pos, new Vector2Int(x, y));

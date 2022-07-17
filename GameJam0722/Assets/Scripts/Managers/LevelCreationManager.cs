@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Managers;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class LevelCreationManager : Singleton<LevelCreationManager> {
@@ -124,6 +126,7 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
     /// Save the actual state of the level in a new SO
     /// </summary>
     public void SaveActualLevel() {
+        #if UNITY_EDITOR
         List<DiceClass> diceDataList = new List<DiceClass>();
         foreach (DiceTerrain dice in diceParentEditor.GetComponentsInChildren<DiceTerrain>()) 
         {
@@ -140,5 +143,6 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
         newLevelSO.SaveLevelData(actualLevelSize, diceDataList);
         EditorUtility.SetDirty(newLevelSO);
         AssetDatabase.Refresh();
+        #endif
     }
 }

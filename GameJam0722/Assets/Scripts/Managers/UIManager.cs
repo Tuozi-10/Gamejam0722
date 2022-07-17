@@ -29,6 +29,8 @@ namespace Managers
         [SerializeField] private CanvasGroup cvgTitle;
         [SerializeField] private TMP_Text txtTitle;
         [Space, SerializeField] private float m_fadeMaterialCubeSpeed = 0.5f;
+
+        [SerializeField] private RectTransform menu;
         
         public void Victory()
         {
@@ -124,5 +126,20 @@ namespace Managers
 
         public void FadeDice(int id) => FadeColorAnimation(id, true);
         public void UnFadeDice(int id) => FadeColorAnimation(id, false);
+
+        public void DisplayMenu()
+        {
+            if (menu.anchoredPosition.x < 350)
+            {
+                menu.DOKill();
+                menu.DOAnchorPosX(500, 0.35f).SetEase(Ease.OutBack);
+            }
+            else
+            {
+                menu.DOKill();
+                menu.DOAnchorPosX(0, 0.35f).SetEase(Ease.InBack);   
+            }
+        }
+
     }
 }

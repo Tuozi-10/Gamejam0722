@@ -8,9 +8,12 @@ namespace Managers
     public class MainManager : Singleton<MainManager>
     {
         [SerializeField] private float durationLoading = 1f;
+        [SerializeField] private AudioSource m_footstep;
         
         private const string MainSceneName = "MainScene";
 
+        public static void PlayFootStep() => instance.m_footstep.Play();
+        
         private void Start()
         {
            // CACA();

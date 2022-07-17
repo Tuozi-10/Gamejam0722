@@ -93,3 +93,5 @@ MonoBehaviour:
   wallDiceValue: 0
   holeDiceValue: 0
   Collectible: {fileID: 7091326007118492171, guid: a08610e55cd76764c8c4a41b3d7c3a53, type: 3}
+  End: {fileID: 2114149321997140621, guid: 99d7676fb937112449755b44222cfb70, type: 3}
+  Spawn: {fileID: 2967069687983205270, guid: 05a7f4d08c1781a40a9da923dfed67fc, type: 3}

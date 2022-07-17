@@ -57,6 +57,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 9138512670895297122}
   pivot: {fileID: 8901834728442424410}
+  collectible: {fileID: 0}
 --- !u!65 &6049187263689241826
 BoxCollider:
   m_ObjectHideFlags: 0

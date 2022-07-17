@@ -44,6 +44,17 @@ namespace Entities
             {
                 LevelManager.instance.Victory();
             }
+
+            var cells = TerrainManager.instance.diceTerrainlsit;
+            foreach (var cell in cells)
+            {
+                if (cell.pos == pos && cell.diceData.diceEffectState == DiceEffectState.Collectible)
+                {
+                    cell.diceData.diceEffectState = DiceEffectState.None;
+                    Destroy(cell.collectible);
+                    LevelManager.instance.collectibleCollected++;
+                }
+            }
             
         }
     }

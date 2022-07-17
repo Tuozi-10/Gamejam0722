@@ -63,12 +63,12 @@ namespace Managers
         }
         
         public void LoadLevel(int id)
-        {
+        {  
+            levelIndex = id;
             CleanLevel();
             StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex]));
             isLoadingNewLevel = true;
             Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
-            levelIndex = id;
             collectibleCollected = 0;
         }
         

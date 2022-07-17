@@ -16,6 +16,7 @@ public class TerrainManager : Singleton<TerrainManager> {
 
     [Header("--- HEIGHT VALUE")]
     [SerializeField] private Vector2 heightRandomness = new Vector2(-.25f,.25f);
+    [SerializeField] private float playerAddHeight = 0;
     [SerializeField] private float wallHeightValue = 0;
     [SerializeField] private float holeHeightValue = 0;
     [SerializeField] private float beachHeightValue = 0;
@@ -95,7 +96,6 @@ public class TerrainManager : Singleton<TerrainManager> {
         
         if (actualLoopNumber == numberOfTurnBeforeChange && Level.CreateLevel(LevelManager.instance.GetActivScene()).useRandom)
         {
-            Debug.Log("Make changes height");
             StartCoroutine(ChangeHeightEvent(firstLaunch));
             actualLoopNumber = 0;
             UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
@@ -195,28 +195,19 @@ public class TerrainManager : Singleton<TerrainManager> {
             switch (newState) {
                 case DiceState.Wall:
                     if(dice.diceData.diceState == DiceState.Wall) continue;
-                    ent.transform.DOLocalMove(GetNewEntityPos(ent.transform, dice, wallHeightValue + dice.heightRandomness), moveHeightDuration);
+                    ent.transform.DOLocalMove(GetNewEntityPos(ent.transform, dice, wallHeightValue + dice.heightRandomness + playerAddHeight), moveHeightDuration);
                     break;
-            }
-        }
-        
-        
-        for (var i = LevelManager.instance.Entities.Count - 1; i >= 0; i--) {
-            AbstractEntity ent = LevelManager.instance.Entities[i];
-            if (new Vector2Int(ent.pos.x, ent.pos.y) != dice.pos) continue;
-            
-            ent.transform.DOKill();
-            switch (dice.diceData.diceState) {
-                case DiceState.Hole:{
+                
+                case DiceState.Hole:
                     ent.transform.DOLocalMove(new Vector3(ent.transform.position.x, -10, ent.transform.position.z), fallDuration);
+                    
                     if (ent.pos == Character.instance.pos) StartCoroutine(StartPlayerDeath());
-                    else
-                    {
-                        if(ent is BaseAI ia) StartCoroutine(ia.TryRespawn(AIFallBeforeDeath));
-                    }
+                    else if(ent is BaseAI ia) StartCoroutine(ia.TryRespawn(AIFallBeforeDeath));
                     break;
-                }
-                case DiceState.Wall:
+                
+                case DiceState.Walkable:
+                    if (dice.diceData.diceState == DiceState.Walkable) continue;
+                    ent.transform.DOLocalMove(GetNewEntityPos(ent.transform, dice, dice.heightRandomness + playerAddHeight), moveHeightDuration);
                     break;
             }
         }
@@ -229,7 +220,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// <param name="dice"></param>
     /// <param name="addHeightValue"></param>
     /// <returns></returns>
-    private Vector3 GetNewEntityPos(Transform ent, DiceTerrain dice, float addHeightValue) => new (ent.transform.position.x, BaseAI.GetPosFromCoord(dice.diceData.dicePosX, dice.diceData.dicePosY).y + addHeightValue, ent.transform.position.z);
+    private Vector3 GetNewEntityPos(Transform ent, DiceTerrain dice, float heightValue) => new (ent.transform.position.x, heightValue, ent.transform.position.z);
 
     /// <summary>
     /// Spawn the player

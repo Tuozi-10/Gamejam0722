@@ -187,7 +187,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// </summary>
     private void CreateWallAndHole() {
         foreach (DiceTerrain dice in diceTerrainlsit) {
-            if (dice.diceData.diceState is DiceState.ForceHole or DiceState.ForceWall) continue;
+            if (dice.diceData.diceState is DiceState.ForceHole or DiceState.ForceWall or DiceState.ForceBeach) continue;
             
             //CREATE WALL
             if (GetDiceWithSameValue(randomWallDice).Contains(dice) ) 

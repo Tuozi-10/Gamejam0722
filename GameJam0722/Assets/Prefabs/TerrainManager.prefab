@@ -80,12 +80,12 @@ MonoBehaviour:
   enemyParent: {fileID: 2099470774}
   enemyEntity: []
   heightRandomness: {x: 0, y: 0}
+  playerAddHeight: 1
   wallHeightValue: 0.5
   holeHeightValue: -5
   beachHeightValue: -1
   moveHeightDuration: 0.75
   entityAppartionDuration: 1.5
-  playerMoveDuration: 1.5
   fallDuration: 4
   AIFallBeforeDeath: 0.75
   numberOfTurnBeforeChange: 3

@@ -100,6 +100,9 @@ namespace Managers
         /// <param name="id"></param>
         private void FadeColorAnimation(int id, bool fade) {
             List<DiceTerrain> diceTerrainList = new List<DiceTerrain>(TerrainManager.instance.GetDiceWithSameValue(id == 0? TerrainManager.instance.RandomWallDice : TerrainManager.instance.RandomHoleDice));
+            
+            if (diceTerrainList.Count == 0) return;
+            
             if (fade) {
                 fadeMat = new Material(diceColorData.DiceMaterialData[diceTerrainList[0].diceData.diceValue]);
                 fadeMat.DOColor(diceColorData.DiceColorLightData[diceTerrainList[0].diceData.diceValue - 1], 1.25f).SetLoops(-1, LoopType.Yoyo);

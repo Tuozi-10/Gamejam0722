@@ -61,6 +61,17 @@ namespace Managers
             levelIndex++;
             collectibleCollected = 0;
         }
+        
+        public void LoadLevel(int id)
+        {
+            CleanLevel();
+            StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex]));
+            isLoadingNewLevel = true;
+            Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
+            levelIndex = id;
+            collectibleCollected = 0;
+        }
+        
         #endregion Level Loader
 
         public void CleanLevel()
@@ -165,7 +176,7 @@ namespace Managers
 
         #endregion
 
-        public LevelSO GetActivScene() => levelList[levelIndex - 1];
+        public LevelSO GetActivScene() => levelIndex == 0 ? levelList[0] : levelList[levelIndex - 1];
 
     }
 }

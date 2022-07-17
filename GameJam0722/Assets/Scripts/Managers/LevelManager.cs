@@ -28,12 +28,16 @@ namespace Managers
             GenerateNewLevel();
         }
 
+        #if UNITY_EDITOR
+        
         private void Update() {
             if (Input.GetKeyDown(KeyCode.LeftAlt)) {
                 LoadNextLevel();
             }
         }
 
+        #endif
+        
         #region Level Loader
         /// <summary>
         /// Reload the same level

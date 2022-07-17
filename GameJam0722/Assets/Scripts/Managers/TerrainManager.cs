@@ -204,6 +204,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// <returns></returns>
     private IEnumerator StartPlayerDeath() {
         yield return new WaitForSeconds(fallDuration/2);
+        UIManager.instance.Defeat();
         LevelManager.instance.ReloadLevel();
     }
     
@@ -269,7 +270,14 @@ public class TerrainManager : Singleton<TerrainManager> {
             for (int j = 0; j < diceTerrainlsit.GetLength(1); j++)
             {
                 ground[i, j] = diceTerrainlsit[i, j].diceData.diceState == DiceState.Walkable;
-                // TODO CHECK ENEMY PRESENCE
+
+                if(LevelManager.instance is null || LevelManager.instance.Entities is null) continue;
+                foreach (var entity in LevelManager.instance.Entities)
+                {
+                    if(entity is Character) continue;
+                    if (entity.pos.x == i && entity.pos.y == j)
+                        ground[i, j] = false;
+                }
             }    
         }
 

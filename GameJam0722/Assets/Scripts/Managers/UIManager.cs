@@ -24,14 +24,24 @@ namespace Managers
         [SerializeField] private RectTransform downTerrainParent = null;
         [SerializeField] private DiceTerrainMaterialSO diceColorData = null;
         private Material fadeMat;
+        [Space]
+        [SerializeField] private CanvasGroup cvgTitle;
+        [SerializeField] private TMP_Text txtTitle;
         public void Victory()
         {
-            
+            cvgTitle.DOKill();
+            cvgTitle.DOFade(1, 0.35f);
+            cvgTitle.DOFade(0, 0.35f).SetDelay(2f);
+            txtTitle.text = "Victoire!";
         }
 
         public void Defeat()
         {
-            
+            cvgTitle.DOKill();
+            cvgTitle.DOFade(1, 0.35f);
+            cvgTitle.DOFade(0, 0.35f).SetDelay(2f);
+            txtTitle.text = "Défaite...";
+
         }
 
         /// <summary>

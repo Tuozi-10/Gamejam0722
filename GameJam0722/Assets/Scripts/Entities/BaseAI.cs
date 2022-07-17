@@ -61,6 +61,7 @@ namespace Entities
         /// <returns></returns>
         private IEnumerator throwPlayer() {
             yield return new WaitForSeconds(2);
+            Character.instance.transform.parent = null;
             transform.DOLocalMove(-transform.forward * 15, 1.5f);
             LevelManager.instance.ReloadLevel();
             LevelManager.instance.Defeat();

@@ -115,7 +115,7 @@ namespace Managers
         /// </summary>
         public void EndTurn() {
             if (isLoadingNewLevel) return;
-            if(m_currentEntityIndex == m_entities.Count - 1) StartCoroutine(TerrainManager.instance.ChangeHeightEvent());
+            if(m_currentEntityIndex == m_entities.Count - 1) TerrainManager.instance.CheckIfChange();
             else GetNextEntity()?.StartTurn();
         }
         

@@ -27,11 +27,14 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private float playerMoveDuration = 1.5f;
     [Space]
     [SerializeField] private float fallDuration = 4f;
+    [SerializeField] private int numberOfTurnBeforeChange = 3;
     
     [Header("--- RANDOM DICE THROW")]
     public bool setRandomDiceValue = true;
     [SerializeField] private int wallDiceValue = 0;
     [SerializeField] private int holeDiceValue = 0;
+
+    private int actualLoopNumber;
     
     /// <summary>
     /// Load all dice data
@@ -54,6 +57,8 @@ public class TerrainManager : Singleton<TerrainManager> {
         } while (randomHoleDice == randomWallDice);
         
         UIManager.instance.SetDiceUIColor(randomWallDice, randomHoleDice);
+
+        actualLoopNumber = 0;
         
         yield return new WaitForSeconds(.5f);
         StartCoroutine(ChangeHeightEvent(true));
@@ -65,10 +70,26 @@ public class TerrainManager : Singleton<TerrainManager> {
     public int RandomWallDice => randomWallDice;
     private int randomHoleDice = 0;
     public int RandomHoleDice => randomHoleDice;
-    
+
     /// <summary>
     /// Launch the event which change the height of some Dice
     /// </summary>
+
+    public void CheckIfChange(bool firstLaunch = false)
+    {
+        actualLoopNumber++;
+        
+        if (actualLoopNumber == numberOfTurnBeforeChange)
+        {
+            StartCoroutine(ChangeHeightEvent(firstLaunch));
+            actualLoopNumber = 0;
+            return;
+        }
+        
+        if(firstLaunch) LevelManager.instance.GenerateEntities();
+        else LevelManager.instance.GetNextEntity()?.StartTurn();
+    }
+    
     public IEnumerator ChangeHeightEvent(bool firstLaunch = false) {
         yield return new WaitForSeconds(moveHeightDuration);
         

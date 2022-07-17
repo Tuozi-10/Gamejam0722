@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainSize: {x: 9, y: 9}
   diceClass:
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 0
     dicePosY: 0
     diceState: 0
-    diceEffectState: 1
-  - diceValue: 4
+    diceEffectState: 0
+  - diceValue: 0
     dicePosX: 0
     dicePosY: 1
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 0
     dicePosY: 2
     diceState: 0
@@ -34,27 +34,27 @@ MonoBehaviour:
     dicePosY: 3
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 3
     dicePosX: 0
     dicePosY: 4
     diceState: 0
     diceEffectState: 0
-  - diceValue: 1
+  - diceValue: 0
     dicePosX: 0
     dicePosY: 5
     diceState: 0
     diceEffectState: 0
-  - diceValue: 1
+  - diceValue: 0
     dicePosX: 0
     dicePosY: 6
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 0
     dicePosY: 7
     diceState: 4
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 0
     dicePosY: 8
     diceState: 4
@@ -64,77 +64,77 @@ MonoBehaviour:
     dicePosY: 0
     diceState: 0
     diceEffectState: 0
-  - diceValue: 4
+  - diceValue: 2
     dicePosX: 1
     dicePosY: 1
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 1
     dicePosY: 2
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 1
     dicePosY: 3
-    diceState: 4
-    diceEffectState: 0
-  - diceValue: 4
-    dicePosX: 1
-    dicePosY: 4
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 5
-    dicePosX: 1
-    dicePosY: 5
-    diceState: 4
-    diceEffectState: 0
-  - diceValue: 1
-    dicePosX: 1
-    dicePosY: 6
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 5
-    dicePosX: 1
-    dicePosY: 7
-    diceState: 4
-    diceEffectState: 0
-  - diceValue: 5
-    dicePosX: 1
-    dicePosY: 8
-    diceState: 4
-    diceEffectState: 0
-  - diceValue: 2
-    dicePosX: 2
-    dicePosY: 0
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 2
-    dicePosX: 2
-    dicePosY: 1
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 5
-    dicePosX: 2
-    dicePosY: 2
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 4
-    dicePosX: 2
-    dicePosY: 3
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 4
-    dicePosX: 2
-    dicePosY: 4
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 5
-    dicePosX: 2
-    dicePosY: 5
     diceState: 4
     diceEffectState: 0
   - diceValue: 3
+    dicePosX: 1
+    dicePosY: 4
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 1
+    dicePosY: 5
+    diceState: 4
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 1
+    dicePosY: 6
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 1
+    dicePosY: 7
+    diceState: 4
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 1
+    dicePosY: 8
+    diceState: 4
+    diceEffectState: 0
+  - diceValue: 2
+    dicePosX: 2
+    dicePosY: 0
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 2
+    dicePosY: 1
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 2
+    dicePosY: 2
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 5
+    dicePosX: 2
+    dicePosY: 3
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 5
+    dicePosX: 2
+    dicePosY: 4
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 2
+    dicePosY: 5
+    diceState: 4
+    diceEffectState: 0
+  - diceValue: 2
     dicePosX: 2
     dicePosY: 6
     diceState: 0
@@ -144,177 +144,177 @@ MonoBehaviour:
     dicePosY: 7
     diceState: 0
     diceEffectState: 4
-  - diceValue: 1
+  - diceValue: 6
     dicePosX: 2
     dicePosY: 8
     diceState: 0
     diceEffectState: 0
-  - diceValue: 3
+  - diceValue: 0
     dicePosX: 3
     dicePosY: 0
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 3
     dicePosY: 1
     diceState: 4
     diceEffectState: 0
-  - diceValue: 4
+  - diceValue: 6
     dicePosX: 3
     dicePosY: 2
     diceState: 0
     diceEffectState: 0
-  - diceValue: 2
+  - diceValue: 0
     dicePosX: 3
     dicePosY: 3
     diceState: 0
     diceEffectState: 0
-  - diceValue: 2
+  - diceValue: 0
     dicePosX: 3
     dicePosY: 4
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 3
     dicePosY: 5
     diceState: 4
     diceEffectState: 0
-  - diceValue: 3
+  - diceValue: 2
     dicePosX: 3
     dicePosY: 6
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 3
     dicePosY: 7
     diceState: 4
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 6
     dicePosX: 3
     dicePosY: 8
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 4
     dicePosY: 0
     diceState: 0
     diceEffectState: 0
-  - diceValue: 4
+  - diceValue: 0
     dicePosX: 4
     dicePosY: 1
     diceState: 0
     diceEffectState: 0
-  - diceValue: 4
+  - diceValue: 6
     dicePosX: 4
     dicePosY: 2
     diceState: 0
     diceEffectState: 0
-  - diceValue: 2
+  - diceValue: 6
     dicePosX: 4
     dicePosY: 3
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 4
     dicePosY: 4
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 4
     dicePosY: 5
     diceState: 0
     diceEffectState: 0
-  - diceValue: 1
+  - diceValue: 2
     dicePosX: 4
     dicePosY: 6
     diceState: 0
     diceEffectState: 0
-  - diceValue: 3
+  - diceValue: 0
     dicePosX: 4
     dicePosY: 7
     diceState: 0
     diceEffectState: 0
-  - diceValue: 3
+  - diceValue: 6
     dicePosX: 4
     dicePosY: 8
     diceState: 0
     diceEffectState: 0
-  - diceValue: 2
+  - diceValue: 3
     dicePosX: 5
     dicePosY: 0
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 5
     dicePosY: 1
     diceState: 4
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 5
     dicePosY: 2
     diceState: 4
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 5
     dicePosY: 3
-    diceState: 4
-    diceEffectState: 0
-  - diceValue: 2
-    dicePosX: 5
-    dicePosY: 4
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 5
-    dicePosX: 5
-    dicePosY: 5
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 5
-    dicePosX: 5
-    dicePosY: 6
     diceState: 4
     diceEffectState: 0
   - diceValue: 1
     dicePosX: 5
+    dicePosY: 4
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 5
+    dicePosY: 5
+    diceState: 0
+    diceEffectState: 4
+  - diceValue: 0
+    dicePosX: 5
+    dicePosY: 6
+    diceState: 4
+    diceEffectState: 0
+  - diceValue: 1
+    dicePosX: 5
     dicePosY: 7
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 5
     dicePosY: 8
     diceState: 0
     diceEffectState: 0
-  - diceValue: 2
+  - diceValue: 3
     dicePosX: 6
     dicePosY: 0
     diceState: 0
     diceEffectState: 0
-  - diceValue: 4
+  - diceValue: 3
     dicePosX: 6
     dicePosY: 1
     diceState: 0
     diceEffectState: 0
-  - diceValue: 4
+  - diceValue: 0
     dicePosX: 6
     dicePosY: 2
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 1
     dicePosX: 6
     dicePosY: 3
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 1
     dicePosX: 6
     dicePosY: 4
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 6
     dicePosY: 5
     diceState: 4
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 6
     dicePosY: 6
     diceState: 4
@@ -324,17 +324,17 @@ MonoBehaviour:
     dicePosY: 7
     diceState: 0
     diceEffectState: 0
-  - diceValue: 2
+  - diceValue: 1
     dicePosX: 6
     dicePosY: 8
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 7
     dicePosY: 0
     diceState: 4
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 7
     dicePosY: 1
     diceState: 4
@@ -343,28 +343,28 @@ MonoBehaviour:
     dicePosX: 7
     dicePosY: 2
     diceState: 0
-    diceEffectState: 4
-  - diceValue: 5
+    diceEffectState: 0
+  - diceValue: 0
     dicePosX: 7
     dicePosY: 3
     diceState: 4
     diceEffectState: 0
-  - diceValue: 1
+  - diceValue: 0
     dicePosX: 7
     dicePosY: 4
     diceState: 0
-    diceEffectState: 0
-  - diceValue: 1
+    diceEffectState: 4
+  - diceValue: 0
     dicePosX: 7
     dicePosY: 5
     diceState: 0
     diceEffectState: 0
-  - diceValue: 3
+  - diceValue: 0
     dicePosX: 7
     dicePosY: 6
     diceState: 0
     diceEffectState: 0
-  - diceValue: 3
+  - diceValue: 2
     dicePosX: 7
     dicePosY: 7
     diceState: 0
@@ -374,37 +374,37 @@ MonoBehaviour:
     dicePosY: 8
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 8
     dicePosY: 0
     diceState: 4
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 8
     dicePosY: 1
     diceState: 4
     diceEffectState: 0
-  - diceValue: 3
+  - diceValue: 4
     dicePosX: 8
     dicePosY: 2
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 4
     dicePosX: 8
     dicePosY: 3
     diceState: 0
     diceEffectState: 0
-  - diceValue: 1
+  - diceValue: 4
     dicePosX: 8
     dicePosY: 4
     diceState: 0
     diceEffectState: 0
-  - diceValue: 1
+  - diceValue: 0
     dicePosX: 8
     dicePosY: 5
     diceState: 0
     diceEffectState: 0
-  - diceValue: 3
+  - diceValue: 0
     dicePosX: 8
     dicePosY: 6
     diceState: 0
@@ -414,8 +414,8 @@ MonoBehaviour:
     dicePosY: 7
     diceState: 0
     diceEffectState: 0
-  - diceValue: 5
+  - diceValue: 0
     dicePosX: 8
     dicePosY: 8
     diceState: 0
-    diceEffectState: 2
+    diceEffectState: 0

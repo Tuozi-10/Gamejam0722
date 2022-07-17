@@ -46,8 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelList:
   - {fileID: 11400000, guid: 0bd5171ecd988dc489e4b301971716f9, type: 2}
+  - {fileID: 11400000, guid: 270d40ab3f4358544aee31347e803304, type: 2}
+  - {fileID: 11400000, guid: 38cf9930a57230642ae039de910aacf8, type: 2}
   - {fileID: 11400000, guid: c11785411b97a2f439dfa465c0150a95, type: 2}
   - {fileID: 11400000, guid: 594057ab44771b44badf20f3bbf21122, type: 2}
   - {fileID: 11400000, guid: 1fc0b37e29f84634f8fb6238a346ef39, type: 2}
   - {fileID: 11400000, guid: 8a47d408ed3cc344bbc5cc63e0eb1c04, type: 2}
   - {fileID: 11400000, guid: 83b914d3790db9348a92a8b910cc20c6, type: 2}
+  collectibleCollected: 0

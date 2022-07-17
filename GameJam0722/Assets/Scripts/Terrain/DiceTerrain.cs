@@ -60,7 +60,7 @@ public class DiceTerrain : MonoBehaviour {
         diceRend.sharedMaterial = materialData.DiceMaterialData[diceData.diceValue];
         if (diceData.diceState is DiceState.ForceHole or DiceState.ForceWall || diceData.diceEffectState is DiceEffectState.Spawner or DiceEffectState.End or DiceEffectState.Start) diceData.diceValue = 0;
       
-        InitEffects();
+        if(Application.isPlaying) InitEffects();
     }
 
     public void UpdateDiceInEditor() {
@@ -82,10 +82,11 @@ public class DiceTerrain : MonoBehaviour {
         pivot.transform.DOLocalMoveY(-intensity, duration).SetDelay(delay).OnComplete(()=>pivot.transform.DOLocalMoveY(0, duration * 0.5f));
     }
     
+    /*
     /// <summary>
     /// When changes are made to the variable
     /// </summary>
-    private void OnValidate() => UpdateDiceData();
+    private void OnValidate() => UpdateDiceData();*/
 }
 
 [System.Serializable]

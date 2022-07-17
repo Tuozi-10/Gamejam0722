@@ -44,8 +44,8 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
         bool isInGame = Application.isPlaying;
         
         Level levelClass = Level.CreateLevel(level);
-        if(levelClass.useRandom) UIManager.instance.ShowRandomCanvas();
-        else UIManager.instance.HideRandomCanvas();
+        if(levelClass.useRandom && UIManager.instance != null) UIManager.instance.ShowRandomCanvas();
+        else if(UIManager.instance != null) UIManager.instance.HideRandomCanvas();
         
         List<DiceTerrain> diceTerrainList = GenerateNewLevel(new Vector2Int(levelClass.terrainSize.x, levelClass.terrainSize.y), isInGame);
 

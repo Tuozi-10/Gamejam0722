@@ -58,21 +58,44 @@ public class TerrainManager : Singleton<TerrainManager> {
         }
         
         AddHeightRandomness();
-        if(heightRandomness.x + heightRandomness.y != 0) yield return new WaitForSeconds(LevelCreationManager.instance.DestroyLevelDuration);
-
-        randomWallDice = setRandomDiceValue ? Random.Range(1, 7) : wallDiceValue;
-        randomHoleDice = setRandomDiceValue ? Random.Range(1, 7) : holeDiceValue;
-        do {
-            randomHoleDice = Random.Range(1, 7);
-        } while (randomHoleDice == randomWallDice);
         
-        UIManager.instance.SetDiceUIColor(randomWallDice, randomHoleDice);
+        yield return new WaitForSeconds(LevelCreationManager.instance.DestroyLevelDuration);
+        
+        StartCoroutine(SpawnPlayer());
 
+        yield return new WaitForSeconds(1.5f + entityAppartionDuration);
+
+        hasEnemy = false;
+        foreach (DiceTerrain dice in diceTerrainlsit) {
+            if (dice.diceData.diceEffectState == DiceEffectState.Spawner) {
+                StartCoroutine(SpawnEnemy(dice));
+                hasEnemy = true;
+            }
+        }
+            
+        if(hasEnemy) yield return new WaitForSeconds(entityAppartionDuration + .5f);
+
+        if (Level.CreateLevel(LevelManager.instance.GetActivScene()).useRandom) {
+            for (int i = 0; i < 8; i++) {
+                UIManager.instance.SetRandomDiceUIColor();
+                yield return new WaitForSeconds(.05f);
+            }
+        
+            randomWallDice = setRandomDiceValue ? Random.Range(1, 7) : wallDiceValue;
+            randomHoleDice = setRandomDiceValue ? Random.Range(1, 7) : holeDiceValue;
+            do {
+                randomHoleDice = Random.Range(1, 7);
+            } while (randomHoleDice == randomWallDice);
+        
+            UIManager.instance.SetDiceUIColor(randomWallDice, randomHoleDice);
+
+            yield return new WaitForSeconds(1f);
+        }
+        
         actualLoopNumber = 0;
         UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
 
-        yield return new WaitForSeconds(.5f);
-        StartCoroutine(ChangeHeightEvent(true));
+        StartNewTurn(true);
     }
 
     #region Set Terrain Height
@@ -85,7 +108,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// <summary>
     /// Launch the event which change the height of some Dice
     /// </summary>
-    public void CheckIfChange(bool firstLaunch = false) 
+    public void CheckIfChange() 
     {
         isUpdatingLevel = true;
         actualLoopNumber++;
@@ -98,14 +121,13 @@ public class TerrainManager : Singleton<TerrainManager> {
         
         if (actualLoopNumber == numberOfTurnBeforeChange && Level.CreateLevel(LevelManager.instance.GetActivScene()).useRandom)
         {
-            StartCoroutine(ChangeHeightEvent(firstLaunch));
+            StartCoroutine(ChangeHeightEvent());
             actualLoopNumber = 0;
             UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
-
             return;
         }
 
-        StartNewTurn(firstLaunch);
+        StartNewTurn(false);
     }
 
     private bool hasEnemy = false;
@@ -114,27 +136,11 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// </summary>
     /// <param name="firstLaunch"></param>
     /// <returns></returns>
-    private IEnumerator ChangeHeightEvent(bool firstLaunch = false) 
+    private IEnumerator ChangeHeightEvent() 
     {
-        CreateWallAndHole(firstLaunch);
+        CreateWallAndHole();
         yield return new WaitForSeconds(moveHeightDuration + 0.25f);
-
-        if (firstLaunch) {
-            StartCoroutine(SpawnPlayer());
-
-            yield return new WaitForSeconds(1.5f + entityAppartionDuration);
-
-            hasEnemy = false;
-            foreach (DiceTerrain dice in diceTerrainlsit) {
-                if (dice.diceData.diceEffectState == DiceEffectState.Spawner) {
-                   StartCoroutine(SpawnEnemy(dice));
-                   hasEnemy = true;
-                }
-            }
-            
-            if(hasEnemy) yield return new WaitForSeconds(entityAppartionDuration + .5f);
-        }
-
+        
         for (int i = 0; i < 8; i++) {
             UIManager.instance.SetRandomDiceUIColor();
             yield return new WaitForSeconds(.05f);
@@ -147,13 +153,16 @@ public class TerrainManager : Singleton<TerrainManager> {
         } while (randomHoleDice == randomWallDice);
         
         UIManager.instance.SetDiceUIColor(randomWallDice, randomHoleDice);
-        StartNewTurn(firstLaunch);
+
+        yield return new WaitForSeconds(1f);
+
+        StartNewTurn(false);
     }
 
     /// <summary>
     /// Create walls and holes in the terrain
     /// </summary>
-    private void CreateWallAndHole(bool firstLaunch) {
+    private void CreateWallAndHole() {
         foreach (DiceTerrain dice in diceTerrainlsit) {
             if (dice.diceData.diceState is DiceState.ForceHole or DiceState.ForceWall) continue;
             
@@ -161,7 +170,7 @@ public class TerrainManager : Singleton<TerrainManager> {
             if (GetDiceWithSameValue(randomWallDice).Contains(dice) ) 
             {
                 SetDiceHeight(dice, wallHeightValue + dice.heightRandomness, moveHeightDuration);
-                if(!firstLaunch) changeEntityHeight(dice, DiceState.Wall);
+                changeEntityHeight(dice, DiceState.Wall);
                 
                 dice.diceData.diceState = DiceState.Wall;
             }
@@ -170,14 +179,14 @@ public class TerrainManager : Singleton<TerrainManager> {
             else if (GetDiceWithSameValue(randomHoleDice).Contains(dice) && (dice.diceData.diceEffectState == DiceEffectState.None)) 
             {
                 SetDiceHeight(dice, holeHeightValue, moveHeightDuration);
-                if(!firstLaunch) changeEntityHeight(dice, DiceState.Hole);
+                changeEntityHeight(dice, DiceState.Hole);
                 
                 dice.diceData.diceState = DiceState.Hole;
             }
             //CREATE FLOOR
             else {
                 SetDiceHeight(dice, dice.heightRandomness, moveHeightDuration);
-                if(!firstLaunch) changeEntityHeight(dice, DiceState.Walkable);
+                changeEntityHeight(dice, DiceState.Walkable);
                 
                 dice.diceData.diceState = DiceState.Walkable;
             }

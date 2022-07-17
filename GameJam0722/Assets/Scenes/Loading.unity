@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3708985, g: 0.3783704, b: 0.35722548, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1180,6 +1180,7 @@ MonoBehaviour:
   textToTurnNeeded: {fileID: 447677584}
   cvgTitle: {fileID: 1556403146}
   txtTitle: {fileID: 60343694}
+  m_fadeMaterialCubeSpeed: 0.35
 --- !u!114 &1141179022
 MonoBehaviour:
   m_ObjectHideFlags: 0

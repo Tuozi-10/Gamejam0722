@@ -34,5 +34,16 @@ namespace Entities
             if(UIManager.instance != null) UIManager.instance.AskTurn("Player Turn");
             canPlay = true;
         }
+
+        public override void EndTurn()
+        {
+            base.EndTurn();
+
+            if (TerrainManager.instance.diceTerrainlsit[pos.x, pos.y].diceData.diceEffectState == DiceEffectState.End)
+            {
+                LevelManager.instance.Victory();
+            }
+            
+        }
     }
 }

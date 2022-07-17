@@ -128,7 +128,7 @@ MonoBehaviour:
     dicePosX: 4
     dicePosY: 2
     diceState: 0
-    diceEffectState: 0
+    diceEffectState: 2
   - diceValue: 0
     dicePosX: 4
     dicePosY: 3

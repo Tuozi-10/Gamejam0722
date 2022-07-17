@@ -129,14 +129,6 @@ namespace Managers
             if (m_currentEntityIndex >= m_entities.Count) {
                 m_currentEntityIndex = 0;
             }
-
-            /*if (m_entities.Count == 1 && m_entities[0] is Character)
-            {
-                UIManager.instance.Victory();
-                LevelManager.instance.LoadNextLevel();
-                return null;
-            }*/
-            
             return m_entities[m_currentEntityIndex];
         }
         
@@ -147,7 +139,14 @@ namespace Managers
         /// <summary>
         /// If the player win
         /// </summary>
-        public void Victory() => UIManager.instance.Victory();
+        public void Victory()
+        {
+            if (m_entities.Count == 1 && m_entities[0] is Character)
+             {
+              UIManager.instance.Victory();
+              LevelManager.instance.LoadNextLevel();
+            }
+        }
 
         /// <summary>
         /// If the player die

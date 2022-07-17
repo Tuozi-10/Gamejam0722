@@ -28,6 +28,7 @@ namespace Managers
         [Space]
         [SerializeField] private CanvasGroup cvgTitle;
         [SerializeField] private TMP_Text txtTitle;
+        [Space, SerializeField] private float m_fadeMaterialCubeSpeed = 0.5f;
         
         public void Victory()
         {
@@ -112,7 +113,7 @@ namespace Managers
             
             if (fade) {
                 fadeMat = new Material(diceColorData.DiceMaterialData[diceTerrainList[0].diceData.diceValue]);
-                fadeMat.DOColor(diceColorData.DiceColorLightData[diceTerrainList[0].diceData.diceValue - 1], 1.25f).SetLoops(-1, LoopType.Yoyo);
+                fadeMat.DOColor(diceColorData.DiceColorLightData[diceTerrainList[0].diceData.diceValue - 1], m_fadeMaterialCubeSpeed).SetLoops(-1, LoopType.Yoyo);
             }
             else fadeMat.DOKill();
 

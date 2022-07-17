@@ -17,8 +17,19 @@ namespace Entities
 
         private void GeneratePath()
         {
+            (int x, int y) posTo = (Character.instance.pos.x, Character.instance.pos.y);
+
+            foreach (var leurre in Leurre.leurres)
+            {
+                var distance = Vector2Int.Distance(pos, new Vector2Int(leurre.pos.pox, leurre.pos.poxy));
+                if(distance <= leurre.radiusDetection)
+                {
+                    posTo = leurre.pos;
+                }
+            }
+            
             var ground = TerrainManager.instance.GetAvailableArray(TerrainManager.instance.diceTerrainlsit[pos.x, pos.y].diceData.isWall);
-            SetPath(Pathfinder.GetPath(pos.x, pos.y, Character.instance.pos.x, Character.instance.pos.y, ground));
+            SetPath(Pathfinder.GetPath(pos.x, pos.y, posTo.x, posTo.y, ground));
         }
 
         /// <summary>
@@ -42,6 +53,8 @@ namespace Entities
         private IEnumerator throwPlayer() {
             yield return new WaitForSeconds(2);
             transform.DOLocalMove(-transform.forward * 15, 1.5f);
+            LevelManager.instance.ReloadLevel();
+            LevelManager.instance.Defeat();
         }
     }
 }

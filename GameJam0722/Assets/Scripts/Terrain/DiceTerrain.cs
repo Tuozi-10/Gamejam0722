@@ -14,7 +14,7 @@ public class DiceTerrain : MonoBehaviour {
     [SerializeField] private DiceTerrainMaterialSO materialData = null;
     [SerializeField] private MeshRenderer diceRend = null;
 
-    [SerializeField] private Transform pivot;
+    [SerializeField] public Transform pivot;
 
     /// <summary>
     /// Initialize dice data value

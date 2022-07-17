@@ -113,7 +113,8 @@ namespace Managers
         /// <summary>
         /// End the turn of an entity
         /// </summary>
-        public void EndTurn() {
+        public void EndTurn() 
+        {
             if (isLoadingNewLevel) return;
             if(m_currentEntityIndex == m_entities.Count - 1) TerrainManager.instance.CheckIfChange();
             else GetNextEntity()?.StartTurn();
@@ -126,7 +127,8 @@ namespace Managers
         public AbstractEntity GetNextEntity()
         {
             m_currentEntityIndex++;
-            if (m_currentEntityIndex >= m_entities.Count) {
+            if (m_currentEntityIndex >= m_entities.Count)
+            {
                 m_currentEntityIndex = 0;
             }
             return m_entities[m_currentEntityIndex];
@@ -142,9 +144,9 @@ namespace Managers
         public void Victory()
         {
             if (m_entities.Count == 1 && m_entities[0] is Character)
-             {
-              UIManager.instance.Victory();
-              LevelManager.instance.LoadNextLevel();
+            {
+                UIManager.instance.Victory();
+                LevelManager.instance.LoadNextLevel();
             }
         }
 

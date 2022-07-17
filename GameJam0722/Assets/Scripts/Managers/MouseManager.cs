@@ -20,6 +20,8 @@ public class MouseManager : Singleton<MouseManager> {
 
     [SerializeField] private SpriteRenderer m_cursorRenderer;
     [SerializeField] private Sprite[] m_cursorSprites;
+
+    [SerializeField] private Leurre m_leurre;
     
     private Character  character => Character.instance;
     
@@ -31,25 +33,55 @@ public class MouseManager : Singleton<MouseManager> {
 
     private void UpdateMouseDown()
     {
-        if (Input.GetMouseButtonDown(0) && character.canPlay)
+        if (character.canPlay)
         {
-            cubeUnderMouse = Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 500,layerCheck) ? hit.collider.transform : null;
-         
-            if (cubeUnderMouse is null || cubeUnderMouse.CompareTag("Water"))
+            if (Input.GetMouseButtonDown(0))
             {
-                return;
+                cubeUnderMouse =
+                    Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition),
+                        out RaycastHit hit, 500, layerCheck)
+                        ? hit.collider.transform
+                        : null;
+
+                if (cubeUnderMouse is null || cubeUnderMouse.CompareTag("Water"))
+                {
+                    return;
+                }
+
+                DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
+                var array = TerrainManager.instance.GetAvailableArray(TerrainManager.instance
+                    .diceTerrainlsit[character.pos.x, character.pos.y].diceData.isWall);
+
+                if (dice is null) return;
+
+                if (!array[dice.pos.x, dice.pos.y])
+                {
+                    return;
+                }
+
+                Character.instance.SetPath(Pathfinder.GetPath(character.pos.x, character.pos.y, dice.pos.x, dice.pos.y, array));
             }
-            DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
-            var array = TerrainManager.instance.GetAvailableArray(TerrainManager.instance.diceTerrainlsit[character.pos.x, character.pos.y].diceData.isWall);
-
-            if (dice is null) return;
             
-             if (!array[dice.pos.x, dice.pos.y])
-             {
-                 return;
-             }
+            if (Input.GetMouseButtonDown(1))
+            {      
+                cubeUnderMouse = Physics.Raycast(CameraManager.instance.Camera.ScreenPointToRay(Input.mousePosition),
+                        out RaycastHit hit, 500, layerCheck) ? hit.collider.transform : null;
 
-            Character.instance.SetPath(Pathfinder.GetPath(character.pos.x, character.pos.y, dice.pos.x, dice.pos.y, array));
+                if (cubeUnderMouse is null || cubeUnderMouse.CompareTag("Water"))
+                {
+                    return;
+                }
+                
+                DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
+                if (dice is null) return;
+                
+                character.canPlay = false;
+                
+                Leurre leurre = Instantiate(m_leurre, dice.pivot.transform);
+                leurre.transform.localPosition = new Vector3(0, 1.05f, 0);
+                leurre.Init(dice.pos.x, dice.pos.y);
+                character.EndTurn();
+            }
         }
     }
     

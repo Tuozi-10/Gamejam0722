@@ -30,6 +30,7 @@ namespace Entities
 
         public override void StartTurn()
         {
+            Leurre.UpdateLeurres();
             base.StartTurn();
             if(UIManager.instance != null) UIManager.instance.AskTurn("Player Turn");
             canPlay = true;

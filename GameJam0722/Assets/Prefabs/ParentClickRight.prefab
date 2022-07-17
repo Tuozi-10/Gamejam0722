@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6624115497291791824}
   m_Layer: 0
-  m_Name: ParentClick
+  m_Name: ParentClickRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,27 +69,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 555702125786eb249a8e68372cb79af3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.81573725
+      value: -0.32360134
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 555702125786eb249a8e68372cb79af3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.43373513
+      value: 0.17206186
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 555702125786eb249a8e68372cb79af3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.33788943
+      value: 0.82151
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 555702125786eb249a8e68372cb79af3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.17965896
+      value: 0.43680456
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 555702125786eb249a8e68372cb79af3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 56
+      value: -56
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 555702125786eb249a8e68372cb79af3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 45
+      value: 223
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 555702125786eb249a8e68372cb79af3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

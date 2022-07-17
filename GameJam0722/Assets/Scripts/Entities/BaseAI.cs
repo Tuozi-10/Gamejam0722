@@ -6,8 +6,7 @@ using UnityEngine;
 
 namespace Entities
 {
-    public class BaseAI : AbstractEntity
-    {
+    public class BaseAI : AbstractEntity {
         public override void StartTurn()
         {
             base.StartTurn();

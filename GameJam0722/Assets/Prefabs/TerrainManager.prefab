@@ -83,7 +83,10 @@ MonoBehaviour:
   wallHeightValue: 0.5
   holeHeightValue: -5
   moveHeightDuration: 0.75
+  enemyAppartionDuration: 0.65
   playerMoveDuration: 1.5
+  playerSpawnFlyDuration: 4
+  playerSpawnFallDuration: 0.75
   fallDuration: 4
   setRandomDiceValue: 1
   wallDiceValue: 0

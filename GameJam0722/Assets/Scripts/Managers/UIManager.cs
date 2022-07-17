@@ -27,6 +27,7 @@ namespace Managers
         [Space]
         [SerializeField] private CanvasGroup cvgTitle;
         [SerializeField] private TMP_Text txtTitle;
+        
         public void Victory()
         {
             cvgTitle.DOKill();

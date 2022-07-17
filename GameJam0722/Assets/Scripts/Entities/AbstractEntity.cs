@@ -13,6 +13,7 @@ namespace Entities
             public int hp => m_hp;
 
             public Vector2Int pos;
+            public Vector2Int startPos;
 
             [SerializeField] float durationMove = 0.75f;
             [SerializeField] public Transform Pivot;

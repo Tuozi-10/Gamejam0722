@@ -43,6 +43,7 @@ public class DiceTerrain : MonoBehaviour {
             DiceState.ForceWall => new Vector3(transform.localPosition.x, .25f, transform.localPosition.z),
             DiceState.Hole => new Vector3(transform.localPosition.x, -.25f, transform.localPosition.z),
             DiceState.ForceHole => new Vector3(transform.localPosition.x, -1f, transform.localPosition.z),
+            DiceState.ForceBeach => new Vector3(transform.localPosition.x, -.55f, transform.localPosition.z),
             _ => new Vector3(transform.localPosition.x, 0, transform.localPosition.z)
         };
     }
@@ -78,7 +79,8 @@ public enum DiceState {
     Wall,
     Hole,
     ForceWall,
-    ForceHole
+    ForceHole,
+    ForceBeach
 }
 
 /// <summary>

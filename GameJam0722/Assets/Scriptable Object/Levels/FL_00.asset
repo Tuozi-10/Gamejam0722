@@ -47,7 +47,7 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 1
     dicePosY: 1
-    diceState: 4
+    diceState: 5
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 1
@@ -72,7 +72,7 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 2
     dicePosY: 1
-    diceState: 4
+    diceState: 5
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 2
@@ -97,7 +97,7 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 3
     dicePosY: 1
-    diceState: 4
+    diceState: 5
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 3

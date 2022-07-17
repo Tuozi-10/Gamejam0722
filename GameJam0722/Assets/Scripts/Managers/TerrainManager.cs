@@ -18,13 +18,12 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private Vector2 heightRandomness = new Vector2(-.25f,.25f);
     [SerializeField] private float wallHeightValue = 0;
     [SerializeField] private float holeHeightValue = 0;
+    [SerializeField] private float beachHeightValue = 0;
     
     [Header("--- MOVE DURATION")]
     [SerializeField] private float moveHeightDuration = 1;
     [Space]
     [SerializeField] private float entityAppartionDuration = 1.5f;
-    [Space]
-    [SerializeField] private float playerMoveDuration = 1.5f;
     [Space]
     [SerializeField] private float fallDuration = 4f;
     [SerializeField] private float AIFallBeforeDeath = 0.75f;
@@ -235,8 +234,18 @@ public class TerrainManager : Singleton<TerrainManager> {
     private void AddHeightRandomness() {
         foreach (DiceTerrain dice in diceTerrainlsit) {
             if (dice.diceData.diceState == DiceState.ForceHole) continue;
+            
             heightAddValue = Random.Range(heightRandomness.x, heightRandomness.y);
-            SetDiceHeight(dice, dice.diceData.diceState == DiceState.ForceWall? wallHeightValue + heightAddValue : heightAddValue, LevelCreationManager.instance.DestroyLevelDuration);
+            switch (dice.diceData.diceState) {
+                case DiceState.ForceWall:
+                    heightAddValue += wallHeightValue;
+                    break;
+                case DiceState.ForceBeach:
+                    heightAddValue += beachHeightValue;
+                    break;
+            }
+            
+            SetDiceHeight(dice, heightAddValue, LevelCreationManager.instance.DestroyLevelDuration);
             dice.heightRandomness = heightAddValue;
         }
     }

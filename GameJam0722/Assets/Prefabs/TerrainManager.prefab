@@ -82,12 +82,12 @@ MonoBehaviour:
   heightRandomness: {x: 0, y: 0}
   wallHeightValue: 0.5
   holeHeightValue: -5
+  beachHeightValue: -1
   moveHeightDuration: 0.75
-  enemyAppartionDuration: 0.65
-  playerMoveDuration: 1.5
-  playerSpawnFlyDuration: 4
-  playerSpawnFallDuration: 0.75
+  entityAppartionDuration: 1.5
   fallDuration: 4
+  AIFallBeforeDeath: 0.75
+  numberOfTurnBeforeChange: 3
   setRandomDiceValue: 1
   wallDiceValue: 0
   holeDiceValue: 0

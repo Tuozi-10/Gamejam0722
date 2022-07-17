@@ -72,6 +72,7 @@ namespace Managers
             CleanLevel();
             StartCoroutine(LevelCreationManager.instance.DestroyActuallevel(levelList[levelIndex]));
             isLoadingNewLevel = true;
+            levelIndex++;
             Character.instance.transform.DOLocalMove(new Vector3(-25, 0, -25), 2.5f);
             collectibleCollected = 0;
         }

@@ -163,6 +163,10 @@ namespace Managers
             bottom.DOAnchorPosY(0, 0.35f);
             bottom.DOScale(1f, 0.35f);
         }
-        
+
+        public void RestartLevel() => LevelManager.instance.ReloadLevel();
+        public void LoadLevel(int id) => LevelManager.instance.LoadLevel(id);
+        public void Quit() => Application.Quit();
+
     }
 }

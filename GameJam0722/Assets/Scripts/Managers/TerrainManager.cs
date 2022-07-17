@@ -83,11 +83,17 @@ public class TerrainManager : Singleton<TerrainManager> {
         actualLoopNumber++;
         UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
 
+        foreach (var entity in LevelManager.instance.Entities)
+        {
+            if (entity is BaseAI ai) ai.ploofed--;
+        }
+        
         if (actualLoopNumber == numberOfTurnBeforeChange)
         {
             StartCoroutine(ChangeHeightEvent(firstLaunch));
             actualLoopNumber = 0;
             UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
+
             return;
         }
         

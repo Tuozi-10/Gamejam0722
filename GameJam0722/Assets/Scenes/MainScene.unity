@@ -193,6 +193,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 2067840613}
   pivot: {fileID: 1796175680}
+  collectible: {fileID: 0}
 --- !u!1 &87137812
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +380,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 537278632}
   pivot: {fileID: 1839351363}
+  collectible: {fileID: 0}
 --- !u!1 &110009985
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +484,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 693203460}
   pivot: {fileID: 483973650}
+  collectible: {fileID: 0}
 --- !u!1 &188487167
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,6 +736,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1669785100}
   pivot: {fileID: 785619804}
+  collectible: {fileID: 0}
 --- !u!1 &341490660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1416,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1296600819}
   pivot: {fileID: 642836080}
+  collectible: {fileID: 0}
 --- !u!1 &558689303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,6 +1686,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 346923332}
   pivot: {fileID: 1521891601}
+  collectible: {fileID: 0}
 --- !u!1 &626650031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,6 +1873,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 674195711}
   pivot: {fileID: 1383137350}
+  collectible: {fileID: 0}
 --- !u!1 &673285432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,6 +1944,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 884288277}
   pivot: {fileID: 1559505161}
+  collectible: {fileID: 0}
 --- !u!1 &673322118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,6 +2347,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 684474947}
   pivot: {fileID: 1401432533}
+  collectible: {fileID: 0}
 --- !u!108 &705507994 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 1684207936474854744, guid: 75ca9c73ac6483a4caed77bc4bd569e0, type: 3}
@@ -2628,6 +2637,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 769531312}
   pivot: {fileID: 1709101628}
+  collectible: {fileID: 0}
 --- !u!1 &884288275
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,6 +3050,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1971346696}
   pivot: {fileID: 110009986}
+  collectible: {fileID: 0}
 --- !u!1 &1005025034
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,6 +3320,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1855792848}
   pivot: {fileID: 381223043}
+  collectible: {fileID: 0}
 --- !u!1 &1061402725
 GameObject:
   m_ObjectHideFlags: 0
@@ -3628,6 +3640,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 607741281}
   pivot: {fileID: 304054890}
+  collectible: {fileID: 0}
 --- !u!1 &1119430792
 GameObject:
   m_ObjectHideFlags: 0
@@ -4063,6 +4076,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 894553758}
   pivot: {fileID: 1790054237}
+  collectible: {fileID: 0}
 --- !u!1 &1321645717
 GameObject:
   m_ObjectHideFlags: 0
@@ -4254,6 +4268,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1321645719}
   pivot: {fileID: 563318804}
+  collectible: {fileID: 0}
 --- !u!1 &1401432532
 GameObject:
   m_ObjectHideFlags: 0
@@ -4357,6 +4372,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1572564874}
   pivot: {fileID: 1556099665}
+  collectible: {fileID: 0}
 --- !u!1 &1415057651
 GameObject:
   m_ObjectHideFlags: 0
@@ -4631,6 +4647,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 419431267}
   pivot: {fileID: 1005025035}
+  collectible: {fileID: 0}
 --- !u!1 &1498859132
 GameObject:
   m_ObjectHideFlags: 0
@@ -5132,6 +5149,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 2066481360}
   pivot: {fileID: 2006772213}
+  collectible: {fileID: 0}
 --- !u!1 &1669785098
 GameObject:
   m_ObjectHideFlags: 0
@@ -5401,6 +5419,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 673322120}
   pivot: {fileID: 1803056904}
+  collectible: {fileID: 0}
 --- !u!1 &1750107106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5471,6 +5490,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1426363575}
   pivot: {fileID: 274612662}
+  collectible: {fileID: 0}
 --- !u!1 &1755012143
 GameObject:
   m_ObjectHideFlags: 0
@@ -5737,6 +5757,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1980191664}
   pivot: {fileID: 87137813}
+  collectible: {fileID: 0}
 --- !u!1 &1837294545
 GameObject:
   m_ObjectHideFlags: 0
@@ -5807,6 +5828,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 438038116}
   pivot: {fileID: 1981460360}
+  collectible: {fileID: 0}
 --- !u!1 &1839351362
 GameObject:
   m_ObjectHideFlags: 0
@@ -6192,6 +6214,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1084278907}
   pivot: {fileID: 1879210696}
+  collectible: {fileID: 0}
 --- !u!1 &1947066836
 GameObject:
   m_ObjectHideFlags: 0
@@ -6262,6 +6285,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 1580603872}
   pivot: {fileID: 1461391686}
+  collectible: {fileID: 0}
 --- !u!1 &1971346694
 GameObject:
   m_ObjectHideFlags: 0
@@ -6597,6 +6621,7 @@ MonoBehaviour:
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
   diceRend: {fileID: 960302620}
   pivot: {fileID: 1220302407}
+  collectible: {fileID: 0}
 --- !u!1 &2038696139
 GameObject:
   m_ObjectHideFlags: 0
@@ -7397,7 +7422,7 @@ PrefabInstance:
     - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
       propertyPath: levelList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 0bd5171ecd988dc489e4b301971716f9, type: 2}
+      objectReference: {fileID: 11400000, guid: 8a47d408ed3cc344bbc5cc63e0eb1c04, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
 --- !u!4 &3223514754759693205 stripped

@@ -285,7 +285,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// Return all available tiles in the list
     /// </summary>
     /// <returns></returns>
-    public bool[,] GetAvailableArray()
+    public bool[,] GetAvailableArray(bool onWall)
     {
         bool[,] ground = new bool[diceTerrainlsit.GetLength(0), diceTerrainlsit.GetLength(1)];
 
@@ -293,7 +293,7 @@ public class TerrainManager : Singleton<TerrainManager> {
         {
             for (int j = 0; j < diceTerrainlsit.GetLength(1); j++)
             {
-                ground[i, j] = diceTerrainlsit[i, j].diceData.diceState == DiceState.Walkable;
+                ground[i, j] = diceTerrainlsit[i, j].diceData.diceState == DiceState.Walkable || onWall &&  diceTerrainlsit[i, j].diceData.isWall;
 
                 if(LevelManager.instance is null || LevelManager.instance.Entities is null) continue;
                 foreach (var entity in LevelManager.instance.Entities)

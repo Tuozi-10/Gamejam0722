@@ -17,7 +17,7 @@ namespace Entities
 
         private void GeneratePath()
         {
-            var ground = TerrainManager.instance.GetAvailableArray();
+            var ground = TerrainManager.instance.GetAvailableArray(TerrainManager.instance.diceTerrainlsit[pos.x, pos.y].diceData.isWall);
             SetPath(Pathfinder.GetPath(pos.x, pos.y, Character.instance.pos.x, Character.instance.pos.y, ground));
         }
 

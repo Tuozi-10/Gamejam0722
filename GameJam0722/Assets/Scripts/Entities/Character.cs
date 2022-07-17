@@ -24,8 +24,8 @@ namespace Entities
 
         public override void SetPath(List<Pathfinder.Node> path)
         {
-            base.SetPath(path);
             canPlay = false;
+            base.SetPath(path);
         }
 
         public override void StartTurn()

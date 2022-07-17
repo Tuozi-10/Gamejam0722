@@ -67,6 +67,7 @@ public class DiceClass {
     public int dicePosY;
     public DiceState diceState = DiceState.Walkable;
     public DiceEffectState diceEffectState = DiceEffectState.None;
+    public bool isWall => diceState is DiceState.Wall or DiceState.ForceWall;
 }
 
 /// <summary>

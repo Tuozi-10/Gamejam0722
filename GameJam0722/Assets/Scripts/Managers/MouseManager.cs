@@ -40,7 +40,7 @@ public class MouseManager : Singleton<MouseManager> {
                 return;
             }
             DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
-            var array = TerrainManager.instance.GetAvailableArray();
+            var array = TerrainManager.instance.GetAvailableArray(TerrainManager.instance.diceTerrainlsit[character.pos.x, character.pos.y].diceData.isWall);
 
             if (dice is null) return;
             
@@ -66,7 +66,7 @@ public class MouseManager : Singleton<MouseManager> {
             cubePosition.SetActive(true);
             
             DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
-            var array = TerrainManager.instance.GetAvailableArray();
+            var array = TerrainManager.instance.GetAvailableArray(TerrainManager.instance.diceTerrainlsit[character.pos.x,character.pos.y].diceData.isWall);
             m_cursorRenderer.sprite = array[dice.pos.x, dice.pos.y] ? m_cursorSprites[0]:m_cursorSprites [1];
 
             if (Vector2Int.Distance(dice.pos, character.pos) > 1)

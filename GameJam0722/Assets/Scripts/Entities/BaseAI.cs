@@ -56,5 +56,29 @@ namespace Entities
             LevelManager.instance.ReloadLevel();
             LevelManager.instance.Defeat();
         }
+        
+        public IEnumerator TryRespawn(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            
+            foreach (var ia in LevelManager.instance.Entities)
+            {
+                if (ia.pos == startPos)
+                {
+                    LevelManager.instance.RemoveEntity(this);
+                    Destroy(gameObject);
+                    yield break;
+                }
+            }
+
+            transform.DOKill();
+            transform.localScale = Vector3.zero;
+            transform.position = GetPosFromCoord(startPos.x, startPos.y);
+            
+            transform.DOScale(1, 0.25f);
+            transform.DORotate(new Vector3(0,360,0), 0.4f, RotateMode.FastBeyond360);
+
+            pos = startPos;
+        }
     }
 }

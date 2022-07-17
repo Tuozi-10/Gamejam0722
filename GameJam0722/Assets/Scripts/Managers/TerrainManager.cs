@@ -27,6 +27,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private float playerMoveDuration = 1.5f;
     [Space]
     [SerializeField] private float fallDuration = 4f;
+    [SerializeField] private float AIFallBeforeDeath = 0.75f;
     [SerializeField] private int numberOfTurnBeforeChange = 3;
     
     [Header("--- RANDOM DICE THROW")]
@@ -206,11 +207,7 @@ public class TerrainManager : Singleton<TerrainManager> {
                     if (ent.pos == Character.instance.pos) StartCoroutine(StartPlayerDeath());
                     else
                     {
-                        ent.transform.DOScale(1.25f, 0.25f).OnComplete(() => ent.transform.DOScale(0, 0.25f).OnComplete(
-                            () =>
-                            {
-                                LevelManager.instance.RemoveEntity(LevelManager.instance.Entities.IndexOf(ent));
-                            }));
+                       if(ent is BaseAI ia) StartCoroutine(ia.TryRespawn(AIFallBeforeDeath));
                     }
                     break;
                 }

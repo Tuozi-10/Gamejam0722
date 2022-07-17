@@ -98,6 +98,7 @@ namespace Managers
         }
 
         public void RemoveEntity(int index) => m_entities.RemoveAt(index);
+        public void RemoveEntity(AbstractEntity entity) => m_entities.Remove(entity);
         
         #region Timeline
         /// <summary>

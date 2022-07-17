@@ -85,9 +85,11 @@ MonoBehaviour:
   beachHeightValue: -1
   moveHeightDuration: 0.75
   entityAppartionDuration: 1.5
+  playerMoveDuration: 1.5
   fallDuration: 4
   AIFallBeforeDeath: 0.75
   numberOfTurnBeforeChange: 3
   setRandomDiceValue: 1
   wallDiceValue: 0
   holeDiceValue: 0
+  Collectible: {fileID: 7091326007118492171, guid: a08610e55cd76764c8c4a41b3d7c3a53, type: 3}

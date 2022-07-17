@@ -28,8 +28,6 @@ namespace Managers
         {
             if (Input.GetMouseButton(2))
             {
-                Debug.Log("in");
-             
                 if (MousePos.x > -6666 && MousePos.y > -6666)
                 {
                     Move();

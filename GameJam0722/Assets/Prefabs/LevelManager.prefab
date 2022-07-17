@@ -53,4 +53,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1fc0b37e29f84634f8fb6238a346ef39, type: 2}
   - {fileID: 11400000, guid: 8a47d408ed3cc344bbc5cc63e0eb1c04, type: 2}
   - {fileID: 11400000, guid: 83b914d3790db9348a92a8b910cc20c6, type: 2}
+  - {fileID: 11400000, guid: 9fc60c112a20a6d4bac2e418b3118af0, type: 2}
   collectibleCollected: 0

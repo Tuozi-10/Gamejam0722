@@ -19,7 +19,7 @@ MonoBehaviour:
     dicePosX: 0
     dicePosY: 0
     diceState: 0
-    diceEffectState: 1
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 0
     dicePosY: 1
@@ -199,7 +199,7 @@ MonoBehaviour:
     dicePosX: 3
     dicePosY: 6
     diceState: 3
-    diceEffectState: 0
+    diceEffectState: 5
   - diceValue: 3
     dicePosX: 3
     dicePosY: 7
@@ -468,12 +468,12 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 9
     dicePosY: 0
-    diceState: 0
+    diceState: 4
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 9
     dicePosY: 1
-    diceState: 3
+    diceState: 4
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 9
@@ -484,7 +484,7 @@ MonoBehaviour:
     dicePosX: 9
     dicePosY: 3
     diceState: 0
-    diceEffectState: 0
+    diceEffectState: 5
   - diceValue: 1
     dicePosX: 9
     dicePosY: 4

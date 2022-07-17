@@ -3,6 +3,10 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Custom SO/Color Dice Data")]
 public class DiceTerrainMaterialSO : ScriptableObject {
-    [SerializeField, NonReorderable] private List<Material> diceMaterialData = new List<Material>(5);
+    [SerializeField] private List<Material> diceMaterialData = new List<Material>(6);
     public List<Material> DiceMaterialData => diceMaterialData;
+    
+    
+    [SerializeField] private List<Color> diceColorLightData = new List<Color>(6);
+    public List<Color> DiceColorLightData => diceColorLightData;
 }

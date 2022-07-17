@@ -79,7 +79,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1204207152496594918, guid: 4fb7c44d34b0aa1449cdb4a0b64d4e3f, type: 3}
   enemyParent: {fileID: 2099470774}
   enemyEntity: []
-  heightRandomness: {x: -0.125, y: 0.125}
+  heightRandomness: {x: 0, y: 0}
   wallHeightValue: 0.5
   holeHeightValue: -5
   moveHeightDuration: 0.75

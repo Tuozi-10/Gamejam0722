@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: Color Dice Data
   m_EditorClassIdentifier: 
   diceMaterialData:
-  - {fileID: 2100000, guid: da69dc3c11902e443bc8a6d127531419, type: 2}
+  - {fileID: 2100000, guid: 75bdc8db555498740b36a4661fe6c849, type: 2}
   - {fileID: 2100000, guid: 8d325425089bbc543a75922d040abc09, type: 2}
   - {fileID: 2100000, guid: b3a53a6350766cd4db7522034919f46a, type: 2}
   - {fileID: 2100000, guid: cb268903c6e858242aaea50d8b351f22, type: 2}
   - {fileID: 2100000, guid: 72f8870db91a162439995d091e8efa44, type: 2}
   - {fileID: 2100000, guid: 8b75da1ee0d581041ba4fb541187b5a9, type: 2}
+  diceColorLightData:
+  - {r: 0.47058824, g: 0.62352943, b: 0.45490196, a: 1}
+  - {r: 0.83137256, g: 0.7647059, b: 0.49803922, a: 1}
+  - {r: 0.83137256, g: 0.57254905, b: 0.5294118, a: 1}
+  - {r: 0.5568628, g: 0.5019608, b: 0.43137255, a: 1}
+  - {r: 0.6862745, g: 0.5803922, b: 0.7921569, a: 1}

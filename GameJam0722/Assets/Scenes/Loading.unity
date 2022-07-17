@@ -828,18 +828,7 @@ MonoBehaviour:
   upTerrainParent: {fileID: 1167604956}
   downTerrainImage: {fileID: 2044740676}
   downTerrainParent: {fileID: 1444801657}
-  matList:
-  - {fileID: 2100000, guid: 8d325425089bbc543a75922d040abc09, type: 2}
-  - {fileID: 2100000, guid: b3a53a6350766cd4db7522034919f46a, type: 2}
-  - {fileID: 2100000, guid: cb268903c6e858242aaea50d8b351f22, type: 2}
-  - {fileID: 2100000, guid: 72f8870db91a162439995d091e8efa44, type: 2}
-  - {fileID: 2100000, guid: 8b75da1ee0d581041ba4fb541187b5a9, type: 2}
-  matListLighter:
-  - {fileID: 2100000, guid: e6b0c477531ab2747bbee03ec7a8aa06, type: 2}
-  - {fileID: 2100000, guid: fa8b1fe22c794b6498c6332afa7edce9, type: 2}
-  - {fileID: 2100000, guid: be1a1d743a1e12c4a9b1d13d82948582, type: 2}
-  - {fileID: 2100000, guid: 5c01a37954a0695479ea2ddf5f255d48, type: 2}
-  - {fileID: 2100000, guid: a57010eec961b8c43b0a6dd0fc10950a, type: 2}
+  diceColorData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
 --- !u!114 &1141179022
 MonoBehaviour:
   m_ObjectHideFlags: 0

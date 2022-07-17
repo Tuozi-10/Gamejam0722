@@ -22,9 +22,8 @@ namespace Managers
         [SerializeField] private RectTransform upTerrainParent = null;
         [SerializeField] private Image downTerrainImage = null;
         [SerializeField] private RectTransform downTerrainParent = null;
-        [SerializeField] private List<Material> matList = new List<Material>(5);
-        [SerializeField] private List<Material> matListLighter = new List<Material>(5);
-
+        [SerializeField] private DiceTerrainMaterialSO diceColorData = null;
+        private Material fadeMat;
         public void Victory()
         {
             
@@ -72,14 +71,14 @@ namespace Managers
             randomTerrain.DOFade(1, 0.5f).SetDelay(1);
         }
 
-        public void SetRandomColor() {
-            upTerrainImage.color = matList[Random.Range(0, matList.Count - 1)].color;
-            downTerrainImage.color = matList[Random.Range(0, matList.Count - 1)].color;
+        public void SetRandomDiceUIColor() {
+            upTerrainImage.color = diceColorData.DiceMaterialData[Random.Range(0, diceColorData.DiceMaterialData.Count - 1)].color;
+            downTerrainImage.color = diceColorData.DiceMaterialData[Random.Range(0, diceColorData.DiceMaterialData.Count - 1)].color;
         }
 
-        public void SetColor(int colorIdUp, int colorIdDown) {
-            upTerrainImage.color = matList[colorIdUp].color;
-            downTerrainImage.color = matList[colorIdDown].color;
+        public void SetDiceUIColor(int colorIdUp, int colorIdDown) {
+            upTerrainImage.color = diceColorData.DiceMaterialData[colorIdUp].color;
+            downTerrainImage.color = diceColorData.DiceMaterialData[colorIdDown].color;
 
             upTerrainParent.DOScale(1.25f, 0.25f).OnComplete(() => upTerrainParent.DOScale(1f, 0.35f));
             downTerrainParent.DOScale(1.25f, 0.25f).OnComplete(() => downTerrainParent.DOScale(1f, 0.35f));
@@ -90,15 +89,16 @@ namespace Managers
         /// </summary>
         /// <param name="id"></param>
         private void FadeColorAnimation(int id, bool fade) {
-            /*
             List<DiceTerrain> diceTerrainList = new List<DiceTerrain>(TerrainManager.instance.GetDiceWithSameValue(id == 0? TerrainManager.instance.RandomWallDice : TerrainManager.instance.RandomHoleDice));
+            if (fade) {
+                fadeMat = new Material(diceColorData.DiceMaterialData[diceTerrainList[0].diceData.diceValue]);
+                fadeMat.DOColor(diceColorData.DiceColorLightData[diceTerrainList[0].diceData.diceValue - 1], 1.25f).SetLoops(-1, LoopType.Yoyo);
+            }
+            else fadeMat.DOKill();
+
             foreach (DiceTerrain dice in diceTerrainList) {
-                if (!fade) {
-                    dice.ObjectMesh.sharedMaterial.DOKill();
-                    dice.ObjectMesh.sharedMaterial.color = matList[dice.diceData.diceValue - 1].color;
-                }
-                else dice.ObjectMesh.sharedMaterial.DOColor(matListLighter[dice.diceData.diceValue - 1].color, 1.25f).SetLoops(-1, LoopType.Yoyo);
-            }*/
+                dice.ObjectMesh.sharedMaterial = fade ? fadeMat : diceColorData.DiceMaterialData[dice.diceData.diceValue];
+            }
         }
 
         public void FadeDice(int id) => FadeColorAnimation(id, true);

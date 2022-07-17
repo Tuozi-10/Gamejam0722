@@ -32,7 +32,7 @@ public class DiceTerrain : MonoBehaviour {
     /// </summary>
     public void UpdateDiceData() {
         diceRend.sharedMaterial = materialData.DiceMaterialData[diceData.diceValue];
-        if (diceData.diceValue == 0) diceData.diceEffectState = DiceEffectState.Spawner;
+        if (diceData.diceState is DiceState.ForceHole or DiceState.ForceWall || diceData.diceEffectState is DiceEffectState.Spawner or DiceEffectState.End or DiceEffectState.Start) diceData.diceValue = 0;
     }
 
     public void UpdateDiceInEditor() {
@@ -40,6 +40,7 @@ public class DiceTerrain : MonoBehaviour {
         
         transform.localPosition = diceData.diceState switch {
             DiceState.Wall => new Vector3(transform.localPosition.x, .25f, transform.localPosition.z),
+            DiceState.ForceWall => new Vector3(transform.localPosition.x, .25f, transform.localPosition.z),
             DiceState.Hole => new Vector3(transform.localPosition.x, -.25f, transform.localPosition.z),
             DiceState.ForceHole => new Vector3(transform.localPosition.x, -1f, transform.localPosition.z),
             _ => new Vector3(transform.localPosition.x, 0, transform.localPosition.z)
@@ -60,7 +61,7 @@ public class DiceTerrain : MonoBehaviour {
 
 [System.Serializable]
 public class DiceClass {
-    [Range(0, 5)] public int diceValue;
+    [Range(0, 6)] public int diceValue;
     public (int x, int y) dicePos => (dicePosX, dicePosY);
     public int dicePosX;
     public int dicePosY;
@@ -75,6 +76,7 @@ public enum DiceState {
     Walkable,
     Wall,
     Hole,
+    ForceWall,
     ForceHole
 }
 

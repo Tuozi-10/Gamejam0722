@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528157369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3, y: 0, z: -2.3}
+  m_LocalPosition: {x: -4.6, y: 0, z: -4.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8065899f7f40bc14ba421648c076ab15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actualLevelSize: {x: 5, y: 5}
+  actualLevelSize: {x: 9, y: 9}
   dicePrefab: {fileID: 2535107566833901645, guid: a32020cffa3fe0842abef5c4dbf1950f, type: 3}
   diceParent: {fileID: 685128969}
   diceParentEditor: {fileID: 1528157370}
@@ -130,9 +130,9 @@ MonoBehaviour:
   spawnHeight: -10
   levelSizeGeneration: {x: 5, y: 5}
   diceSpaceSize: 1.15
-  loadLevelSO: {fileID: 11400000, guid: afd3a358d2d10a54b86d5a78531e20b4, type: 2}
+  loadLevelSO: {fileID: 11400000, guid: b5770b21a47dac6409dab5707da3736b, type: 2}
   folderPath: Assets/Scriptable Object/Levels/
-  levelName: Level 01
+  levelName: FirstTestLevel
 --- !u!114 &1788077979858250191
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,6 +34,8 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private int wallDiceValue = 0;
     [SerializeField] private int holeDiceValue = 0;
 
+    public Transform Collectible;
+    
     private int actualLoopNumber;
     private bool isUpdatingLevel = false;
     public bool IsUpdateingLevel => isUpdatingLevel;
@@ -86,12 +88,18 @@ public class TerrainManager : Singleton<TerrainManager> {
         actualLoopNumber++;
         UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
 
+        foreach (var entity in LevelManager.instance.Entities)
+        {
+            if (entity is BaseAI ai) ai.ploofed--;
+        }
+        
         if (actualLoopNumber == numberOfTurnBeforeChange && Level.CreateLevel(LevelManager.instance.GetActivScene()).useRandom)
         {
             Debug.Log("Make changes height");
             StartCoroutine(ChangeHeightEvent(firstLaunch));
             actualLoopNumber = 0;
             UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
+
             return;
         }
 

@@ -16,23 +16,39 @@ public class DiceTerrain : MonoBehaviour {
 
     [SerializeField] public Transform pivot;
 
+    public GameObject collectible;
+
     /// <summary>
     /// Initialize dice data value
     /// </summary>
     /// <param name="dicePos"></param>
     /// <param name="diceState"></param>
-    public void InitDice(Vector2Int dicePos, DiceState diceState = DiceState.Walkable) {
+    public void InitDice(Vector2Int dicePos, DiceState diceState = DiceState.Walkable) 
+    {
         diceData.dicePosX = dicePos.x;
         diceData.dicePosY = dicePos.y;
         diceData.diceState = diceState;
     }
 
+    private void InitEffects()
+    {
+        if (diceData.diceEffectState == DiceEffectState.Collectible)
+        {
+            collectible = Instantiate(TerrainManager.instance.Collectible, pivot).gameObject;
+            collectible.transform.localPosition = new Vector3(0, 0.78f, 0);
+        }
+
+    }
+
     /// <summary>
     /// Update the dice when variables are changed
     /// </summary>
-    public void UpdateDiceData() {
+    public void UpdateDiceData()
+    {
         diceRend.sharedMaterial = materialData.DiceMaterialData[diceData.diceValue];
         if (diceData.diceState is DiceState.ForceHole or DiceState.ForceWall || diceData.diceEffectState is DiceEffectState.Spawner or DiceEffectState.End or DiceEffectState.Start) diceData.diceValue = 0;
+      
+        InitEffects();
     }
 
     public void UpdateDiceInEditor() {
@@ -91,5 +107,6 @@ public enum DiceEffectState {
     Start,
     End,
     Effect,
-    Spawner
+    Spawner,
+    Collectible
 }

@@ -9,12 +9,21 @@ namespace Entities
     public class BaseAI : AbstractEntity {
         public override void StartTurn()
         {
+            if (ploofed > 0)
+            {
+                base.EndTurn();
+                return;
+            }
+            
             base.StartTurn();
             UIManager.instance.AskTurn("Enemy Turn");
 
             GeneratePath();
         }
 
+        [SerializeField] private int durationStunPlouf = 1;
+        public int ploofed;
+        
         private void GeneratePath()
         {
             (int x, int y) posTo = (Character.instance.pos.x, Character.instance.pos.y);
@@ -59,7 +68,12 @@ namespace Entities
         
         public IEnumerator TryRespawn(float delay)
         {
+            if(ploofed > 0) yield break;
+            ploofed =durationStunPlouf;
+            
             yield return new WaitForSeconds(delay);
+
+            yield return new WaitWhile(() => ploofed > 0);
             
             foreach (var ia in LevelManager.instance.Entities)
             {

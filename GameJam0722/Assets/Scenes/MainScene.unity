@@ -13899,6 +13899,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f7d725ec56e0f52409b8d5a38ba900dd, type: 2}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0bd5171ecd988dc489e4b301971716f9, type: 2}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 270d40ab3f4358544aee31347e803304, type: 2}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 38cf9930a57230642ae039de910aacf8, type: 2}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: c11785411b97a2f439dfa465c0150a95, type: 2}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 594057ab44771b44badf20f3bbf21122, type: 2}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1fc0b37e29f84634f8fb6238a346ef39, type: 2}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a47d408ed3cc344bbc5cc63e0eb1c04, type: 2}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 83b914d3790db9348a92a8b910cc20c6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
 --- !u!4 &3223514754759693205 stripped

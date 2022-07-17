@@ -86,6 +86,12 @@ namespace Managers
                         LevelManager.instance.RemoveEntity(LevelManager.instance.Entities.IndexOf(entity));
                     }));
             }
+
+            foreach (Leurre leure in Leurre.leurres) {
+                Destroy(leure.gameObject);
+            }
+
+            Leurre.leurres.Clear();
         }
         
         /// <summary>

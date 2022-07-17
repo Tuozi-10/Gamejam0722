@@ -40,6 +40,8 @@ public class TerrainManager : Singleton<TerrainManager> {
     public Transform Collectible;
     public Transform End;
     public Transform Spawn;
+    public Transform PlayerClick;
+    public Transform PlayerClickRight;
     
     private int actualLoopNumber;
     private bool isUpdatingLevel = false;

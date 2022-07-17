@@ -50,6 +50,17 @@ public class DiceTerrain : MonoBehaviour {
             Spawner.transform.localPosition = new Vector3(0, 0.55f, 0);
         }
 
+        if (diceData.diceEffectState == DiceEffectState.PlayerClickLeft)
+        {
+            var click = Instantiate(TerrainManager.instance.PlayerClick, pivot).gameObject;
+            click.transform.localPosition = new Vector3(0, 0, 0);
+        }  
+        
+        if (diceData.diceEffectState == DiceEffectState.PlayerClickRight)
+        {
+            var click = Instantiate(TerrainManager.instance.PlayerClickRight, pivot).gameObject;
+            click.transform.localPosition = new Vector3(0, 0, 0);
+        }
     }
 
     /// <summary>
@@ -121,5 +132,8 @@ public enum DiceEffectState {
     End,
     Effect,
     Spawner,
-    Collectible
+    Collectible,
+    PlayerClickLeft,
+    PlayerClickRight
+    
 }

@@ -204,9 +204,25 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694318}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &5305811
+  m_GameObject: {fileID: 81214973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18332feae2b8a214b854de338a797936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceData:
+    diceValue: 0
+    dicePosX: 0
+    dicePosY: 0
+    diceState: 4
+    diceEffectState: 0
+  heightRandomness: 0
+  objectMesh: {fileID: 2067840613}
+  materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
+  diceRend: {fileID: 2067840613}
+  pivot: {fileID: 1796175680}
+  collectible: {fileID: 0}
+--- !u!1 &87137812
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -390,9 +406,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1697174262}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1697174262}
-  pivot: {fileID: 1509222242}
---- !u!1 &27262169
+  diceRend: {fileID: 537278632}
+  pivot: {fileID: 1839351363}
+  collectible: {fileID: 0}
+--- !u!1 &110009985
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -543,9 +560,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1191277376}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1191277376}
-  pivot: {fileID: 1497941753}
---- !u!1 &37715055
+  diceRend: {fileID: 693203460}
+  pivot: {fileID: 483973650}
+  collectible: {fileID: 0}
+--- !u!1 &188487167
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1138,9 +1156,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1202489516}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1202489516}
-  pivot: {fileID: 1329012588}
---- !u!1 &151272187
+  diceRend: {fileID: 1669785100}
+  pivot: {fileID: 785619804}
+  collectible: {fileID: 0}
+--- !u!1 &341490660
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2413,9 +2432,25 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366353272}
-  m_Mesh: {fileID: -4664382578460312087, guid: 66915af8bcd7e8b42b34ada5081746ba, type: 3}
---- !u!1 &376452035
+  m_GameObject: {fileID: 543645689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18332feae2b8a214b854de338a797936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceData:
+    diceValue: 0
+    dicePosX: 2
+    dicePosY: 1
+    diceState: 5
+    diceEffectState: 0
+  heightRandomness: 0
+  objectMesh: {fileID: 1296600819}
+  materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
+  diceRend: {fileID: 1296600819}
+  pivot: {fileID: 642836080}
+  collectible: {fileID: 0}
+--- !u!1 &558689303
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2682,9 +2717,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1436739204}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1436739204}
-  pivot: {fileID: 506201820}
---- !u!1 &420508070
+  diceRend: {fileID: 346923332}
+  pivot: {fileID: 1521891601}
+  collectible: {fileID: 0}
+--- !u!1 &626650031
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2976,9 +3012,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 80275560}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 80275560}
-  pivot: {fileID: 1503876508}
---- !u!1 &475925307
+  diceRend: {fileID: 674195711}
+  pivot: {fileID: 1383137350}
+  collectible: {fileID: 0}
+--- !u!1 &673285432
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3033,23 +3070,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506201819}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 37715056}
-  - {fileID: 1436739203}
-  m_Father: {fileID: 410990324}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &511750221 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5485276713814388173, guid: 9dcd14202404e7843aea1c8078ed9f5d, type: 3}
-  m_PrefabInstance: {fileID: 5485276713309498180}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &534601275
+  m_GameObject: {fileID: 673285432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18332feae2b8a214b854de338a797936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceData:
+    diceValue: 0
+    dicePosX: 2
+    dicePosY: 4
+    diceState: 4
+    diceEffectState: 0
+  heightRandomness: 0
+  objectMesh: {fileID: 884288277}
+  materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
+  diceRend: {fileID: 884288277}
+  pivot: {fileID: 1559505161}
+  collectible: {fileID: 0}
+--- !u!1 &673322118
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3552,13 +3591,13 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 2694320}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 2694320}
-  pivot: {fileID: 1696462262}
---- !u!1 &594573834
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  diceRend: {fileID: 684474947}
+  pivot: {fileID: 1401432533}
+  collectible: {fileID: 0}
+--- !u!108 &705507994 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1684207936474854744, guid: 75ca9c73ac6483a4caed77bc4bd569e0, type: 3}
+  m_PrefabInstance: {fileID: 1684207936105547714}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -3967,9 +4006,25 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606876332}
-  m_Mesh: {fileID: -4664382578460312087, guid: 66915af8bcd7e8b42b34ada5081746ba, type: 3}
---- !u!1 &610589013
+  m_GameObject: {fileID: 863207011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18332feae2b8a214b854de338a797936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceData:
+    diceValue: 0
+    dicePosX: 1
+    dicePosY: 3
+    diceState: 4
+    diceEffectState: 0
+  heightRandomness: 0
+  objectMesh: {fileID: 769531312}
+  materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
+  diceRend: {fileID: 769531312}
+  pivot: {fileID: 1709101628}
+  collectible: {fileID: 0}
+--- !u!1 &884288275
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4556,19 +4611,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 27262171}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 27262171}
-  pivot: {fileID: 640111895}
---- !u!212 &728280822 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 9119160845721507805, guid: 7ad2b467926fdd5419ed01bb1199520b, type: 3}
-  m_PrefabInstance: {fileID: 8024431275243338533}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &730660132 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5081308805775311678, guid: 35d42c006c16aea498e9479920dce2f1, type: 3}
-  m_PrefabInstance: {fileID: 5081308805685490409}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &752174602
+  diceRend: {fileID: 1971346696}
+  pivot: {fileID: 110009986}
+  collectible: {fileID: 0}
+--- !u!1 &1005025034
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5083,9 +5129,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 594573836}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 594573836}
-  pivot: {fileID: 1245224340}
---- !u!1 &818384012
+  diceRend: {fileID: 1855792848}
+  pivot: {fileID: 381223043}
+  collectible: {fileID: 0}
+--- !u!1 &1061402725
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5866,9 +5913,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1094309788}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1094309788}
-  pivot: {fileID: 1382739914}
---- !u!1 &953328375
+  diceRend: {fileID: 607741281}
+  pivot: {fileID: 304054890}
+  collectible: {fileID: 0}
+--- !u!1 &1119430792
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6348,9 +6396,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1521173898}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1521173898}
-  pivot: {fileID: 1567250131}
---- !u!1 &1019526711
+  diceRend: {fileID: 894553758}
+  pivot: {fileID: 1790054237}
+  collectible: {fileID: 0}
+--- !u!1 &1321645717
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6571,9 +6620,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1177107845}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1177107845}
-  pivot: {fileID: 318293152}
---- !u!1 &1081677147
+  diceRend: {fileID: 1321645719}
+  pivot: {fileID: 563318804}
+  collectible: {fileID: 0}
+--- !u!1 &1401432532
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6757,9 +6807,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1019526713}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1019526713}
-  pivot: {fileID: 1685828447}
---- !u!1 &1101111567
+  diceRend: {fileID: 1572564874}
+  pivot: {fileID: 1556099665}
+  collectible: {fileID: 0}
+--- !u!1 &1415057651
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7957,9 +8008,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 614535617}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 614535617}
-  pivot: {fileID: 385658585}
---- !u!1 &1223502387
+  diceRend: {fileID: 419431267}
+  pivot: {fileID: 1005025035}
+  collectible: {fileID: 0}
+--- !u!1 &1498859132
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8899,9 +8951,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1554077069}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1554077069}
-  pivot: {fileID: 72955303}
---- !u!1 &1482818735
+  diceRend: {fileID: 2066481360}
+  pivot: {fileID: 2006772213}
+  collectible: {fileID: 0}
+--- !u!1 &1669785098
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9218,9 +9271,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 2052456755}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 2052456755}
-  pivot: {fileID: 1214444329}
---- !u!1 &1497941752
+  diceRend: {fileID: 673322120}
+  pivot: {fileID: 1803056904}
+  collectible: {fileID: 0}
+--- !u!1 &1750107106
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9586,9 +9640,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1723322950}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1723322950}
-  pivot: {fileID: 151272188}
---- !u!1 &1547827048
+  diceRend: {fileID: 1426363575}
+  pivot: {fileID: 274612662}
+  collectible: {fileID: 0}
+--- !u!1 &1755012143
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10456,9 +10511,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 697403971}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 697403971}
-  pivot: {fileID: 360039934}
---- !u!1 &1673404039
+  diceRend: {fileID: 1980191664}
+  pivot: {fileID: 87137813}
+  collectible: {fileID: 0}
+--- !u!1 &1837294545
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10738,9 +10794,25 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692035139}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1696462261
+  m_GameObject: {fileID: 1837294545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18332feae2b8a214b854de338a797936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceData:
+    diceValue: 0
+    dicePosX: 0
+    dicePosY: 3
+    diceState: 4
+    diceEffectState: 0
+  heightRandomness: 0
+  objectMesh: {fileID: 438038116}
+  materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
+  diceRend: {fileID: 438038116}
+  pivot: {fileID: 1981460360}
+  collectible: {fileID: 0}
+--- !u!1 &1839351362
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11572,9 +11644,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 6781069}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 6781069}
-  pivot: {fileID: 1581612712}
---- !u!1 &1774004942
+  diceRend: {fileID: 1084278907}
+  pivot: {fileID: 1879210696}
+  collectible: {fileID: 0}
+--- !u!1 &1947066836
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11782,9 +11855,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 953328377}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 953328377}
-  pivot: {fileID: 475925308}
---- !u!1 &1797460243
+  diceRend: {fileID: 1580603872}
+  pivot: {fileID: 1461391686}
+  collectible: {fileID: 0}
+--- !u!1 &1971346694
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12523,9 +12597,10 @@ MonoBehaviour:
   heightRandomness: 0
   objectMesh: {fileID: 1838938997}
   materialData: {fileID: 11400000, guid: a23cbcc858e807a4cb1ccfd6c222780c, type: 2}
-  diceRend: {fileID: 1838938997}
-  pivot: {fileID: 784478708}
---- !u!1 &1984916287
+  diceRend: {fileID: 960302620}
+  pivot: {fileID: 1220302407}
+  collectible: {fileID: 0}
+--- !u!1 &2038696139
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13846,6 +13921,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7803366647561718868, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
+      propertyPath: levelList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a47d408ed3cc344bbc5cc63e0eb1c04, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48267f3894bfab64a9fa54eb0645fbd5, type: 3}
 --- !u!4 &3223514754759693205 stripped

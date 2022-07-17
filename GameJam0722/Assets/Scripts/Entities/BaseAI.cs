@@ -60,8 +60,9 @@ namespace Entities
         /// </summary>
         /// <returns></returns>
         private IEnumerator throwPlayer() {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.75f);
             transform.DOLocalMove(-transform.forward * 15, 1.5f);
+            yield return new WaitForSeconds(1);
             LevelManager.instance.ReloadLevel();
             LevelManager.instance.Defeat();
         }

@@ -18,12 +18,12 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 0
     dicePosY: 0
-    diceState: 0
-    diceEffectState: 1
+    diceState: 4
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 0
     dicePosY: 1
-    diceState: 0
+    diceState: 4
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 0
     dicePosY: 6
-    diceState: 0
+    diceState: 5
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     dicePosX: 1
     dicePosY: 0
     diceState: 0
-    diceEffectState: 0
+    diceEffectState: 1
   - diceValue: 3
     dicePosX: 1
     dicePosY: 1
@@ -73,24 +73,24 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 1
     dicePosY: 3
-    diceState: 4
+    diceState: 5
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 1
     dicePosY: 4
-    diceState: 4
+    diceState: 5
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 1
     dicePosY: 5
     diceState: 3
     diceEffectState: 0
-  - diceValue: 0
+  - diceValue: 2
     dicePosX: 1
     dicePosY: 6
     diceState: 0
     diceEffectState: 0
-  - diceValue: 0
+  - diceValue: 2
     dicePosX: 1
     dicePosY: 7
     diceState: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
     dicePosX: 2
     dicePosY: 3
     diceState: 3
-    diceEffectState: 0
+    diceEffectState: 5
   - diceValue: 0
     dicePosX: 2
     dicePosY: 4
@@ -125,12 +125,12 @@ MonoBehaviour:
     dicePosY: 5
     diceState: 3
     diceEffectState: 0
-  - diceValue: 0
+  - diceValue: 1
     dicePosX: 2
     dicePosY: 6
     diceState: 0
     diceEffectState: 0
-  - diceValue: 0
+  - diceValue: 1
     dicePosX: 2
     dicePosY: 7
     diceState: 0
@@ -197,53 +197,53 @@ MonoBehaviour:
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 4
-    dicePosY: 4
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 0
-    dicePosX: 4
-    dicePosY: 5
-    diceState: 3
-    diceEffectState: 0
-  - diceValue: 0
-    dicePosX: 4
-    dicePosY: 6
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 0
-    dicePosX: 4
-    dicePosY: 7
-    diceState: 4
-    diceEffectState: 0
-  - diceValue: 0
-    dicePosX: 5
-    dicePosY: 0
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 0
-    dicePosX: 5
-    dicePosY: 1
-    diceState: 0
-    diceEffectState: 0
-  - diceValue: 0
-    dicePosX: 5
-    dicePosY: 2
-    diceState: 5
-    diceEffectState: 0
-  - diceValue: 0
-    dicePosX: 5
-    dicePosY: 3
-    diceState: 5
-    diceEffectState: 0
-  - diceValue: 0
-    dicePosX: 5
     dicePosY: 4
     diceState: 0
     diceEffectState: 4
   - diceValue: 0
-    dicePosX: 5
+    dicePosX: 4
     dicePosY: 5
     diceState: 3
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 4
+    dicePosY: 6
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 4
+    dicePosY: 7
+    diceState: 5
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 5
+    dicePosY: 0
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 5
+    dicePosY: 1
+    diceState: 0
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 5
+    dicePosY: 2
+    diceState: 5
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 5
+    dicePosY: 3
+    diceState: 5
+    diceEffectState: 0
+  - diceValue: 0
+    dicePosX: 5
+    dicePosY: 4
+    diceState: 4
+    diceEffectState: 0
+  - diceValue: 1
+    dicePosX: 5
+    dicePosY: 5
+    diceState: 0
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 5
@@ -253,7 +253,7 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 5
     dicePosY: 7
-    diceState: 4
+    diceState: 0
     diceEffectState: 0
   - diceValue: 5
     dicePosX: 6
@@ -288,7 +288,7 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 6
     dicePosY: 6
-    diceState: 0
+    diceState: 5
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 6
@@ -328,10 +328,10 @@ MonoBehaviour:
   - diceValue: 0
     dicePosX: 7
     dicePosY: 6
-    diceState: 0
+    diceState: 5
     diceEffectState: 0
   - diceValue: 0
     dicePosX: 7
     dicePosY: 7
     diceState: 0
-    diceEffectState: 0
+    diceEffectState: 4

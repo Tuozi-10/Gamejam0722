@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Managers;
 using UnityEditor;
 using UnityEngine;
 
@@ -41,6 +42,9 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
         bool isInGame = Application.isPlaying;
         
         Level levelClass = Level.CreateLevel(level);
+        if(levelClass.useRandom) UIManager.instance.ShowRandomCanvas();
+        else UIManager.instance.HideRandomCanvas();
+        
         List<DiceTerrain> diceTerrainList = GenerateNewLevel(new Vector2Int(levelClass.terrainSize.x, levelClass.terrainSize.y), isInGame);
 
         foreach (DiceTerrain dice in diceTerrainList) {
@@ -50,6 +54,7 @@ public class LevelCreationManager : Singleton<LevelCreationManager> {
         }
 
         if (isInGame) StartCoroutine(TerrainManager.instance.InitTerrainCreation(new Vector2Int(levelClass.terrainSize.x, levelClass.terrainSize.y), diceTerrainList));
+        else levelName = level.name;
     }
     
     private float xPosMax = 0;

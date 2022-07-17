@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8db6d869d2e26c942b110ccbf887c543, type: 3}
-  m_Name: FL_02
+  m_Name: 02 - Are you ready
   m_EditorClassIdentifier: 
   terrainSize: {x: 10, y: 10}
   diceClass:
@@ -18,12 +18,12 @@ MonoBehaviour:
     dicePosX: 0
     dicePosY: 0
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 1
   - diceValue: 0
     dicePosX: 0
     dicePosY: 1
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 0
     dicePosY: 2
@@ -73,7 +73,7 @@ MonoBehaviour:
     dicePosX: 1
     dicePosY: 1
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 1
     dicePosY: 2
@@ -123,7 +123,7 @@ MonoBehaviour:
     dicePosX: 2
     dicePosY: 1
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 5
     dicePosX: 2
     dicePosY: 2
@@ -173,7 +173,7 @@ MonoBehaviour:
     dicePosX: 3
     dicePosY: 1
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 5
     dicePosX: 3
     dicePosY: 2
@@ -223,7 +223,7 @@ MonoBehaviour:
     dicePosX: 4
     dicePosY: 1
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 5
     dicePosX: 4
     dicePosY: 2
@@ -248,17 +248,17 @@ MonoBehaviour:
     dicePosX: 4
     dicePosY: 6
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 4
     dicePosY: 7
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 4
     dicePosY: 8
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 5
     dicePosX: 4
     dicePosY: 9
@@ -273,7 +273,7 @@ MonoBehaviour:
     dicePosX: 5
     dicePosY: 1
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 4
     dicePosX: 5
     dicePosY: 2
@@ -308,7 +308,7 @@ MonoBehaviour:
     dicePosX: 5
     dicePosY: 8
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 5
     dicePosX: 5
     dicePosY: 9
@@ -323,7 +323,7 @@ MonoBehaviour:
     dicePosX: 6
     dicePosY: 1
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 6
     dicePosY: 2
@@ -338,7 +338,7 @@ MonoBehaviour:
     dicePosX: 6
     dicePosY: 4
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 6
     dicePosY: 5
@@ -363,7 +363,7 @@ MonoBehaviour:
     dicePosX: 6
     dicePosY: 9
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 7
     dicePosY: 0
@@ -373,22 +373,22 @@ MonoBehaviour:
     dicePosX: 7
     dicePosY: 1
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 7
     dicePosY: 2
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 7
     dicePosY: 3
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 7
     dicePosY: 4
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 3
     dicePosX: 7
     dicePosY: 5
@@ -413,7 +413,7 @@ MonoBehaviour:
     dicePosX: 7
     dicePosY: 9
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 8
     dicePosY: 0
@@ -463,7 +463,7 @@ MonoBehaviour:
     dicePosX: 8
     dicePosY: 9
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 0
   - diceValue: 0
     dicePosX: 9
     dicePosY: 0
@@ -513,4 +513,4 @@ MonoBehaviour:
     dicePosX: 9
     dicePosY: 9
     diceState: 0
-    diceEffectState: 3
+    diceEffectState: 2

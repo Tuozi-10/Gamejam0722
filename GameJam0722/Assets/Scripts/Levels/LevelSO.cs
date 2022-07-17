@@ -7,6 +7,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class LevelSO : ScriptableObject {
     [SerializeField] private Vector2 terrainSize = new Vector2(0, 0);
     public Vector2 TerrainSize => terrainSize;
+    
+    [Space]
+    
+    [SerializeField] private bool useCustomColorDice = true;
+    public bool UseCustomColorDice => useCustomColorDice;
+    
     [SerializeField, NonReorderable] private List<DiceClass> diceClass = new List<DiceClass>();
     public List<DiceClass> DiceClass => diceClass;
 
@@ -25,12 +31,14 @@ public class LevelSO : ScriptableObject {
 [System.Serializable]
 public class Level {
     public (int x, int y) terrainSize;
+    public bool useRandom;
     public List<DiceClass> DiceClass;
 
     public static Level CreateLevel(LevelSO level) {
         var newCreatedLevel = new Level {
             terrainSize = ((int) level.TerrainSize.x, (int)level.TerrainSize.y), 
-            DiceClass = new (level.DiceClass)
+            DiceClass = new (level.DiceClass),
+            useRandom = level.UseCustomColorDice
         };
         return newCreatedLevel.DeepClone();
     }

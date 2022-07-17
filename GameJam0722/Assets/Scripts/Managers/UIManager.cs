@@ -80,8 +80,14 @@ namespace Managers
             //m_cvgTurn.DOFade(0, 0.3f).SetDelay( m_durationTextTurn);
         }
         
-        public void StartNewIsland() {
-            randomTerrain.DOFade(1, 0.5f).SetDelay(1);
+        public void ShowRandomCanvas() {
+            randomTerrain.DOKill();
+            randomTerrain.DOFade(1, 0.5f).SetDelay(2.5f);
+        }
+        
+        public void HideRandomCanvas() {
+            randomTerrain.DOKill();
+            randomTerrain.DOFade(0, 0.5f);
         }
 
         public void SetRandomDiceUIColor() {

@@ -58,3 +58,5 @@ MonoBehaviour:
   m_cursorSprites:
   - {fileID: 21300000, guid: e9d17e725dc1e3e4baf0195e76c2d75f, type: 3}
   - {fileID: 21300000, guid: 58c88c91480e173459f9774b91bda2f7, type: 3}
+  - {fileID: 21300000, guid: a9f58f802b0fe9a48979799b21b41e3c, type: 3}
+  m_leurre: {fileID: -5071422493834339944, guid: 9613145a6f63e9d42a904f99aff958a4, type: 3}

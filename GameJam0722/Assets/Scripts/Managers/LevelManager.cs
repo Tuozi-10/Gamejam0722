@@ -22,8 +22,8 @@ namespace Managers
         public bool IsLoadingLevel => isLoadingNewLevel;
 
         private void Start() {
+            UIManager.instance.ShowRandomCanvas();
             GenerateNewLevel();
-            UIManager.instance.StartNewIsland();
         }
 
         private void Update() {
@@ -144,7 +144,7 @@ namespace Managers
         /// </summary>
         public void Victory()
         {
-            if (m_entities.Count == 1 && m_entities[0] is Character)
+            if (m_entities[0] is Character)
             {
                 UIManager.instance.Victory();
                 LevelManager.instance.LoadNextLevel();
@@ -157,5 +157,8 @@ namespace Managers
         public void Defeat() => UIManager.instance.Defeat();
 
         #endregion
+
+        public LevelSO GetActivScene() => levelList[levelIndex - 1];
+
     }
 }

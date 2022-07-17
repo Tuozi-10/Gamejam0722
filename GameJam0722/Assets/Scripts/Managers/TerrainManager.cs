@@ -35,13 +35,18 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private int holeDiceValue = 0;
 
     private int actualLoopNumber;
+    private bool isUpdatingLevel = false;
+    public bool IsUpdateingLevel => isUpdatingLevel;
 
     /// <summary>
     /// Load all dice data
     /// </summary>
     /// <param name="levelSize"></param>
     /// <param name="diceList"></param>
-    public IEnumerator InitTerrainCreation(Vector2 levelSize, List<DiceTerrain> diceList) {
+    public IEnumerator InitTerrainCreation(Vector2 levelSize, List<DiceTerrain> diceList) 
+    {
+        isUpdatingLevel = true;
+        
         diceTerrainlsit = new DiceTerrain[(int) levelSize.x, (int) levelSize.y];
         foreach (DiceTerrain dice in diceList) {
             diceTerrainlsit[(int) (diceList.IndexOf(dice) / levelSize.x), (int) (diceList.IndexOf(dice) % levelSize.x)] = dice;
@@ -75,27 +80,32 @@ public class TerrainManager : Singleton<TerrainManager> {
     /// <summary>
     /// Launch the event which change the height of some Dice
     /// </summary>
-
-    public void CheckIfChange(bool firstLaunch = false)
+    public void CheckIfChange(bool firstLaunch = false) 
     {
+        isUpdatingLevel = true;
         actualLoopNumber++;
         UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
 
-        if (actualLoopNumber == numberOfTurnBeforeChange)
+        if (actualLoopNumber == numberOfTurnBeforeChange && Level.CreateLevel(LevelManager.instance.GetActivScene()).useRandom)
         {
+            Debug.Log("Make changes height");
             StartCoroutine(ChangeHeightEvent(firstLaunch));
             actualLoopNumber = 0;
             UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
             return;
         }
-        
-        if(firstLaunch) LevelManager.instance.GenerateEntities();
-        else LevelManager.instance.GetNextEntity()?.StartTurn();
+
+        StartNewTurn(firstLaunch);
     }
-    
-    public IEnumerator ChangeHeightEvent(bool firstLaunch = false) {
-        yield return new WaitForSeconds(moveHeightDuration);
-        
+
+    private bool hasEnemy = false;
+    /// <summary>
+    /// Events for the height
+    /// </summary>
+    /// <param name="firstLaunch"></param>
+    /// <returns></returns>
+    private IEnumerator ChangeHeightEvent(bool firstLaunch = false) 
+    {
         CreateWallAndHole(firstLaunch);
         yield return new WaitForSeconds(moveHeightDuration + 0.25f);
 
@@ -104,17 +114,17 @@ public class TerrainManager : Singleton<TerrainManager> {
 
             yield return new WaitForSeconds(1.5f + entityAppartionDuration);
 
+            hasEnemy = false;
             foreach (DiceTerrain dice in diceTerrainlsit) {
                 if (dice.diceData.diceEffectState == DiceEffectState.Spawner) {
                    StartCoroutine(SpawnEnemy(dice));
+                   hasEnemy = true;
                 }
             }
-
-            yield return new WaitForSeconds(entityAppartionDuration + .5f);
+            
+            if(hasEnemy) yield return new WaitForSeconds(entityAppartionDuration + .5f);
         }
 
-        yield return new WaitForSeconds(1);
-        
         for (int i = 0; i < 8; i++) {
             UIManager.instance.SetRandomDiceUIColor();
             yield return new WaitForSeconds(.05f);
@@ -127,9 +137,7 @@ public class TerrainManager : Singleton<TerrainManager> {
         } while (randomHoleDice == randomWallDice);
         
         UIManager.instance.SetDiceUIColor(randomWallDice, randomHoleDice);
-        
-        if(firstLaunch) LevelManager.instance.GenerateEntities();
-        else LevelManager.instance.GetNextEntity()?.StartTurn();
+        StartNewTurn(firstLaunch);
     }
 
     /// <summary>
@@ -257,7 +265,14 @@ public class TerrainManager : Singleton<TerrainManager> {
         dice.transform.DOKill();
         dice.transform.DOLocalMove(new Vector3(dice.transform.localPosition.x, height, dice.transform.localPosition.z), Random.Range(duration - duration / 8, duration + duration / 8));
     }
-
+    
+    private void StartNewTurn(bool firstLaunch) {
+        isUpdatingLevel = false;
+        
+        if(firstLaunch) LevelManager.instance.GenerateEntities();
+        else LevelManager.instance.GetNextEntity()?.StartTurn();
+    }
+    
     #endregion Set Terrain Height
     
     #region DiceTerrainHelper

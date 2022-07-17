@@ -33,7 +33,7 @@ public class MouseManager : Singleton<MouseManager> {
 
     private void UpdateMouseDown()
     {
-        if (character.canPlay)
+        if (character.canPlay && !TerrainManager.instance.IsUpdateingLevel)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -99,12 +99,10 @@ public class MouseManager : Singleton<MouseManager> {
             
             DiceTerrain dice = cubeUnderMouse.GetComponent<DiceTerrain>();
             var array = TerrainManager.instance.GetAvailableArray(TerrainManager.instance.diceTerrainlsit[character.pos.x,character.pos.y].diceData.isWall);
-            m_cursorRenderer.sprite = array[dice.pos.x, dice.pos.y] ? m_cursorSprites[0]:m_cursorSprites [1];
-
-            if (Vector2Int.Distance(dice.pos, character.pos) > 1)
-            {
-                m_cursorRenderer.sprite = m_cursorSprites [1];
-            }
+            
+            if (TerrainManager.instance.IsUpdateingLevel) m_cursorRenderer.sprite = m_cursorSprites[2];
+            else if (Vector2Int.Distance(dice.pos, character.pos) > 1) m_cursorRenderer.sprite = m_cursorSprites[1];
+            else m_cursorRenderer.sprite = array[dice.pos.x, dice.pos.y] ? m_cursorSprites[0] : m_cursorSprites[1];
             
             cubePosition.transform.DOMove(new Vector3(cubeUnderMouse.position.x, cubeUnderMouse.position.y + cursorHeight, cubeUnderMouse.position.z), 0.25f);
         }

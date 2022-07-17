@@ -94,7 +94,7 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Distance: 11.25
+    - _Distance: 2
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 0
     - _DistortionStrength: 1
@@ -104,8 +104,8 @@ Material:
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
     - _FoamAmount: 0.68
-    - _FoamCutoff: 1.22
-    - _FoamScale: 359.95
+    - _FoamCutoff: 2.3
+    - _FoamScale: 349.2
     - _FoamSpeed: 0.2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -121,7 +121,7 @@ Material:
     - _QueueOffset: 0
     - _RefractionSpeed: 0.075
     - _RefractionStrenght: 0.05
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
@@ -130,8 +130,8 @@ Material:
     - _SrcBlend: 1
     - _Surface: 1
     - _UVSec: 0
-    - _WaveAmplitude: 0.1
-    - _WaveSpeed: 1.2
+    - _WaveAmplitude: 0.2
+    - _WaveSpeed: 2
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 0.03566392, g: 0.23181549, b: 0.3625832, a: 1}
@@ -139,13 +139,13 @@ Material:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.03566392, g: 0.23181549, b: 0.3625832, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
-    - _DeepColor: {r: 0.061187267, g: 0.17675063, b: 0.23584908, a: 1}
+    - _DeepColor: {r: 0.024474902, g: 0.00747597, b: 0.0754717, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 0.5742702, g: 0.7904496, b: 0.8396226, a: 1}
     - _FoamScale: {r: 10, g: 0, b: 0, a: 0}
     - _RefractorScale: {r: 3, g: 10, b: 0, a: 0}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _SurfaceColor: {r: 0.16220185, g: 0.35308462, b: 0.4245283, a: 1}
+    - _SurfaceColor: {r: 0.20719118, g: 0.38683763, b: 0.4528302, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8548079131385113572
 MonoBehaviour:

@@ -35,7 +35,7 @@ public class TerrainManager : Singleton<TerrainManager> {
     [SerializeField] private int holeDiceValue = 0;
 
     private int actualLoopNumber;
-    
+
     /// <summary>
     /// Load all dice data
     /// </summary>
@@ -59,7 +59,8 @@ public class TerrainManager : Singleton<TerrainManager> {
         UIManager.instance.SetDiceUIColor(randomWallDice, randomHoleDice);
 
         actualLoopNumber = 0;
-        
+        UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
+
         yield return new WaitForSeconds(.5f);
         StartCoroutine(ChangeHeightEvent(true));
     }
@@ -78,11 +79,13 @@ public class TerrainManager : Singleton<TerrainManager> {
     public void CheckIfChange(bool firstLaunch = false)
     {
         actualLoopNumber++;
-        
+        UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
+
         if (actualLoopNumber == numberOfTurnBeforeChange)
         {
             StartCoroutine(ChangeHeightEvent(firstLaunch));
             actualLoopNumber = 0;
+            UIManager.instance.SetTextToTurnNeeded(actualLoopNumber);
             return;
         }
         
@@ -95,12 +98,12 @@ public class TerrainManager : Singleton<TerrainManager> {
         
         CreateWallAndHole(firstLaunch);
         yield return new WaitForSeconds(moveHeightDuration + 0.25f);
-        
+
         if (firstLaunch) {
             StartCoroutine(SpawnPlayer());
-            
+
             yield return new WaitForSeconds(1.5f + entityAppartionDuration);
-            
+
             foreach (DiceTerrain dice in diceTerrainlsit) {
                 if (dice.diceData.diceEffectState == DiceEffectState.Spawner) {
                    StartCoroutine(SpawnEnemy(dice));
@@ -112,9 +115,9 @@ public class TerrainManager : Singleton<TerrainManager> {
 
         yield return new WaitForSeconds(1);
         
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             UIManager.instance.SetRandomDiceUIColor();
-            yield return new WaitForSeconds(.10f);
+            yield return new WaitForSeconds(.05f);
         }
         
         randomWallDice = setRandomDiceValue ? Random.Range(1, 7) : wallDiceValue;

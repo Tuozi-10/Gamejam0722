@@ -130,12 +130,12 @@ namespace Managers
                 m_currentEntityIndex = 0;
             }
 
-            if (m_entities.Count == 1 && m_entities[0] is Character)
+            /*if (m_entities.Count == 1 && m_entities[0] is Character)
             {
                 UIManager.instance.Victory();
                 LevelManager.instance.LoadNextLevel();
                 return null;
-            }
+            }*/
             
             return m_entities[m_currentEntityIndex];
         }

@@ -23,6 +23,7 @@ namespace Managers
         [SerializeField] private Image downTerrainImage = null;
         [SerializeField] private RectTransform downTerrainParent = null;
         [SerializeField] private DiceTerrainMaterialSO diceColorData = null;
+        [SerializeField] private TextMeshProUGUI textToTurnNeeded = null;
         private Material fadeMat;
         [Space]
         [SerializeField] private CanvasGroup cvgTitle;
@@ -74,8 +75,8 @@ namespace Managers
             m_cvgTurn.DOKill();
 
             m_textTurn.text = text;
-            m_cvgTurn.DOFade(1, 0.25f);
-            m_cvgTurn.DOFade(0, 0.3f).SetDelay( m_durationTextTurn);
+            //m_cvgTurn.DOFade(1, 0.25f);
+            //m_cvgTurn.DOFade(0, 0.3f).SetDelay( m_durationTextTurn);
         }
         
         public void StartNewIsland() {
@@ -93,6 +94,11 @@ namespace Managers
 
             upTerrainParent.DOScale(1.25f, 0.25f).OnComplete(() => upTerrainParent.DOScale(1f, 0.35f));
             downTerrainParent.DOScale(1.25f, 0.25f).OnComplete(() => downTerrainParent.DOScale(1f, 0.35f));
+        }
+
+        public void SetTextToTurnNeeded(int numberNeeded) {
+            int textToShowForTurn = 3 - numberNeeded;
+            textToTurnNeeded.text = textToShowForTurn.ToString();
         }
 
         /// <summary>
